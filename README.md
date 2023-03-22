@@ -1,3 +1,3 @@
-# is1-1c2023-grupal
+# is1_grupal
 Ejercicios grupales
 Ingeniería de Software 1 @ FCEN, UBA
