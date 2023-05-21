@@ -1,0 +1,5092 @@
+
+
+----QUIT----(20 March 2023 11:15:29) CuisUniversity-5706.image priorSource: 4313282!
+
+----STARTUP---- (20 March 2023 11:15:29) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5706.image!
+
+
+----QUIT----(20 March 2023 11:15:30) CuisUniversity-5706.image priorSource: 8712809!
+
+----STARTUP---- (14 May 2023 17:47:40) as /home/sofibonacci/Desktop/inge1/cuis/linux64 (4)/CuisUniversity-5706.image!
+
+
+TestCase subclass: #MarsRoverTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRoverTest category: 'MarsRover' stamp: 'SG 5/14/2023 17:49:10'!
+TestCase subclass: #MarsRoverTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRover category: 'MarsRover' stamp: 'SG 5/14/2023 17:52:11'!
+Object subclass: #MarsRover
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 17:51:59'!
+test01EmptyCommandListDoesntMoveRover
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: ''.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #N.! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 17:52:32'!
+ERROR!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 17:52:32'!
+ERROR!
+!MarsRover class methodsFor: 'instance creation' stamp: 'SG 5/14/2023 17:52:45'!
+placedAt: aPoint facingAt: aSymbol 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializePlacedAt: aPoint facingAt: aSymbol ! !
+!MarsRover class methodsFor: 'instance creation' stamp: 'SG 5/14/2023 17:53:34' prior: 50603974!
+placedAt: aPosition facingAt: aDirection 
+
+	^self new initializePlacedAt: aPosition facingAt: aDirection ! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 17:53:35'!
+ERROR!
+
+!classDefinition: #MarsRover category: 'MarsRover' stamp: 'SG 5/14/2023 17:54:05'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRover category: 'MarsRover' stamp: 'SG 5/14/2023 17:54:05'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position direction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!MarsRover methodsFor: 'initialization' stamp: 'SG 5/14/2023 17:54:05'!
+initializePlacedAt: aPosition facingAt: aDirection 
+	self shouldBeImplemented.
+	position := aPosition.
+	direction := aDirection.! !
+!MarsRover methodsFor: 'initialization' stamp: 'SG 5/14/2023 17:54:18' prior: 50604007!
+initializePlacedAt: aPosition facingAt: aDirection 
+	
+	position := aPosition.
+	direction := aDirection.! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 17:54:20'!
+ERROR!
+!MarsRover methodsFor: 'executing' stamp: 'SG 5/14/2023 17:54:47'!
+executeAllIn: aRenameMe1 
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'executing' stamp: 'SG 5/14/2023 17:55:08' prior: 50604023!
+executeAllIn: aCommandList! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 17:55:09'!
+ERROR!
+!MarsRover methodsFor: 'accesing' stamp: 'SG 5/14/2023 17:55:21'!
+position
+	self shouldBeImplemented.
+	^position! !
+
+----STARTUP---- (14 May 2023 17:56:07) as /home/sofibonacci/Desktop/inge1/cuis/linux64 (4)/CuisUniversity-5706.image!
+
+
+TestCase subclass: #MarsRoverTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRoverTest category: 'MarsRover' stamp: 'SG 5/14/2023 17:56:56'!
+TestCase subclass: #MarsRoverTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRover category: 'MarsRover' stamp: 'SG 5/14/2023 17:59:02'!
+Object subclass: #MarsRover
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 17:58:56'!
+test01EmptyCommandListDoesntMoveRover
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: ''.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #N.! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 17:59:07'!
+ERROR!
+!MarsRover class methodsFor: 'instance creation' stamp: 'SG 5/14/2023 17:59:28'!
+placedAt: aPoint facingAt: aSymbol 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializePlacedAt: aPoint facingAt: aSymbol ! !
+!MarsRover class methodsFor: 'instance creation' stamp: 'SG 5/14/2023 18:00:02' prior: 50603971!
+placedAt: aPosition facingAt: aDirection 
+
+	^self new initializePlacedAt: aPosition facingAt: aDirection ! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:00:04'!
+ERROR!
+
+!classDefinition: #MarsRover category: 'MarsRover' stamp: 'SG 5/14/2023 18:00:15'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRover category: 'MarsRover' stamp: 'SG 5/14/2023 18:00:15'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position direction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!MarsRover methodsFor: 'initialization' stamp: 'SG 5/14/2023 18:00:15'!
+initializePlacedAt: aPosition facingAt: aDirection 
+	self shouldBeImplemented.
+	position := aPosition.
+	direction := aDirection.! !
+!MarsRover methodsFor: 'initialization' stamp: 'SG 5/14/2023 18:00:20' prior: 50604004!
+initializePlacedAt: aPosition facingAt: aDirection 
+! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:00:25'!
+ERROR!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 18:00:35'!
+executeAllIn: aRenameMe1 
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 18:00:42' prior: 50604019!
+executeAllIn: aCommandList! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:00:44'!
+ERROR!
+!MarsRover methodsFor: 'accesing' stamp: 'SG 5/14/2023 18:00:51'!
+position
+	self shouldBeImplemented.
+	^position! !
+!MarsRover methodsFor: 'accesing' stamp: 'SG 5/14/2023 18:01:03' prior: 50604031!
+position
+ 	^0@0! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:01:03'!
+ERROR!
+!MarsRover methodsFor: 'accesing' stamp: 'SG 5/14/2023 18:01:09'!
+direction
+	self shouldBeImplemented.
+	^direction! !
+!MarsRover methodsFor: 'accesing' stamp: 'SG 5/14/2023 18:01:19' prior: 50604042!
+direction
+	^#N! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:01:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:01:20'!
+PASSED!
+
+----SNAPSHOT----(14 May 2023 18:01:58) CuisUniversity-5706.image priorSource: 8713034!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:03:29'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 18:04:30'!
+test02CanMoveForwardOneTimeWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'f'.
+	
+	self assert: marsRover position equals: 0@1.
+	self assert: marsRover direction equals: #N.! !
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 18:04:38'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 18:04:38'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 18:05:56' prior: 50604024!
+executeAllIn: aCommandList
+	aCommandList = 'f' ifTrue: [position := 0@1].! !
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 18:06:00'!
+FAILURE!
+!MarsRover methodsFor: 'accesing' stamp: 'SG 5/14/2023 18:06:20' prior: 50604036!
+position
+ 	^position! !
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 18:06:46'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 18:07:07'!
+test02CanMoveForwardTwoTimesWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'ff'.
+	
+	self assert: marsRover position equals: 0@2.
+	self assert: marsRover direction equals: #N.! !
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 18:07:15'!
+test03CanMoveForwardTwoTimesWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'ff'.
+	
+	self assert: marsRover position equals: 0@2.
+	self assert: marsRover direction equals: #N.! !
+
+!methodRemoval: MarsRoverTest #test02CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:07:15'!
+test02CanMoveForwardTwoTimesWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'ff'.
+	
+	self assert: marsRover position equals: 0@2.
+	self assert: marsRover direction equals: #N.!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:07:17'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:07:17'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 18:07:42' prior: 50604081!
+executeAllIn: aCommandList
+	aCommandList = 'f' ifTrue: [position := 0@1].
+	aCommandList = 'ff' ifTrue: [position := 0@2].! !
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:07:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:07:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:07:53'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 18:07:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:07:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:07:53'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:07:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:08:02'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 18:08:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:08:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:08:02'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 18:09:00' prior: 50604136!
+executeAllIn: aCommandList
+	aCommandList = '' ifTrue: [position := 0@0].
+	aCommandList = 'f' ifTrue: [position := 0@1].
+	aCommandList = 'ff' ifTrue: [position := 0@2].! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:09:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:09:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 18:09:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:09:03'!
+PASSED!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 18:10:29'!
+checkEmptyList: aCommandList
+
+	^ aCommandList = '' ifTrue: [position := 0@0]! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 18:10:29' prior: 50604180!
+executeAllIn: aCommandList
+	self checkEmptyList: aCommandList.
+	aCommandList = 'f' ifTrue: [position := 0@1].
+	aCommandList = 'ff' ifTrue: [position := 0@2].! !
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 18:13:09'!
+test03CanMoveForwardThreeTimesWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'fff'.
+	
+	self assert: marsRover position equals: 0@3.
+	self assert: marsRover direction equals: #N.! !
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 18:13:18'!
+test04CanMoveForwardTwoTimesWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'ff'.
+	
+	self assert: marsRover position equals: 0@2.
+	self assert: marsRover direction equals: #N.! !
+
+!methodRemoval: MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:13:18'!
+test03CanMoveForwardTwoTimesWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'ff'.
+	
+	self assert: marsRover position equals: 0@2.
+	self assert: marsRover direction equals: #N.!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:13:20'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 18:13:40'!
+test03aCanMoveForwardTwoTimesWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'ff'.
+	
+	self assert: marsRover position equals: 0@2.
+	self assert: marsRover direction equals: #N.! !
+
+!methodRemoval: MarsRoverTest #test03aCanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:14:08'!
+test03aCanMoveForwardTwoTimesWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'ff'.
+	
+	self assert: marsRover position equals: 0@2.
+	self assert: marsRover direction equals: #N.!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 18:14:24'!
+test04CanMoveForwardThreeTimesWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'fff'.
+	
+	self assert: marsRover position equals: 0@3.
+	self assert: marsRover direction equals: #N.! !
+
+!methodRemoval: MarsRoverTest #test03CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:14:24'!
+test03CanMoveForwardThreeTimesWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'fff'.
+	
+	self assert: marsRover position equals: 0@3.
+	self assert: marsRover direction equals: #N.!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 18:14:31'!
+test03CanMoveForwardTwoTimesWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'ff'.
+	
+	self assert: marsRover position equals: 0@2.
+	self assert: marsRover direction equals: #N.! !
+
+!methodRemoval: MarsRoverTest #test04CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:14:31'!
+test04CanMoveForwardTwoTimesWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'ff'.
+	
+	self assert: marsRover position equals: 0@2.
+	self assert: marsRover direction equals: #N.!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:14:35'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:14:35'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 18:15:04' prior: 50604207!
+executeAllIn: aCommandList
+	self checkEmptyList: aCommandList.
+	aCommandList = 'f' ifTrue: [position := 0@1].
+	aCommandList = 'ff' ifTrue: [position := 0@2].
+	aCommandList = 'fff' ifTrue: [position := 0@3].! !
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:15:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:15:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:15:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 18:15:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:15:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:15:12'!
+PASSED!
+
+----SNAPSHOT----(14 May 2023 18:15:42) CuisUniversity-5706.image priorSource: 8716995!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 18:18:04' prior: 50604321!
+executeAllIn: aCommandList
+	self checkEmptyList: aCommandList.
+
+	aCommandList first = $f ifTrue: [
+			| size | 
+			size := aCommandList size.
+			position := 0@size.
+			].! !
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:18:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:18:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 18:18:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:18:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:18:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:18:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:18:13'!
+ERROR!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:18:13'!
+ERROR!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:18:46'!
+ERROR!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:18:47'!
+ERROR!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:19:59'!
+ERROR!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:19:59'!
+ERROR!
+
+!methodRemoval: MarsRover #checkEmptyList: stamp: 'SG 5/14/2023 18:20:42'!
+checkEmptyList: aCommandList
+
+	^ aCommandList = '' ifTrue: [position := 0@0]!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 18:21:10' prior: 50604354!
+executeAllIn: aCommandList
+
+	aCommandList = '' ifTrue: [position := 0@0].
+	
+	aCommandList first = $f ifTrue: [
+			| size | 
+			size := aCommandList size.
+			position := 0@size.
+			].! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:21:13'!
+ERROR!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 18:21:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:21:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:21:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:21:13'!
+ERROR!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 18:21:31' prior: 50604407!
+executeAllIn: aCommandList
+
+	aCommandList = '' ifTrue: [
+		position := 0@0
+		^self].
+	
+	aCommandList first = $f ifTrue: [
+			| size | 
+			size := aCommandList size.
+			position := 0@size.
+			].! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:21:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:21:34'!
+ERROR!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 18:21:43' prior: 50604433!
+executeAllIn: aCommandList
+
+	aCommandList = '' ifTrue: [
+		position := 0@0.
+		^self].
+	
+	aCommandList first = $f ifTrue: [
+			| size | 
+			size := aCommandList size.
+			position := 0@size.
+			].! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:21:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:21:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 18:21:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:21:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:21:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 18:21:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 18:21:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:21:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 18:21:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 20:00:00'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 20:00:00'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 20:00:00'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 20:00:00'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 20:00:00'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 20:04:27'!
+test05CanMoveBackwardsOneTimeWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'b'.
+	
+	self assert: marsRover position equals: 0@-1.
+	self assert: marsRover direction equals: #N.! !
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 20:04:30'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 20:05:30' prior: 50604449!
+executeAllIn: aCommandList
+
+	aCommandList = '' ifTrue: [
+		position := 0@0.
+		^self].
+	
+	aCommandList first = $f ifTrue: [
+			| size | 
+			size := aCommandList size.
+			position := 0@size.
+			].
+		
+	aCommandList = 'b' ifTrue: [position := 0@-1]! !
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 20:05:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 20:05:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 20:05:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 20:05:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 20:05:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 20:05:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 22:10:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:10:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:10:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:10:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:10:42'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 22:12:59'!
+test06CanMoveBackwardsTwoTimesWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'b'.
+	
+	self assert: marsRover position equals: 0@-2.
+	self assert: marsRover direction equals: #N.! !
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:13:00'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:13:21' prior: 50604520!
+executeAllIn: aCommandList
+
+	aCommandList = '' ifTrue: [
+		position := 0@0.
+		^self].
+	
+	aCommandList first = $f ifTrue: [
+			| size | 
+			size := aCommandList size.
+			position := 0@size.
+			].
+		
+	aCommandList = 'b' ifTrue: [position := 0@-1].
+	aCommandList = 'bb' ifTrue: [position := 0@-2]! !
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:13:22'!
+FAILURE!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 22:13:58' prior: 50604568!
+test06CanMoveBackwardsTwoTimesWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'bb'.
+	
+	self assert: marsRover position equals: 0@-2.
+	self assert: marsRover direction equals: #N.! !
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:14:00'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 22:14:11'!
+test06CanMoveBackwardsThreeTimesWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'bbb'.
+	
+	self assert: marsRover position equals: 0@-3.
+	self assert: marsRover direction equals: #N.! !
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 22:14:26'!
+test07CanMoveBackwardsThreeTimesWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'bbb'.
+	
+	self assert: marsRover position equals: 0@-3.
+	self assert: marsRover direction equals: #N.! !
+
+!methodRemoval: MarsRoverTest #test06CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:14:26'!
+test06CanMoveBackwardsThreeTimesWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'bbb'.
+	
+	self assert: marsRover position equals: 0@-3.
+	self assert: marsRover direction equals: #N.!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:14:35'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:14:35'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:14:53' prior: 50604582!
+executeAllIn: aCommandList
+
+	aCommandList = '' ifTrue: [
+		position := 0@0.
+		^self].
+	
+	aCommandList first = $f ifTrue: [
+			| size | 
+			size := aCommandList size.
+			position := 0@size.
+			].
+		
+	aCommandList = 'b' ifTrue: [position := 0@-1].
+	aCommandList = 'bb' ifTrue: [position := 0@-2].
+	aCommandList = 'bbb' ifTrue: [position := 0@-3]! !
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:14:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:14:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 22:14:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:14:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:14:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:14:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:14:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:14:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:14:57'!
+PASSED!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:15:33' prior: 50604651!
+executeAllIn: aCommandList
+
+	aCommandList = '' ifTrue: [
+		position := 0@0.
+		^self].
+	
+	aCommandList first = $f ifTrue: [
+			| size | 
+			size := aCommandList size.
+			position := 0@size.
+			].
+		
+	aCommandList first = $b ifTrue: [
+			| size | 
+			size := -1 * aCommandList size.
+			position := 0@size.
+			].
+! !
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:15:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 22:15:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:15:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:15:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:15:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:15:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:15:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:15:41'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 22:16:57'!
+test08CanMoveForwardsBackwardsWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'fb'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #N.! !
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:20:01'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:20:01'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:21:40' prior: 50604696!
+executeAllIn: aCommandList
+
+	aCommandList = '' ifTrue: [
+		position := 0@0.
+		^self
+		].
+	
+	aCommandList = 'fb' ifTrue: [
+		position := 0@0
+		^self
+		].
+	
+	aCommandList first = $f ifTrue: [
+		| size | 
+		size := aCommandList size.
+		position := 0@size.
+		].
+
+	aCommandList first = $b ifTrue: [
+		| size | 
+		size := -1 * aCommandList size.
+		position := 0@size.
+		].
+! !
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:21:41'!
+ERROR!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:21:49'!
+ERROR!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:22:02' prior: 50604754!
+executeAllIn: aCommandList
+
+	aCommandList = '' ifTrue: [
+		position := 0@0.
+		^self
+		].
+	
+	aCommandList = 'fb' ifTrue: [
+		position := 0@0.
+		^self
+		].
+	
+	aCommandList first = $f ifTrue: [
+		| size | 
+		size := aCommandList size.
+		position := 0@size.
+		].
+
+	aCommandList first = $b ifTrue: [
+		| size | 
+		size := -1 * aCommandList size.
+		position := 0@size.
+		].
+! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 22:22:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:22:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:22:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:22:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:22:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:22:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:22:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:22:06'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 22:22:27'!
+test09CanMoveBackwardsForwardsWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'bf'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #N.! !
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:22:33'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:22:33'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:23:02' prior: 50604776!
+executeAllIn: aCommandList
+
+	aCommandList = '' ifTrue: [
+		position := 0@0.
+		^self
+		].
+	
+	aCommandList = 'fb' ifTrue: [
+		position := 0@0.
+		^self
+		].
+	
+	aCommandList = 'bf' ifTrue: [
+		position := 0@0.
+		^self
+		].
+	
+	aCommandList first = $f ifTrue: [
+		| size | 
+		size := aCommandList size.
+		position := 0@size.
+		].
+
+	aCommandList first = $b ifTrue: [
+		| size | 
+		size := -1 * aCommandList size.
+		position := 0@size.
+		].
+! !
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:23:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 22:23:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:23:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:23:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:23:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:23:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:23:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:23:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:23:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:23:05'!
+PASSED!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:28:54' prior: 50604836!
+executeAllIn: aCommandList
+
+	aCommandList = '' ifTrue: [
+		position := 0@0.
+		^self
+		].
+	
+	aCommandList do: [:directionToMove|
+		directionToMove = $f ifTrue: [
+			position := position + 0@1].
+		directionToMove = $b ifTrue: [
+			position := position + 0@-1].
+		]
+! !
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:28:58'!
+ERROR!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:28:58'!
+ERROR!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:29:14' prior: 50604888!
+executeAllIn: aCommandList
+
+	aCommandList = '' ifTrue: [
+		position := 0@0.
+		^self
+		].
+	
+	aCommandList do: [:directionToMove|
+		directionToMove = $f ifTrue: [
+			position := position + (0@1)].
+		directionToMove = $b ifTrue: [
+			position := position + (0@-1)].
+		]
+! !
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:29:17'!
+ERROR!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:29:17'!
+ERROR!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:31:13' prior: 50604906!
+executeAllIn: aCommandList
+
+	aCommandList = '' ifTrue: [
+		position := 0@0.
+		^self
+		].
+	
+	aCommandList do: [:directionToMove|
+		directionToMove = $f ifTrue: [	position := position + (0@1)].
+		directionToMove = $b ifTrue: [	position := position + (0@-1)]	]
+! !
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:31:17'!
+ERROR!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:31:17'!
+ERROR!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:32:27' prior: 50604925!
+executeAllIn: aCommandList
+
+	aCommandList = '' ifTrue: [
+		position := 0@0.
+		^self
+		].
+	
+	aCommandList do: [:directionToMove|
+		directionToMove = $f ifTrue: [	position := position + (Point x: 0 y: 1)].
+		directionToMove = $b ifTrue: [	position := position + (Point x: 0 y: -1)]	]
+! !
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:32:29'!
+ERROR!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:32:33'!
+ERROR!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:33:04' prior: 50604943!
+executeAllIn: aCommandList
+
+	aCommandList = '' ifTrue: [
+		position := 0@0.
+		^self
+		].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [self moveForwardOneTime].
+			directionToMove = $b ifTrue: [self moveBackwardsOneTime]].
+! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:33:34'!
+moveForwardOneTime
+
+	^ position := position + (0@1)! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:33:44'!
+moveBackwardsOneTime
+
+	^ position := position + (0@-1)! !
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:33:49'!
+ERROR!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:33:49'!
+ERROR!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:34:59' prior: 50604962!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [self moveForwardOneTime].
+			directionToMove = $b ifTrue: [self moveBackwardsOneTime]].
+! !
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:35:15'!
+ERROR!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:35:15'!
+ERROR!
+
+----SNAPSHOT----(14 May 2023 22:36:42) CuisUniversity-5706.image priorSource: 8726410!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 22:37:16'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:37:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:37:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:37:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:37:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:37:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:37:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:37:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:37:16'!
+ERROR!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:38:45' prior: 50604977!
+moveBackwardsOneTime
+
+	^ position := position + (Point x: 0 y: -1)! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:38:51' prior: 50604973!
+moveForwardOneTime
+
+	^ position := position + (Point x: 0 y: 1)! !
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:38:56'!
+ERROR!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:38:56'!
+ERROR!
+!MarsRover methodsFor: 'initialization' stamp: 'SG 5/14/2023 22:39:35' prior: 50604011!
+initializePlacedAt: aPosition facingAt: aDirection
+	position := aPosition.
+	direction := aDirection.
+! !
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:39:38'!
+PASSED!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:40:09' prior: 50605040!
+moveBackwardsOneTime
+
+	^ position := position + (0@-1)! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 22:40:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:40:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:40:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:40:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:40:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:40:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:40:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:40:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:40:12'!
+PASSED!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:40:20' prior: 50605045!
+moveForwardOneTime
+
+	^ position := position + (0@1)! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 22:40:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:40:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:40:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:40:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:40:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:40:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:40:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:40:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:40:26'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 22:41:34'!
+test10CanMoveForwardOneTimeWhenFacingSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #S.
+	
+	marsRover executeAllIn: 'f'.
+	
+	self assert: marsRover position equals: 0@-1.
+	self assert: marsRover direction equals: #S.! !
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:41:36'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:44:48' prior: 50604989!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	(direction = #S) ifTrue: [position := 0@-1. ^self].
+	
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [self moveForwardOneTime].
+			directionToMove = $b ifTrue: [self moveBackwardsOneTime]].
+! !
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:44:50'!
+FAILURE!
+!MarsRover methodsFor: 'accesing' stamp: 'SG 5/14/2023 22:45:04' prior: 50604047!
+direction
+	^direction! !
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:45:07'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 22:45:21'!
+test10CanMoveForwardTwoTimesWhenFacingSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #S.
+	
+	marsRover executeAllIn: 'ff'.
+	
+	self assert: marsRover position equals: 0@-2.
+	self assert: marsRover direction equals: #S.! !
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 22:45:29'!
+test11CanMoveForwardTwoTimesWhenFacingSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #S.
+	
+	marsRover executeAllIn: 'ff'.
+	
+	self assert: marsRover position equals: 0@-2.
+	self assert: marsRover direction equals: #S.! !
+
+!methodRemoval: MarsRoverTest #test10CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:45:29'!
+test10CanMoveForwardTwoTimesWhenFacingSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #S.
+	
+	marsRover executeAllIn: 'ff'.
+	
+	self assert: marsRover position equals: 0@-2.
+	self assert: marsRover direction equals: #S.!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:45:33'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:45:33'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:46:19' prior: 50605153!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	(direction = #S) & aCommandList = 'f' ifTrue: [position := 0@-1. ^self].
+	(direction = #S) & aCommandList = 'ff' ifTrue: [position := 0@-2. ^self].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [self moveForwardOneTime].
+			directionToMove = $b ifTrue: [self moveBackwardsOneTime]].
+! !
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:46:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 22:46:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:46:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:46:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:46:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:46:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:46:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:46:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:46:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:46:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:46:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:46:22'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 22:46:39'!
+test12CanMoveForwardThreeTimesWhenFacingSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #S.
+	
+	marsRover executeAllIn: 'fff'.
+	
+	self assert: marsRover position equals: 0@-3.
+	self assert: marsRover direction equals: #S.! !
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:46:41'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:46:58' prior: 50605215!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	(direction = #S) & aCommandList = 'f' ifTrue: [position := 0@-1. ^self].
+	(direction = #S) & aCommandList = 'ff' ifTrue: [position := 0@-2. ^self].
+	(direction = #S) & aCommandList = 'fff' ifTrue: [position := 0@-3. ^self].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [self moveForwardOneTime].
+			directionToMove = $b ifTrue: [self moveBackwardsOneTime]].
+! !
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:46:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 22:46:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:46:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:46:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:46:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:46:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:46:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:46:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:46:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:46:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:46:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:46:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:46:59'!
+PASSED!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:50:18' prior: 50605289!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				].				
+			directionToMove = $b ifTrue: [self moveBackwardsOneTime]].
+! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:50:42'!
+moveForwardOneTimeFacingNorth
+
+	^ position := position + (0@1)! !
+
+!methodRemoval: MarsRover #moveForwardOneTime stamp: 'SG 5/14/2023 22:50:42'!
+moveForwardOneTime
+
+	^ position := position + (0@1)!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:50:53'!
+moveForwardOneTimeFacingSouth
+
+	^ position := position + (0@-1)! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 22:50:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:50:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:50:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:50:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:50:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:50:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:50:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:50:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:50:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:50:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:50:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:50:59'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 22:51:48'!
+test10CanMoveBackwardsOneTimeWhenFacingSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #S.
+	
+	marsRover executeAllIn: 'b'.
+	
+	self assert: marsRover position equals: 0@1.
+	self assert: marsRover direction equals: #S.! !
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 22:51:56'!
+test13CanMoveBackwardsOneTimeWhenFacingSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #S.
+	
+	marsRover executeAllIn: 'b'.
+	
+	self assert: marsRover position equals: 0@1.
+	self assert: marsRover direction equals: #S.! !
+
+!methodRemoval: MarsRoverTest #test10CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:51:56'!
+test10CanMoveBackwardsOneTimeWhenFacingSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #S.
+	
+	marsRover executeAllIn: 'b'.
+	
+	self assert: marsRover position equals: 0@1.
+	self assert: marsRover direction equals: #S.!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:52:01'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:52:01'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:53:22' prior: 50605352!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				].				
+			directionToMove = $b ifTrue: [
+				(direction = #S) ifTrue: [position := 0@1. ^self].
+				self moveBackwardsOneTime]].
+! !
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:53:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:53:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 22:53:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:53:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:53:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:53:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:53:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:53:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:53:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:53:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:53:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:53:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:53:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:53:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:53:25'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 22:53:40'!
+test13CanMoveBackwardsTwoTimesWhenFacingSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #S.
+	
+	marsRover executeAllIn: 'bb'.
+	
+	self assert: marsRover position equals: 0@2.
+	self assert: marsRover direction equals: #S.! !
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:53:42'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:50:18' prior: 50605461!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				].				
+			directionToMove = $b ifTrue: [self moveBackwardsOneTime]].
+! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:56:37' prior: 50605543!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList = 'b' & (direction = #S) ifTrue: [position := 0@1. ^self].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				].				
+			directionToMove = $b ifTrue: [self moveBackwardsOneTime]].
+! !
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:56:43'!
+PASSED!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:57:04' prior: 50605557!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList = 'b' & (direction = #S) ifTrue: [position := 0@1. ^self].
+	aCommandList = 'bb' & (direction = #S) ifTrue: [position := 0@2. ^self].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				].				
+			directionToMove = $b ifTrue: [self moveBackwardsOneTime]].
+! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 22:57:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:57:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:57:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:57:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:57:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:57:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:57:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:57:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:57:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:57:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:57:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:57:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:57:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:57:07'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 22:57:27'!
+test14CanMoveBackwardsThreeTimesWhenFacingSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #S.
+	
+	marsRover executeAllIn: 'bbb'.
+	
+	self assert: marsRover position equals: 0@3.
+	self assert: marsRover direction equals: #S.! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:57:44' prior: 50605577!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList = 'b' & (direction = #S) ifTrue: [position := 0@1. ^self].
+	aCommandList = 'bb' & (direction = #S) ifTrue: [position := 0@2. ^self].
+	aCommandList = 'bbb' & (direction = #S) ifTrue: [position := 0@3. ^self].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				].				
+			directionToMove = $b ifTrue: [self moveBackwardsOneTime]].
+! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 22:57:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:57:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:57:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:57:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:57:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:57:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:57:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:57:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:57:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:57:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:57:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:57:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:57:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:57:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:57:47'!
+PASSED!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:58:42' prior: 50605655!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList = 'b' & (direction = #S) ifTrue: [position := 0@1. ^self].
+	aCommandList = 'bb' & (direction = #S) ifTrue: [position := 0@2. ^self].
+	aCommandList = 'bbb' & (direction = #S) ifTrue: [position := 0@3. ^self].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				].
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				].				
+			].
+! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:59:00'!
+moveBackwardsOneTimeFacingSouth
+
+	^ position := position + (0@1)! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 22:59:14'!
+moveBackwardsOneTimeFacingNorth
+
+	^ position := position + (0@-1)! !
+
+!methodRemoval: MarsRover #moveBackwardsOneTime stamp: 'SG 5/14/2023 22:59:14'!
+moveBackwardsOneTime
+
+	^ position := position + (0@-1)!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 22:59:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:59:22'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:59:22'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:59:22'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 22:59:22'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:59:22'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 22:59:22'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:59:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 22:59:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:59:22'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:59:22'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:59:22'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:59:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:59:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:59:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 22:59:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:59:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:59:38'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 22:59:38'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:00:02' prior: 50605729!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				].				
+			].
+! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 23:00:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 23:00:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:00:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:00:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 23:00:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:00:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:00:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 23:00:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 23:00:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 23:00:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:00:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:00:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 23:00:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:00:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:00:05'!
+PASSED!
+
+----SNAPSHOT----(14 May 2023 23:04:00) CuisUniversity-5706.image priorSource: 8747368!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 23:22:01'!
+test15CanMoveForwardsWhenFacingEast
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #E.
+	
+	marsRover executeAllIn: 'f'.
+	
+	self assert: marsRover position equals: 1@0.
+	self assert: marsRover direction equals: #E.! !
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/14/2023 23:22:33'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:23:05' prior: 50605834!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				].				
+			].
+! !
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/14/2023 23:23:08'!
+ERROR!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:23:14'!
+moveForwardOneTimeFacingEast
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:23:43' prior: 50605944!
+moveForwardOneTimeFacingEast
+	^ position := position + (1@0).! !
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/14/2023 23:23:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 23:23:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 23:23:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:23:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:23:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 23:23:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:23:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:23:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 23:23:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 23:23:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 23:23:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:23:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:23:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 23:23:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:23:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:23:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/14/2023 23:23:44'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 23:24:25'!
+test15CanMoveBackwardsWhenFacingEast
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #E.
+	
+	marsRover executeAllIn: 'b'.
+	
+	self assert: marsRover position equals: -1@0.
+	self assert: marsRover direction equals: #E.! !
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 23:24:33'!
+test16CanMoveBackwardsWhenFacingEast
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #E.
+	
+	marsRover executeAllIn: 'b'.
+	
+	self assert: marsRover position equals: -1@0.
+	self assert: marsRover direction equals: #E.! !
+
+!methodRemoval: MarsRoverTest #test15CanMoveBackwardsWhenFacingEast stamp: 'SG 5/14/2023 23:24:33'!
+test15CanMoveBackwardsWhenFacingEast
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #E.
+	
+	marsRover executeAllIn: 'b'.
+	
+	self assert: marsRover position equals: -1@0.
+	self assert: marsRover direction equals: #E.!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/14/2023 23:24:36'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/14/2023 23:24:36'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:25:06' prior: 50605921!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				].				
+			].
+! !
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/14/2023 23:25:08'!
+ERROR!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:25:12'!
+moveBackwardsOneTimeFacingEast
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:25:35' prior: 50606076!
+moveBackwardsOneTimeFacingEast
+	^ position := position + (-1@0).! !
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/14/2023 23:25:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/14/2023 23:25:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 23:25:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 23:25:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:25:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:25:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 23:25:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:25:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:25:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 23:25:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 23:25:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 23:25:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:25:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:25:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 23:25:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:25:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:25:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/14/2023 23:25:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/14/2023 23:25:39'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 23:26:34'!
+test17CanMoveForwardsWhenFacingWest
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #W.
+	
+	marsRover executeAllIn: 'f'.
+	
+	self assert: marsRover position equals: -1@0.
+	self assert: marsRover direction equals: #W.! !
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/14/2023 23:26:40'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:27:08' prior: 50606051!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				].				
+			].
+! !
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/14/2023 23:27:10'!
+ERROR!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:27:15'!
+moveForwardOneTimeFacingWest
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:27:39' prior: 50606192!
+moveForwardOneTimeFacingWest
+	^position := position + (-1@0).! !
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/14/2023 23:27:40'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 23:28:36'!
+test17CanMoveBackwardsWhenFacingWest
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #W.
+	
+	marsRover executeAllIn: 'b'.
+	
+	self assert: marsRover position equals: 1@0.
+	self assert: marsRover direction equals: #W.! !
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 23:28:43'!
+test18CanMoveBackwardsWhenFacingWest
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #W.
+	
+	marsRover executeAllIn: 'b'.
+	
+	self assert: marsRover position equals: 1@0.
+	self assert: marsRover direction equals: #W.! !
+
+!methodRemoval: MarsRoverTest #test17CanMoveBackwardsWhenFacingWest stamp: 'SG 5/14/2023 23:28:43'!
+test17CanMoveBackwardsWhenFacingWest
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #W.
+	
+	marsRover executeAllIn: 'b'.
+	
+	self assert: marsRover position equals: 1@0.
+	self assert: marsRover direction equals: #W.!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/14/2023 23:28:48'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/14/2023 23:28:48'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:29:14' prior: 50606165!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].				
+			].
+! !
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/14/2023 23:29:17'!
+ERROR!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:29:21'!
+moveBackwardsOneTimeFacingWest
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:29:36' prior: 50606333!
+moveBackwardsOneTimeFacingWest
+	^position := position + (1@0).! !
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/14/2023 23:29:38'!
+PASSED!
+
+----SNAPSHOT----(14 May 2023 23:30:23) CuisUniversity-5706.image priorSource: 8776106!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 23:32:16'!
+test19CanMoveLeftWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'l'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #E.! !
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:32:20'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:33:22' prior: 50606304!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+
+	aCommandList = 'l' ifTrue: [direction := #E. ^self]	.
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].				
+			].
+! !
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:33:23'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 23:34:48'!
+test20CanMoveLeftLeftWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'll'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #S.! !
+
+!testRun: #MarsRoverTest #test20CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:34:51'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:34:51'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:35:33' prior: 50606362!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+
+	aCommandList = 'l' ifTrue: [direction := #E. ^self]	.
+	aCommandList = 'll' ifTrue: [direction := #S. ^self]	.
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].				
+			].
+! !
+
+!testRun: #MarsRoverTest #test20CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:35:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:35:37'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 23:36:33'!
+test20CanMoveLeftLeftLeftWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'lll'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #W.! !
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 23:36:40'!
+test21CanMoveLeftLeftLeftWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'lll'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #W.! !
+
+!methodRemoval: MarsRoverTest #test20CanMoveLeftLeftLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:36:40'!
+test20CanMoveLeftLeftLeftWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'lll'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #W.!
+
+!testRun: #MarsRoverTest #test21CanMoveLeftLeftLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:36:45'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test21CanMoveLeftLeftLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:36:45'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:37:16' prior: 50606478!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+
+	aCommandList = 'l' ifTrue: [direction := #E. ^self]	.
+	aCommandList = 'll' ifTrue: [direction := #S. ^self]	.
+	aCommandList = 'lll' ifTrue: [direction := #W. ^self]	.
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].				
+			].
+! !
+
+!testRun: #MarsRoverTest #test21CanMoveLeftLeftLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:37:19'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 23:37:38'!
+test22CanMoveLeftLeftLeftLeftWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'llll'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #N.! !
+
+!testRun: #MarsRoverTest #test22CanMoveLeftLeftLeftLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21CanMoveLeftLeftLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22CanMoveLeftLeftLeftLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:37:39'!
+PASSED!
+
+!methodRemoval: MarsRoverTest #test22CanMoveLeftLeftLeftLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:43:30'!
+test22CanMoveLeftLeftLeftLeftWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'llll'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #N.!
+
+!methodRemoval: MarsRoverTest #test21CanMoveLeftLeftLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:43:34'!
+test21CanMoveLeftLeftLeftWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'lll'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #W.!
+
+!methodRemoval: MarsRoverTest #test20CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:43:38'!
+test20CanMoveLeftLeftWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'll'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #S.!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 23:43:59'!
+test19CanMoveLeftWhenFacingEast
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #E.
+	
+	marsRover executeAllIn: 'l'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #S.! !
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingEast stamp: 'SG 5/14/2023 23:44:01'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:29:14' prior: 50606552!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].				
+			].
+! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:45:27' prior: 50606725!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList = 'l' ifTrue: [direction := #E].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].				
+			].
+! !
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingEast stamp: 'SG 5/14/2023 23:45:33'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingEast stamp: 'SG 5/14/2023 23:45:33'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:45:40'!
+PASSED!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:46:48' prior: 50606751!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList = 'l' & direction = #N ifTrue: [direction := #E].
+	aCommandList = 'l' & direction = #E ifTrue: [direction := #S].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].				
+			].
+! !
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingEast stamp: 'SG 5/14/2023 23:46:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:46:53'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:46:53'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:47:39' prior: 50606788!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	(aCommandList = 'l' & direction = #N) ifTrue: [direction := #E].
+	(aCommandList = 'l' & direction = #E) ifTrue: [direction := #S].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].				
+			].
+! !
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:47:42'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:47:42'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingEast stamp: 'SG 5/14/2023 23:48:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:49:06'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:49:06'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:50:13' prior: 50606828!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	(aCommandList = 'l' & direction = #N) ifTrue: [^direction := #E].
+	(aCommandList = 'l' & direction = #E) ifTrue: [^direction := #S].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].				
+			].
+! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 23:50:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingEast stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:50:16'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 23:52:21'!
+test20CanMoveLeftWhenFacingEast
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #E.
+	
+	marsRover executeAllIn: 'l'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #S.! !
+
+!methodRemoval: MarsRoverTest #test19CanMoveLeftWhenFacingEast stamp: 'SG 5/14/2023 23:52:21'!
+test19CanMoveLeftWhenFacingEast
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #E.
+	
+	marsRover executeAllIn: 'l'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #S.!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 23:52:42'!
+test21CanMoveLeftWhenFacingSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #S.
+	
+	marsRover executeAllIn: 'l'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #W.! !
+
+!methodRemoval: MarsRoverTest #test20CanMoveLeftWhenFacingEast stamp: 'SG 5/14/2023 23:56:52'!
+test20CanMoveLeftWhenFacingEast
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #E.
+	
+	marsRover executeAllIn: 'l'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #S.!
+
+!methodRemoval: MarsRoverTest #test21CanMoveLeftWhenFacingSouth stamp: 'SG 5/14/2023 23:56:57'!
+test21CanMoveLeftWhenFacingSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #S.
+	
+	marsRover executeAllIn: 'l'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #W.!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 23:57:09' prior: 50606349!
+test19CanMoveLeftWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'l'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #W.! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:58:21' prior: 50606874!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	(aCommandList = 'l' & direction = #N) ifTrue: [^direction := #W].
+	(aCommandList = 'l' & direction = #E) ifTrue: [].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].				
+			].
+! !
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:58:27'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/14/2023 23:58:47'!
+test20CanMoveLeftWhenFacingWest
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #W.
+	
+	marsRover executeAllIn: 'l'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #S.! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/14/2023 23:59:44' prior: 50607037!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	(aCommandList = 'l' & direction = #N) ifTrue: [^direction := #W].
+	(aCommandList = 'l' & direction = #W) ifTrue: [^direction := #S].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].				
+			].
+! !
+
+!testRun: #MarsRoverTest #test20CanMoveLeftWhenFacingWest stamp: 'SG 5/14/2023 23:59:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftWhenFacingWest stamp: 'SG 5/14/2023 23:59:52'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/15/2023 00:00:24'!
+test20CanMoveLeftWhenFacingSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #S.
+	
+	marsRover executeAllIn: 'l'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #E.! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/15/2023 00:00:40' prior: 50607080!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	(aCommandList = 'l' & direction = #N) ifTrue: [^direction := #W].
+	(aCommandList = 'l' & direction = #W) ifTrue: [^direction := #S].
+	(aCommandList = 'l' & direction = #S) ifTrue: [^direction := #E].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].				
+			].
+! !
+
+!testRun: #MarsRoverTest #test20CanMoveLeftWhenFacingWest stamp: 'SG 5/15/2023 00:00:43'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/15/2023 00:00:57' prior: 50607185!
+test20CanMoveLeftWhenFacingSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #S.
+	
+	marsRover executeAllIn: 'l'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #E.! !
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/15/2023 00:01:18' prior: 50607070!
+test20CanMoveLeftWhenFacingWest
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #W.
+	
+	marsRover executeAllIn: 'l'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #N.! !
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/15/2023 00:01:24'!
+test21CanMoveLeftWhenFacingWest
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #W.
+	
+	marsRover executeAllIn: 'l'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #N.! !
+
+!methodRemoval: MarsRoverTest #test20CanMoveLeftWhenFacingWest stamp: 'SG 5/15/2023 00:01:24'!
+test20CanMoveLeftWhenFacingWest
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #W.
+	
+	marsRover executeAllIn: 'l'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #N.!
+
+----SNAPSHOT----(15 May 2023 00:01:27) CuisUniversity-5706.image priorSource: 8790249!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/15/2023 00:01:46' prior: 50607195!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	(aCommandList = 'l' & direction = #N) ifTrue: [^direction := #W].
+	(aCommandList = 'l' & direction = #W) ifTrue: [^direction := #S].
+	(aCommandList = 'l' & direction = #S) ifTrue: [^direction := #E].
+	(aCommandList = 'l' & direction = #E) ifTrue: [^direction := #N].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].				
+			].
+! !
+
+!testRun: #MarsRoverTest #test21CanMoveLeftWhenFacingWest stamp: 'SG 5/15/2023 00:01:56'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test21CanMoveLeftWhenFacingWest stamp: 'SG 5/15/2023 00:01:56'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/15/2023 00:02:34'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/15/2023 00:02:57' prior: 50607251!
+test21CanMoveLeftWhenFacingWest
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #W.
+	
+	marsRover executeAllIn: 'l'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #S.! !
+
+!testRun: #MarsRoverTest #test21CanMoveLeftWhenFacingWest stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftWhenFacingSouth stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21CanMoveLeftWhenFacingWest stamp: 'SG 5/15/2023 00:02:59'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/15/2023 00:03:34'!
+test21CanMoveLeftWhenFacingEast
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #E.
+	
+	marsRover executeAllIn: 'l'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #N.! !
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/15/2023 00:03:40'!
+test22CanMoveLeftWhenFacingEast
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #E.
+	
+	marsRover executeAllIn: 'l'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #N.! !
+
+!methodRemoval: MarsRoverTest #test21CanMoveLeftWhenFacingEast stamp: 'SG 5/15/2023 00:03:40'!
+test21CanMoveLeftWhenFacingEast
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #E.
+	
+	marsRover executeAllIn: 'l'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #N.!
+
+!testRun: #MarsRoverTest #test22CanMoveLeftWhenFacingEast stamp: 'SG 5/15/2023 00:03:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22CanMoveLeftWhenFacingEast stamp: 'SG 5/15/2023 00:37:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22CanMoveLeftWhenFacingEast stamp: 'SG 5/15/2023 00:37:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftWhenFacingSouth stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21CanMoveLeftWhenFacingWest stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22CanMoveLeftWhenFacingEast stamp: 'SG 5/15/2023 00:38:01'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/15/2023 00:39:03'!
+test20CanMoveLeftLeftWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'll'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #S.! !
+
+!testRun: #MarsRoverTest #test20CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/15/2023 00:39:04'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/15/2023 00:39:07'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftWhenFacingSouth stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21CanMoveLeftWhenFacingWest stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22CanMoveLeftWhenFacingEast stamp: 'SG 5/15/2023 00:39:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/15/2023 00:39:07'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/15/2023 00:40:09' prior: 50607274!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	(aCommandList = 'l' & direction = #N) ifTrue: [^direction := #W].
+	(aCommandList = 'l' & direction = #W) ifTrue: [^direction := #S].
+	(aCommandList = 'l' & direction = #S) ifTrue: [^direction := #E].
+	(aCommandList = 'l' & direction = #E) ifTrue: [^direction := #N].
+	
+	aCommandList  = 'll' ifTrue: [^direction := #S].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].				
+			].
+! !
+
+!testRun: #MarsRoverTest #test20CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/15/2023 00:40:53'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/15/2023 00:41:01'!
+test23CanMoveLeftLeftWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'll'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #S.! !
+
+!methodRemoval: MarsRoverTest #test20CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/15/2023 00:41:01'!
+test20CanMoveLeftLeftWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'll'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #S.!
+
+!testRun: #MarsRoverTest #test23CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/15/2023 00:41:04'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/15/2023 00:41:27'!
+test24CanMoveLeftLeftWhenFacingSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #S.
+	
+	marsRover executeAllIn: 'll'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #N.! !
+
+!testRun: #MarsRoverTest #test24CanMoveLeftLeftWhenFacingSouth stamp: 'SG 5/15/2023 00:41:28'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/15/2023 00:42:18' prior: 50607624!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	(aCommandList = 'l' & direction = #N) ifTrue: [^direction := #W].
+	(aCommandList = 'l' & direction = #W) ifTrue: [^direction := #S].
+	(aCommandList = 'l' & direction = #S) ifTrue: [^direction := #E].
+	(aCommandList = 'l' & direction = #E) ifTrue: [^direction := #N].
+	
+	(aCommandList = 'll' & direction = #N) ifTrue: [^direction := #S].
+	(aCommandList = 'll' & direction = #S) ifTrue: [^direction := #N].
+	
+	aCommandList do: [:directionToMove | 
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].				
+			].
+! !
+
+!testRun: #MarsRoverTest #test24CanMoveLeftLeftWhenFacingSouth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftWhenFacingSouth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21CanMoveLeftWhenFacingWest stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22CanMoveLeftWhenFacingEast stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24CanMoveLeftLeftWhenFacingSouth stamp: 'SG 5/15/2023 00:42:19'!
+PASSED!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/15/2023 00:45:05' prior: 50607701!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList do: [:directionToMove | 
+		
+			directionToMove = $l ifTrue: [
+				(direction = #N) ifTrue: [^direction := #W].
+				(direction = #S) ifTrue: [^direction := #E].
+				(direction = #E) ifTrue: [^direction := #N].
+				(direction = #W) ifTrue: [^direction := #S].
+				].
+			
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].
+			].
+! !
+
+!testRun: #MarsRoverTest #test24CanMoveLeftLeftWhenFacingSouth stamp: 'SG 5/15/2023 00:45:17'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24CanMoveLeftLeftWhenFacingSouth stamp: 'SG 5/15/2023 00:45:17'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/15/2023 00:45:38' prior: 50607828!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList do: [:directionToMove | 
+		
+			directionToMove = $l ifTrue: [
+				(direction = #N) ifTrue: [direction := #W].
+				(direction = #S) ifTrue: [direction := #E].
+				(direction = #E) ifTrue: [direction := #N].
+				(direction = #W) ifTrue: [direction := #S].
+				].
+			
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].
+			].
+! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/15/2023 00:45:42'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftWhenFacingSouth stamp: 'SG 5/15/2023 00:45:42'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test21CanMoveLeftWhenFacingWest stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22CanMoveLeftWhenFacingEast stamp: 'SG 5/15/2023 00:45:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/15/2023 00:45:42'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24CanMoveLeftLeftWhenFacingSouth stamp: 'SG 5/15/2023 00:45:42'!
+FAILURE!
+
+----SNAPSHOT----(15 May 2023 00:47:04) CuisUniversity-5706.image priorSource: 8819851!
+
+----STARTUP---- (15 May 2023 00:47:40) as /home/sofibonacci/Desktop/inge1/cuis/linux64 (4)/CuisUniversity-5706.image!
+
+
+!testRun: #MarsRoverTest #test24CanMoveLeftLeftWhenFacingSouth stamp: 'SG 5/15/2023 00:47:49'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24CanMoveLeftLeftWhenFacingSouth stamp: 'SG 5/15/2023 00:47:49'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24CanMoveLeftLeftWhenFacingSouth stamp: 'SG 5/15/2023 00:48:28'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/15/2023 01:05:08' prior: 50607869!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList do: [:directionToMove | 
+		
+			directionToMove = $l ifTrue: [
+				(direction = #N) ifTrue: [^direction := #W].
+				(direction = #S) ifTrue: [^direction := #E].
+				(direction = #E) ifTrue: [^direction := #N].
+				(direction = #W) ifTrue: [^direction := #S].
+				].
+			
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].
+			].
+! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftWhenFacingSouth stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21CanMoveLeftWhenFacingWest stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22CanMoveLeftWhenFacingEast stamp: 'SG 5/15/2023 01:05:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/15/2023 01:05:11'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24CanMoveLeftLeftWhenFacingSouth stamp: 'SG 5/15/2023 01:05:11'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/15/2023 01:23:25'!
+moveLeftWithDirection: aDirection
+	(aDirection = #N) ifTrue: [direction := #W].
+	(aDirection = #S) ifTrue: [direction := #E].
+	(aDirection = #E) ifTrue: [direction := #N].
+	(aDirection = #W) ifTrue: [direction := #S].! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/15/2023 01:23:53' prior: 50608004!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList do: [:directionToMove | 
+		
+			directionToMove = $l ifTrue: [
+				self moveLeftWithDirection: direction.
+				].
+			
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].
+			].
+! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftWhenFacingSouth stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21CanMoveLeftWhenFacingWest stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22CanMoveLeftWhenFacingEast stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24CanMoveLeftLeftWhenFacingSouth stamp: 'SG 5/15/2023 01:23:56'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/15/2023 01:24:56'!
+test19CanMoveRightWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'r'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #E.! !
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/15/2023 01:25:04'!
+test25CanMoveRightWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'r'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #E.! !
+
+!methodRemoval: MarsRoverTest #test19CanMoveRightWhenFacingNorth stamp: 'SG 5/15/2023 01:25:04'!
+test19CanMoveRightWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'r'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #E.!
+
+!testRun: #MarsRoverTest #test25CanMoveRightWhenFacingNorth stamp: 'SG 5/15/2023 01:25:09'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test25CanMoveRightWhenFacingNorth stamp: 'SG 5/15/2023 01:25:09'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/15/2023 01:25:49' prior: 50608132!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList  = 'r' ifTrue: [direction := #E.].
+	
+	aCommandList do: [:directionToMove | 
+		
+			directionToMove = $l ifTrue: [
+				self moveLeftWithDirection: direction.
+				].
+			
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].
+			].
+! !
+
+!testRun: #MarsRoverTest #test25CanMoveRightWhenFacingNorth stamp: 'SG 5/15/2023 01:25:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25CanMoveRightWhenFacingNorth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftWhenFacingSouth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21CanMoveLeftWhenFacingWest stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22CanMoveLeftWhenFacingEast stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24CanMoveLeftLeftWhenFacingSouth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25CanMoveRightWhenFacingNorth stamp: 'SG 5/15/2023 01:25:53'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/15/2023 01:26:39'!
+test25CanMoveRightWhenFacingEast
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #E.
+	
+	marsRover executeAllIn: 'r'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #S.! !
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/15/2023 01:26:46'!
+test26CanMoveRightWhenFacingEast
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #E.
+	
+	marsRover executeAllIn: 'r'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #S.! !
+
+!methodRemoval: MarsRoverTest #test25CanMoveRightWhenFacingEast stamp: 'SG 5/15/2023 01:26:46'!
+test25CanMoveRightWhenFacingEast
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #E.
+	
+	marsRover executeAllIn: 'r'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #S.!
+
+!testRun: #MarsRoverTest #test26CanMoveRightWhenFacingEast stamp: 'SG 5/15/2023 01:26:50'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test26CanMoveRightWhenFacingEast stamp: 'SG 5/15/2023 01:26:50'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/15/2023 01:27:57' prior: 50608282!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	(aCommandList  = 'r' & direction = #N) ifTrue: [^direction := #E.].
+	(aCommandList  = 'r' & direction = #E) ifTrue: [^direction := #S.].	
+	
+	aCommandList do: [:directionToMove | 
+		
+			directionToMove = $l ifTrue: [
+				self moveLeftWithDirection: direction.
+				].
+			
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].
+			].
+! !
+
+!testRun: #MarsRoverTest #test26CanMoveRightWhenFacingEast stamp: 'SG 5/15/2023 01:27:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test26CanMoveRightWhenFacingEast stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftWhenFacingSouth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21CanMoveLeftWhenFacingWest stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22CanMoveLeftWhenFacingEast stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24CanMoveLeftLeftWhenFacingSouth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25CanMoveRightWhenFacingNorth stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test26CanMoveRightWhenFacingEast stamp: 'SG 5/15/2023 01:28:01'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/15/2023 01:28:15'!
+test26CanMoveRightWhenFacingSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #S.
+	
+	marsRover executeAllIn: 'r'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #W.! !
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/15/2023 01:28:20'!
+test27CanMoveRightWhenFacingSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #S.
+	
+	marsRover executeAllIn: 'r'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #W.! !
+
+!methodRemoval: MarsRoverTest #test26CanMoveRightWhenFacingSouth stamp: 'SG 5/15/2023 01:28:20'!
+test26CanMoveRightWhenFacingSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #S.
+	
+	marsRover executeAllIn: 'r'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #W.!
+
+!testRun: #MarsRoverTest #test27CanMoveRightWhenFacingSouth stamp: 'SG 5/15/2023 01:28:26'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test27CanMoveRightWhenFacingSouth stamp: 'SG 5/15/2023 01:28:26'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/15/2023 01:28:46' prior: 50608443!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	(aCommandList  = 'r' & direction = #N) ifTrue: [^direction := #E.].
+	(aCommandList  = 'r' & direction = #E) ifTrue: [^direction := #S.].	
+	(aCommandList  = 'r' & direction = #S) ifTrue: [^direction := #W.].	
+		
+	aCommandList do: [:directionToMove | 
+		
+			directionToMove = $l ifTrue: [
+				self moveLeftWithDirection: direction.
+				].
+			
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].
+			].
+! !
+
+!testRun: #MarsRoverTest #test27CanMoveRightWhenFacingSouth stamp: 'SG 5/15/2023 01:28:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test27CanMoveRightWhenFacingSouth stamp: 'SG 5/15/2023 01:28:52'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/15/2023 01:29:08'!
+test28CanMoveRightWhenFacingWest
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #W.
+	
+	marsRover executeAllIn: 'r'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #N.! !
+
+!testRun: #MarsRoverTest #test28CanMoveRightWhenFacingWest stamp: 'SG 5/15/2023 01:29:11'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test28CanMoveRightWhenFacingWest stamp: 'SG 5/15/2023 01:29:11'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/15/2023 01:29:41' prior: 50608610!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	(aCommandList  = 'r' & direction = #N) ifTrue: [^direction := #E.].
+	(aCommandList  = 'r' & direction = #E) ifTrue: [^direction := #S.].	
+	(aCommandList  = 'r' & direction = #S) ifTrue: [^direction := #W.].	
+	(aCommandList  = 'r' & direction = #W) ifTrue: [^direction := #N.].	
+		
+	aCommandList do: [:directionToMove | 
+		
+			directionToMove = $l ifTrue: [
+				self moveLeftWithDirection: direction.
+				].
+			
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].
+			].
+! !
+
+!testRun: #MarsRoverTest #test28CanMoveRightWhenFacingWest stamp: 'SG 5/15/2023 01:29:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test28CanMoveRightWhenFacingWest stamp: 'SG 5/15/2023 01:29:47'!
+PASSED!
+!MarsRoverTest methodsFor: 'testing' stamp: 'SG 5/15/2023 01:30:33'!
+test29CanMoveRightRightWhenFacingNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover placedAt: 0@0 facingAt: #N.
+	
+	marsRover executeAllIn: 'rr'.
+	
+	self assert: marsRover position equals: 0@0.
+	self assert: marsRover direction equals: #S.! !
+
+!testRun: #MarsRoverTest #test29CanMoveRightRightWhenFacingNorth stamp: 'SG 5/15/2023 01:30:36'!
+FAILURE!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/15/2023 01:31:09' prior: 50608669!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	(aCommandList  = 'r' & direction = #N) ifTrue: [^direction := #E.].
+	(aCommandList  = 'r' & direction = #E) ifTrue: [^direction := #S.].	
+	(aCommandList  = 'r' & direction = #S) ifTrue: [^direction := #W.].	
+	(aCommandList  = 'r' & direction = #W) ifTrue: [^direction := #N.].	
+	(aCommandList  = 'rr' & direction = #N) ifTrue: [^direction := #S.].		
+		
+	aCommandList do: [:directionToMove | 
+		
+			directionToMove = $l ifTrue: [
+				self moveLeftWithDirection: direction.
+				].
+			
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].
+			].
+! !
+
+!testRun: #MarsRoverTest #test29CanMoveRightRightWhenFacingNorth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftWhenFacingSouth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21CanMoveLeftWhenFacingWest stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22CanMoveLeftWhenFacingEast stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24CanMoveLeftLeftWhenFacingSouth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25CanMoveRightWhenFacingNorth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test26CanMoveRightWhenFacingEast stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test27CanMoveRightWhenFacingSouth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test28CanMoveRightWhenFacingWest stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test29CanMoveRightRightWhenFacingNorth stamp: 'SG 5/15/2023 01:31:11'!
+PASSED!
+
+----SNAPSHOT----(15 May 2023 01:31:19) CuisUniversity-5706.image priorSource: 8842758!
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/15/2023 01:32:21' prior: 50608727!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	(aCommandList  = 'r' & direction = #N) ifTrue: [^direction := #E.].
+	(aCommandList  = 'r' & direction = #E) ifTrue: [^direction := #S.].	
+	(aCommandList  = 'r' & direction = #S) ifTrue: [^direction := #W.].	
+	(aCommandList  = 'r' & direction = #W) ifTrue: [^direction := #N.].	
+	(aCommandList  = 'rr' & direction = #N) ifTrue: [^direction := #S.].		
+		
+	aCommandList do: [:directionToMove | 
+		
+			directionToMove = $l ifTrue: [
+				self moveLeftWithDirection: direction.
+				].
+			
+			directionToMove = $r ifTrue: [
+				self moveRightWithDirection: direction.
+				].
+			
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].
+			].
+! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/15/2023 01:32:33' prior: 50608874!
+executeAllIn: aCommandList
+
+	aCommandList isEmpty ifTrue: [^self].
+	
+	aCommandList do: [:directionToMove | 
+		
+			directionToMove = $l ifTrue: [
+				self moveLeftWithDirection: direction.
+				].
+			
+			directionToMove = $r ifTrue: [
+				self moveRightWithDirection: direction.
+				].
+			
+			directionToMove = $f ifTrue: [
+				(direction = #N) ifTrue: [self moveForwardOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveForwardOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveForwardOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveForwardOneTimeFacingWest].
+				].
+			
+			directionToMove = $b ifTrue: [
+				(direction = #N) ifTrue: [self moveBackwardsOneTimeFacingNorth].
+				(direction = #S) ifTrue: [self moveBackwardsOneTimeFacingSouth].
+				(direction = #E) ifTrue: [self moveBackwardsOneTimeFacingEast].
+				(direction = #W) ifTrue: [self moveBackwardsOneTimeFacingWest].
+				].
+			].
+! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/15/2023 01:33:46'!
+moveRightWithDirection: aDirection
+	aDirection = #N ifTrue: [^direction := #E.].
+	aDirection = #E ifTrue: [^direction := #S.].	
+	aDirection = #S ifTrue: [^direction := #W.].	
+	aDirection = #W ifTrue: [^direction := #N.].	
+! !
+!MarsRover methodsFor: 'execution' stamp: 'SG 5/15/2023 01:34:32' prior: 50608122!
+moveLeftWithDirection: aDirection
+	aDirection = #N ifTrue: [^direction := #W].
+	aDirection = #S ifTrue: [^direction := #E].
+	aDirection = #E ifTrue: [^direction := #N].
+	aDirection = #W ifTrue: [^direction := #S].! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftWhenFacingSouth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21CanMoveLeftWhenFacingWest stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22CanMoveLeftWhenFacingEast stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24CanMoveLeftLeftWhenFacingSouth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25CanMoveRightWhenFacingNorth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test26CanMoveRightWhenFacingEast stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test27CanMoveRightWhenFacingSouth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test28CanMoveRightWhenFacingWest stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test29CanMoveRightRightWhenFacingNorth stamp: 'SG 5/15/2023 01:34:38'!
+PASSED!
+
+Object subclass: #CardinalPoints
+	instanceVariableNames: 'position direction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #CardinalPoints category: 'MarsRover' stamp: 'SG 5/15/2023 01:40:24'!
+Object subclass: #CardinalPoints
+	instanceVariableNames: 'position direction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftWhenFacingSouth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21CanMoveLeftWhenFacingWest stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22CanMoveLeftWhenFacingEast stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24CanMoveLeftLeftWhenFacingSouth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25CanMoveRightWhenFacingNorth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test26CanMoveRightWhenFacingEast stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test27CanMoveRightWhenFacingSouth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test28CanMoveRightWhenFacingWest stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test29CanMoveRightRightWhenFacingNorth stamp: 'SG 5/15/2023 01:40:52'!
+PASSED!
+
+Object subclass: #CardinalPoints
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #CardinalPoints category: 'MarsRover' stamp: 'SG 5/15/2023 01:47:18'!
+Object subclass: #CardinalPoints
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!testRun: #MarsRoverTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02CanMoveForwardOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03CanMoveForwardTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04CanMoveForwardThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05CanMoveBackwardsOneTimeWhenFacingNorth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06CanMoveBackwardsTwoTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07CanMoveBackwardsThreeTimesWhenFacingNorth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08CanMoveForwardsBackwardsWhenFacingNorth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09CanMoveBackwardsForwardsWhenFacingNorth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanMoveForwardOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11CanMoveForwardTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12CanMoveForwardThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsOneTimeWhenFacingSouth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13CanMoveBackwardsTwoTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14CanMoveBackwardsThreeTimesWhenFacingSouth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15CanMoveForwardsWhenFacingEast stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16CanMoveBackwardsWhenFacingEast stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17CanMoveForwardsWhenFacingWest stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18CanMoveBackwardsWhenFacingWest stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19CanMoveLeftWhenFacingNorth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20CanMoveLeftWhenFacingSouth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21CanMoveLeftWhenFacingWest stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22CanMoveLeftWhenFacingEast stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23CanMoveLeftLeftWhenFacingNorth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24CanMoveLeftLeftWhenFacingSouth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25CanMoveRightWhenFacingNorth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test26CanMoveRightWhenFacingEast stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test27CanMoveRightWhenFacingSouth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test28CanMoveRightWhenFacingWest stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test29CanMoveRightRightWhenFacingNorth stamp: 'SG 5/15/2023 01:52:58'!
+PASSED!
+
+TestCase subclass: #CardinalPointsTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #CardinalPointsTest category: 'MarsRover' stamp: 'SG 5/15/2023 03:04:42'!
+TestCase subclass: #CardinalPointsTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!CardinalPointsTest methodsFor: 'nil' stamp: 'SG 5/15/2023 03:09:50'!
+test01EmptyCommandListDoesntMoveRover
+
+	| cardinalPoint |
+	
+	cardinalPoint := CardinalPoints facingAt: #North.
+	
+	cardinalPoint moveRight.
+	
+	self assert: cardinalPoint facing equals: #East! !
+
+!testRun: #CardinalPointsTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 03:09:57'!
+ERROR!
+!CardinalPoints class methodsFor: 'instance creation' stamp: 'SG 5/15/2023 03:10:03'!
+facingAt: aSymbol 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeFacingAt: aSymbol ! !
+!CardinalPoints class methodsFor: 'instance creation' stamp: 'SG 5/15/2023 03:10:25' prior: 50609316!
+facingAt: aDirection 
+
+	^self new initializeFacingAt: aDirection! !
+
+!testRun: #CardinalPointsTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 03:10:26'!
+ERROR!
+
+!classDefinition: #CardinalPoints category: 'MarsRover' stamp: 'SG 5/15/2023 03:10:38'!
+Object subclass: #CardinalPoints
+	instanceVariableNames: 'direction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!CardinalPoints methodsFor: 'initialization' stamp: 'SG 5/15/2023 03:10:38'!
+initializeFacingAt: aDirection 
+	self shouldBeImplemented.
+	direction := aDirection.! !
+
+!classDefinition: #CardinalPoints category: 'MarsRover' stamp: 'SG 5/15/2023 03:11:01'!
+Object subclass: #CardinalPoints
+	instanceVariableNames: 'direction directionFacing'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!CardinalPoints methodsFor: 'initialization' stamp: 'SG 5/15/2023 03:10:53' prior: 50609341!
+initializeFacingAt: aDirection 
+
+	directionFacing := aDirection.! !
+
+!testRun: #CardinalPointsTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 03:11:02'!
+ERROR!
+!CardinalPoints methodsFor: 'executing' stamp: 'SG 5/15/2023 03:11:11'!
+moveRight
+	self shouldBeImplemented.! !
+!CardinalPoints methodsFor: 'executing' stamp: 'SG 5/15/2023 03:11:24' prior: 50609363!
+moveRight
+	! !
+
+!testRun: #CardinalPointsTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 03:11:28'!
+ERROR!
+
+Object subclass: #CardinalPoints
+	instanceVariableNames: 'directionFacing'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #CardinalPoints category: 'MarsRover' stamp: 'SG 5/15/2023 03:11:39'!
+Object subclass: #CardinalPoints
+	instanceVariableNames: 'directionFacing'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!CardinalPoints methodsFor: 'executing' stamp: 'SG 5/15/2023 03:11:55' prior: 50609367!
+moveRight
+	directionFacing := #West! !
+!CardinalPoints methodsFor: 'executing' stamp: 'SG 5/15/2023 03:12:13' prior: 50609386!
+moveRight
+	directionFacing := #East! !
+!CardinalPointsTest methodsFor: 'as yet unclassified' stamp: 'SG 5/15/2023 03:12:54' prior: 50609303!
+test01EmptyCommandListDoesntMoveRover
+
+	| cardinalPoint |
+	
+	cardinalPoint := CardinalPoints facingAt: #North.
+	
+	cardinalPoint moveRight.
+	
+	self assert: cardinalPoint directionFacing equals: #East! !
+
+!testRun: #CardinalPointsTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 03:12:59'!
+ERROR!
+!CardinalPoints methodsFor: 'accesing' stamp: 'SG 5/15/2023 03:13:09'!
+directionFacing
+	self shouldBeImplemented.
+	^directionFacing! !
+!CardinalPoints methodsFor: 'accesing' stamp: 'SG 5/15/2023 03:13:17' prior: 50609407!
+directionFacing
+
+	^directionFacing! !
+
+!testRun: #CardinalPointsTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 03:13:18'!
+PASSED!
+
+!testRun: #CardinalPointsTest #test01EmptyCommandListDoesntMoveRover stamp: 'SG 5/15/2023 03:13:18'!
+PASSED!
