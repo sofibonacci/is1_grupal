@@ -1,0 +1,4402 @@
+
+
+----QUIT----(20 March 2023 11:15:29) CuisUniversity-5706.image priorSource: 4313282!
+
+----STARTUP---- (20 March 2023 11:15:29) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5706.image!
+
+
+----QUIT----(20 March 2023 11:15:30) CuisUniversity-5706.image priorSource: 8712809!
+
+----STARTUP---- (28 May 2023 20:26:37) as /home/iboaretto/Desktop/uba/inge1/linux64/CuisUniversity-5706.image!
+
+
+----End fileIn of /home/iboaretto/Desktop/uba/inge1/linux64/Portfolio-Solucion.st----!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'IB 5/28/2023 20:45:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'IB 5/28/2023 20:45:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'IB 5/28/2023 20:45:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'IB 5/28/2023 20:45:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'IB 5/28/2023 20:45:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'IB 5/28/2023 20:45:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'IB 5/28/2023 20:45:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'IB 5/28/2023 20:45:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'IB 5/28/2023 20:45:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'IB 5/28/2023 20:45:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'IB 5/28/2023 20:45:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'IB 5/28/2023 20:45:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'IB 5/28/2023 20:45:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'IB 5/28/2023 20:45:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'IB 5/28/2023 20:45:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'IB 5/28/2023 20:45:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'IB 5/28/2023 20:45:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'IB 5/28/2023 20:45:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'IB 5/28/2023 20:45:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'IB 5/28/2023 20:45:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'IB 5/28/2023 20:45:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'IB 5/28/2023 20:45:17'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'IB 5/28/2023 20:48:12' prior: 50604295!
+test07AccountKnowsItsTransactions 
+
+	| account1 deposit1 |
+	
+	account1 := ReceptiveAccount new.
+	
+	deposit1 := Deposit register: 100 on: account1.
+		
+	self assert: 1 equals: account1 transactions size.
+	self assert: (account1 transactions includes: deposit1).
+! !
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'IB 5/28/2023 20:56:50'!
+AccountTransaction subclass: #Transfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'IB 5/28/2023 20:56:33'!
+test08CanTransferWhenHavingFunds
+
+	| accountFrom accountTo transfer|
+	
+	accountFrom := ReceptiveAccount new.
+	accountTo := ReceptiveAccount new.
+	Deposit register: 100 on: accountFrom.
+	
+	transfer := Transfer send: 100 from: accountFrom to: accountTo.
+	
+	self assert: accountFrom balance equals: 0.
+	self assert: accountTo balance equals: 100
+	
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'IB 5/28/2023 20:57:06' prior: 50604760!
+test08CanTransferWhenHavingFunds
+
+	| accountFrom accountTo |
+	
+	accountFrom := ReceptiveAccount new.
+	accountTo := ReceptiveAccount new.
+	Deposit register: 100 on: accountFrom.
+	
+	Transfer send: 100 from: accountFrom to: accountTo.
+	
+	self assert: accountFrom balance equals: 0.
+	self assert: accountTo balance equals: 100
+	
+! !
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/28/2023 20:58:12'!
+ERROR!
+!Transfer class methodsFor: 'instance creation' stamp: 'IB 5/28/2023 20:58:18'!
+send: aSmallInteger from: aReceptiveAccount to: aReceptiveAccount3 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeSend: aSmallInteger from: aReceptiveAccount to: aReceptiveAccount3 ! !
+!Transfer class methodsFor: 'instance creation' stamp: 'IB 5/28/2023 21:05:35' prior: 50604791!
+send: aValue from: aReceptiveAccount to: anotherReceptiveAccount
+
+	| transaction |
+	transaction := self for: aValue from: aReceptiveAccount to: anotherReceptiveAccount.
+	aReceptiveAccount register: transaction.
+	anotherReceptiveAccount register: transaction.
+	
+	^transaction! !
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/28/2023 21:05:40'!
+ERROR!
+!Transfer class methodsFor: 'instance creation' stamp: 'IB 5/28/2023 21:05:52'!
+for: aSmallInteger from: aReceptiveAccount to: aReceptiveAccount3 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeFor: aSmallInteger from: aReceptiveAccount to: aReceptiveAccount3 ! !
+!Transfer class methodsFor: 'instance creation' stamp: 'IB 5/28/2023 21:06:26' prior: 50604817!
+for: aValue from: aReceptiveAccount to: anotherReceptiveAccount
+
+	^self new initializeFor: aValue from: aReceptiveAccount to: anotherReceptiveAccount ! !
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/28/2023 21:06:27'!
+ERROR!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'IB 5/28/2023 21:06:50'!
+AccountTransaction subclass: #Transfer
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'IB 5/28/2023 21:06:50'!
+AccountTransaction subclass: #Transfer
+	instanceVariableNames: 'value receptiveAccount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'IB 5/28/2023 21:06:51'!
+AccountTransaction subclass: #Transfer
+	instanceVariableNames: 'value receptiveAccount anotherReceptiveAccount_CHANGE_ME'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'initialization' stamp: 'IB 5/28/2023 21:06:51'!
+initializeFor: aValue from: aReceptiveAccount to: anotherReceptiveAccount 
+	self shouldBeImplemented.
+	value := aValue.
+	receptiveAccount := aReceptiveAccount.
+	anotherReceptiveAccount_CHANGE_ME := anotherReceptiveAccount.! !
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'IB 5/28/2023 21:07:40'!
+AccountTransaction subclass: #Transfer
+	instanceVariableNames: 'value receptiveAccount anotherReceptiveAccount_CHANGE_ME accountFrom'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'IB 5/28/2023 21:07:41'!
+AccountTransaction subclass: #Transfer
+	instanceVariableNames: 'value receptiveAccount anotherReceptiveAccount_CHANGE_ME accountFrom accountTo'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'initialization' stamp: 'IB 5/28/2023 21:07:37' prior: 50604864!
+initializeFor: aValue from: aReceptiveAccount to: anotherReceptiveAccount
+
+	value := aValue.
+	accountFrom := aReceptiveAccount.
+	accountTo := anotherReceptiveAccount! !
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/28/2023 21:07:45'!
+ERROR!
+!AccountTransaction methodsFor: 'balance' stamp: 'IB 5/28/2023 21:26:20' prior: 50604559!
+affectBalance: aBalance
+
+	self subclassResponsibility! !
+
+----SNAPSHOT----(28 May 2023 21:44:00) CuisUniversity-5706.image priorSource: 8713034!
+
+----STARTUP---- (31 May 2023 18:33:58) as /home/iboaretto/Desktop/uba/inge1/linux64/CuisUniversity-5706.image!
+
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 18:43:28'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 18:43:28'!
+ERROR!
+!Transfer class methodsFor: 'instance creation' stamp: 'IB 5/31/2023 18:45:55' prior: 50604802!
+send: aValue from: aReceptiveAccount to: anotherReceptiveAccount
+
+	| transaction |
+	transaction := self for: aValue from: aReceptiveAccount to: anotherReceptiveAccount.
+	
+	aReceptiveAccount register: transaction.
+	anotherReceptiveAccount register: transaction.
+	
+	^transaction! !
+!Transfer class methodsFor: 'instance creation' stamp: 'IB 5/31/2023 18:50:59' prior: 50604924!
+send: aValue from: aReceptiveAccount to: anotherReceptiveAccount
+
+	| transaction |
+	transaction := self for: aValue from: aReceptiveAccount to: anotherReceptiveAccount.
+	
+	aReceptiveAccount register: transaction originTransaction.
+	anotherReceptiveAccount register: transaction destinationTransaction.
+	
+	^transaction! !
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 18:51:35'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 18:51:35'!
+ERROR!
+!Transfer methodsFor: 'accessing' stamp: 'IB 5/31/2023 18:51:50'!
+originTransaction
+	self shouldBeImplemented.! !
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'IB 5/31/2023 18:52:16'!
+AccountTransaction subclass: #Transfer
+	instanceVariableNames: 'value receptiveAccount anotherReceptiveAccount_CHANGE_ME accountFrom accountTo originTransferTransaction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'accessing' stamp: 'IB 5/31/2023 18:52:14' prior: 50604955!
+originTransaction
+	
+		^originTransferTransaction! !
+
+transaction originTransaction!
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 18:52:32'!
+ERROR!
+!Transfer methodsFor: 'accessing' stamp: 'IB 5/31/2023 18:52:38'!
+destinationTransaction
+	self shouldBeImplemented.! !
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'IB 5/31/2023 18:52:56'!
+AccountTransaction subclass: #Transfer
+	instanceVariableNames: 'value receptiveAccount anotherReceptiveAccount_CHANGE_ME accountFrom accountTo originTransferTransaction destinationTransaction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'accessing' stamp: 'IB 5/31/2023 18:52:55' prior: 50604978!
+destinationTransaction
+	
+	^destinationTransaction! !
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 18:52:57'!
+ERROR!
+!Transfer methodsFor: 'accessing' stamp: 'IB 5/31/2023 18:53:11' prior: 50604970!
+originTransaction
+	
+	^originTransferTransaction! !
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'IB 5/31/2023 18:53:42'!
+AccountTransaction subclass: #Transfer
+	instanceVariableNames: 'value receptiveAccount anotherReceptiveAccount_CHANGE_ME accountFrom accountTo originTransferTransaction destinationTransaction destinationTransferTransaction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'accessing' stamp: 'IB 5/31/2023 18:53:40' prior: 50604994!
+destinationTransaction
+	
+	^destinationTransferTransaction! !
+
+!classDefinition: #OriginTransfer category: 'Portfolio-Solucion' stamp: 'IB 5/31/2023 18:56:09'!
+Transfer subclass: #OriginTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #DestinationTransfer category: 'Portfolio-Solucion' stamp: 'IB 5/31/2023 18:56:21'!
+Transfer subclass: #DestinationTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'initialization' stamp: 'IB 5/31/2023 18:55:50' prior: 50604894!
+initializeFor: aValue from: aReceptiveAccount to: anotherReceptiveAccount
+
+	value := aValue.
+	originTransferTransaction := OriginTransfer relatedTo: self.
+	destinationTransferTransaction  := DestinationTransfer relatedTo: self
+	! !
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 18:56:27'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 18:56:27'!
+ERROR!
+!OriginTransfer class methodsFor: 'instance creation' stamp: 'IB 5/31/2023 18:56:33'!
+relatedTo: aTransfer 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeRelatedTo: aTransfer ! !
+!OriginTransfer class methodsFor: 'instance creation' stamp: 'IB 5/31/2023 18:56:38' prior: 50605056!
+relatedTo: aTransfer
+
+	^self new initializeRelatedTo: aTransfer ! !
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 18:56:40'!
+ERROR!
+
+!classDefinition: #OriginTransfer category: 'Portfolio-Solucion' stamp: 'IB 5/31/2023 18:56:45'!
+Transfer subclass: #OriginTransfer
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!OriginTransfer methodsFor: 'initialization' stamp: 'IB 5/31/2023 18:56:45'!
+initializeRelatedTo: aTransfer 
+	self shouldBeImplemented.
+	transfer := aTransfer.! !
+!OriginTransfer methodsFor: 'initialization' stamp: 'IB 5/31/2023 18:56:54' prior: 50605081!
+initializeRelatedTo: aTransfer
+
+	transfer := aTransfer! !
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 18:56:56'!
+ERROR!
+!DestinationTransfer class methodsFor: 'instance creation' stamp: 'IB 5/31/2023 18:57:06'!
+relatedTo: aTransfer 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeRelatedTo: aTransfer ! !
+!DestinationTransfer class methodsFor: 'instance creation' stamp: 'IB 5/31/2023 18:57:10' prior: 50605095!
+relatedTo: aTransfer 
+
+	^self new initializeRelatedTo: aTransfer ! !
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 18:57:11'!
+ERROR!
+
+!classDefinition: #DestinationTransfer category: 'Portfolio-Solucion' stamp: 'IB 5/31/2023 18:57:15'!
+Transfer subclass: #DestinationTransfer
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!DestinationTransfer methodsFor: 'initialization' stamp: 'IB 5/31/2023 18:57:15'!
+initializeRelatedTo: aTransfer 
+	self shouldBeImplemented.
+	transfer := aTransfer.! !
+!DestinationTransfer methodsFor: 'initialization' stamp: 'IB 5/31/2023 18:57:19' prior: 50605121!
+initializeRelatedTo: aTransfer
+
+	transfer := aTransfer! !
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 18:57:22'!
+ERROR!
+!OriginTransfer methodsFor: 'balance' stamp: 'IB 5/31/2023 18:57:39' overrides: 50604906!
+affectBalance: currentBalance 
+	self shouldBeImplemented.! !
+!OriginTransfer methodsFor: 'balance' stamp: 'IB 5/31/2023 18:58:13' prior: 50605135 overrides: 50604906!
+affectBalance: currentBalance
+
+	^currentBalance - transfer value! !
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 18:58:52'!
+ERROR!
+!Transfer methodsFor: 'accessing' stamp: 'IB 5/31/2023 18:59:24' overrides: 50604555!
+value
+	self shouldBeImplemented.
+	^value! !
+!Transfer methodsFor: 'accessing' stamp: 'IB 5/31/2023 18:59:28' prior: 50605150 overrides: 50604555!
+value
+
+	^value! !
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 18:59:29'!
+ERROR!
+!DestinationTransfer methodsFor: 'balance' stamp: 'IB 5/31/2023 18:59:35' overrides: 50604906!
+affectBalance: currentBalance 
+	self shouldBeImplemented.! !
+!DestinationTransfer methodsFor: 'balance' stamp: 'IB 5/31/2023 18:59:52' prior: 50605162 overrides: 50604906!
+affectBalance: currentBalance 
+	
+	^currentBalance + transfer value! !
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 18:59:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 18:59:57'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'IB 5/31/2023 18:59:57'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'IB 5/31/2023 18:59:57'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'IB 5/31/2023 18:59:57'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'IB 5/31/2023 18:59:57'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'IB 5/31/2023 18:59:57'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'IB 5/31/2023 18:59:57'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'IB 5/31/2023 18:59:57'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 18:59:57'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 19:00:02) CuisUniversity-5706.image priorSource: 8744312!
+
+AccountTransaction subclass: #Transfer
+	instanceVariableNames: 'value originTransferTransaction destinationTransferTransaction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'IB 5/31/2023 19:00:25'!
+AccountTransaction subclass: #Transfer
+	instanceVariableNames: 'value originTransferTransaction destinationTransferTransaction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer class methodsFor: 'instance creation' stamp: 'IB 5/31/2023 19:01:04' prior: 50604828!
+for: aValue from: aReceptiveAccount to: anotherReceptiveAccount
+
+	^self new initializeFor: aValue! !
+!Transfer methodsFor: 'initialization' stamp: 'IB 5/31/2023 19:01:12'!
+initializeFor: aValue from: aReceptiveAccount 
+
+	value := aValue.
+	originTransferTransaction := OriginTransfer relatedTo: self.
+	destinationTransferTransaction  := DestinationTransfer relatedTo: self
+	! !
+
+!methodRemoval: Transfer #initializeFor:from:to: stamp: 'IB 5/31/2023 19:01:12'!
+initializeFor: aValue from: aReceptiveAccount to: anotherReceptiveAccount
+
+	value := aValue.
+	originTransferTransaction := OriginTransfer relatedTo: self.
+	destinationTransferTransaction  := DestinationTransfer relatedTo: self
+	!
+!Transfer methodsFor: 'initialization' stamp: 'IB 5/31/2023 19:01:17'!
+initializeFor: aValue  
+
+	value := aValue.
+	originTransferTransaction := OriginTransfer relatedTo: self.
+	destinationTransferTransaction  := DestinationTransfer relatedTo: self
+	! !
+
+!methodRemoval: Transfer #initializeFor:from: stamp: 'IB 5/31/2023 19:01:17'!
+initializeFor: aValue from: aReceptiveAccount 
+
+	value := aValue.
+	originTransferTransaction := OriginTransfer relatedTo: self.
+	destinationTransferTransaction  := DestinationTransfer relatedTo: self
+	!
+!Transfer class methodsFor: 'instance creation' stamp: 'IB 5/31/2023 19:01:32'!
+for: aValue from: aReceptiveAccount 
+
+	^self new initializeFor: aValue! !
+!Transfer class methodsFor: 'as yet unclassified' stamp: 'IB 5/31/2023 19:01:32' prior: 50604936!
+send: aValue from: aReceptiveAccount to: anotherReceptiveAccount
+
+	| transaction |
+	transaction := self for: aValue from: aReceptiveAccount .
+	
+	aReceptiveAccount register: transaction originTransaction.
+	anotherReceptiveAccount register: transaction destinationTransaction.
+	
+	^transaction! !
+
+!methodRemoval: Transfer class #for:from:to: stamp: 'IB 5/31/2023 19:01:32'!
+for: aValue from: aReceptiveAccount to: anotherReceptiveAccount
+
+	^self new initializeFor: aValue!
+!Transfer class methodsFor: 'instance creation' stamp: 'IB 5/31/2023 19:01:40'!
+for: aValue  
+
+	^self new initializeFor: aValue! !
+!Transfer class methodsFor: 'as yet unclassified' stamp: 'IB 5/31/2023 19:01:40' prior: 50605277!
+send: aValue from: aReceptiveAccount to: anotherReceptiveAccount
+
+	| transaction |
+	transaction := self for: aValue .
+	
+	aReceptiveAccount register: transaction originTransaction.
+	anotherReceptiveAccount register: transaction destinationTransaction.
+	
+	^transaction! !
+
+!methodRemoval: Transfer class #for:from: stamp: 'IB 5/31/2023 19:01:40'!
+for: aValue from: aReceptiveAccount 
+
+	^self new initializeFor: aValue!
+!Transfer class methodsFor: 'instance creation' stamp: 'IB 5/31/2023 19:01:45' prior: 50605300!
+send: aValue from: aReceptiveAccount to: anotherReceptiveAccount
+
+	| transaction |
+	transaction := self for: aValue.
+	
+	aReceptiveAccount register: transaction originTransaction.
+	anotherReceptiveAccount register: transaction destinationTransaction.
+	
+	^transaction! !
+
+----SNAPSHOT----(31 May 2023 19:02:27) CuisUniversity-5706.image priorSource: 8753871!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'IB 5/31/2023 19:03:19'!
+test09CanTransferWhenThereIsNotEnoughFunds
+
+	| accountFrom accountTo |
+	
+	accountFrom := ReceptiveAccount new.
+	accountTo := ReceptiveAccount new.
+	
+	Transfer send: 100 from: accountFrom to: accountTo.
+	
+	self assert: accountFrom balance equals: -100.
+	self assert: accountTo balance equals: 100
+	
+! !
+
+!testRun: #ReceptiveAccountTest #test09CanTransferWhenThereIsNotEnoughFunds stamp: 'IB 5/31/2023 19:03:21'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'IB 5/31/2023 19:03:21'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'IB 5/31/2023 19:03:21'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'IB 5/31/2023 19:03:21'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'IB 5/31/2023 19:03:21'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'IB 5/31/2023 19:03:21'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'IB 5/31/2023 19:03:21'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'IB 5/31/2023 19:03:21'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 19:03:21'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09CanTransferWhenThereIsNotEnoughFunds stamp: 'IB 5/31/2023 19:03:21'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 19:03:26) CuisUniversity-5706.image priorSource: 8757676!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'IB 5/31/2023 19:05:35' prior: 50604283!
+test06ReceptiveAccountDoNotKnowNotRegisteredTransactions
+
+	| account deposit withdraw |
+	
+	account := ReceptiveAccount new.
+	deposit :=  Deposit for: 100.
+	withdraw := Withdraw for: 50.
+		
+	self deny: (account hasRegistered: deposit).
+	self deny: (account hasRegistered: withdraw).
+! !
+
+!classDefinition: #SummaryReport category: 'Portfolio-Solucion' stamp: 'IB 5/31/2023 19:13:24'!
+Object subclass: #SummaryReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'IB 5/31/2023 19:13:20'!
+test09CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	
+	self assert: (account generateReportOfType: SummaryReport) equals: 'Balance = 0'
+	
+! !
+
+!testRun: #ReceptiveAccountTest #test09CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:13:34'!
+ERROR!
+!ReceptiveAccount methodsFor: 'printing' stamp: 'IB 5/31/2023 19:13:55'!
+generateReportOfType: SummaryReport 
+	self shouldBeImplemented.! !
+!ReceptiveAccount methodsFor: 'printing' stamp: 'IB 5/31/2023 19:14:12' prior: 50605416!
+generateReportOfType: aReport
+
+	^'Balance = 0'! !
+
+!testRun: #ReceptiveAccountTest #test09CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:14:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'IB 5/31/2023 19:14:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'IB 5/31/2023 19:14:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'IB 5/31/2023 19:14:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'IB 5/31/2023 19:14:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'IB 5/31/2023 19:14:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'IB 5/31/2023 19:14:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'IB 5/31/2023 19:14:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 19:14:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:14:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09CanTransferWhenThereIsNotEnoughFunds stamp: 'IB 5/31/2023 19:14:13'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'IB 5/31/2023 19:14:36'!
+test10CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	
+	self assert: (account generateReportOfType: SummaryReport) equals: 'Balance = 0'
+	
+! !
+
+!methodRemoval: ReceptiveAccountTest #test09CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:14:36'!
+test09CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	
+	self assert: (account generateReportOfType: SummaryReport) equals: 'Balance = 0'
+	
+!
+
+'Depósito por 100.' ,Character newLineCharacter, 'Balance = 100'
+	!
+
+Character newLineCharacter asString!
+
+'Depósito por 100.' ,Character newLineCharacter asString, 'Balance = 100'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'IB 5/31/2023 19:17:35'!
+test11CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	self assert: (account generateReportOfType: SummaryReport) equals: 
+		'Depósito por 100.' ,Character newLineCharacter asString, 'Balance = 100'
+	
+! !
+
+!testRun: #ReceptiveAccountTest #test11CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 19:17:44'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'printing' stamp: 'IB 5/31/2023 19:19:28' prior: 50605421!
+generateReportOfType: aReport
+
+	^aReport generateEntriesFor: transactions! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'IB 5/31/2023 19:19:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'IB 5/31/2023 19:19:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'IB 5/31/2023 19:19:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'IB 5/31/2023 19:19:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'IB 5/31/2023 19:19:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'IB 5/31/2023 19:19:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'IB 5/31/2023 19:19:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 19:19:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09CanTransferWhenThereIsNotEnoughFunds stamp: 'IB 5/31/2023 19:19:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:19:36'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test11CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 19:19:36'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test10CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:19:39'!
+ERROR!
+!SummaryReport class methodsFor: 'as yet unclassified' stamp: 'IB 5/31/2023 19:19:57'!
+generateEntriesFor: aTransactions 
+	self shouldBeImplemented.! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'IB 5/31/2023 19:20:23' prior: 50605495!
+test11CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	self assert: (account generateReportOfType: SummaryReport new) equals: 
+		'Depósito por 100.' ,Character newLineCharacter asString, 'Balance = 100'
+	
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'IB 5/31/2023 19:20:28' prior: 50605468!
+test10CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	
+	self assert: (account generateReportOfType: SummaryReport new) equals: 'Balance = 0'
+	
+! !
+
+!testRun: #ReceptiveAccountTest #test10CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:20:32'!
+ERROR!
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:20:54'!
+generateEntriesFor: aTransactions 
+	self shouldBeImplemented.! !
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:21:22' prior: 50605598!
+generateEntriesFor: aTransactions
+
+	^aTransactions first generateEntryForReport: self! !
+
+!testRun: #ReceptiveAccountTest #test10CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:21:25'!
+ERROR!
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:21:58' prior: 50605603!
+generateEntriesFor: aTransactions
+
+	^aTransactions collect: [:transaction | transaction generateEntryForReport: self]! !
+
+!testRun: #ReceptiveAccountTest #test10CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:22:21'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test10CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:22:42'!
+FAILURE!
+
+ 'Balance = ', 1 !
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:25:48'!
+generateEntriesFor: aTransactions on: aPortfolio
+
+	|entriesForEachTransaction|
+	
+	entriesForEachTransaction := aTransactions collect: [:transaction | transaction generateEntryForReport: self].
+	
+	^entriesForEachTransaction asOrderedCollection 
+		add: ('Balance = ', aPortfolio balance asString); 
+		yourself! !
+!ReceptiveAccount methodsFor: 'printing' stamp: 'IB 5/31/2023 19:26:03' prior: 50605513!
+generateReportOfType: aReport
+
+	^aReport generateEntriesFor: transactions on: self! !
+
+!methodRemoval: SummaryReport #generateEntriesFor: stamp: 'IB 5/31/2023 19:26:11'!
+generateEntriesFor: aTransactions
+
+	^aTransactions collect: [:transaction | transaction generateEntryForReport: self]!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'IB 5/31/2023 19:26:56'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'IB 5/31/2023 19:26:56'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'IB 5/31/2023 19:26:56'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'IB 5/31/2023 19:26:56'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'IB 5/31/2023 19:26:56'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'IB 5/31/2023 19:26:56'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'IB 5/31/2023 19:26:56'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 19:26:56'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09CanTransferWhenThereIsNotEnoughFunds stamp: 'IB 5/31/2023 19:26:56'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:26:56'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test11CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 19:26:56'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test10CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:26:59'!
+FAILURE!
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:30:41' prior: 50605630!
+generateEntriesFor: aTransactions on: aPortfolio
+
+	|entriesForEachTransaction|
+	
+	entriesForEachTransaction := (aTransactions collect: [:transaction | transaction generateEntryForReport: self]) asOrderedCollection.
+	
+	entriesForEachTransaction add: ('Balance = ', aPortfolio balance asString).
+	
+	^entriesForEachTransaction fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter, currentEntry]! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'IB 5/31/2023 19:30:43'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'IB 5/31/2023 19:30:43'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'IB 5/31/2023 19:30:43'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'IB 5/31/2023 19:30:43'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'IB 5/31/2023 19:30:43'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'IB 5/31/2023 19:30:43'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'IB 5/31/2023 19:30:43'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 19:30:43'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09CanTransferWhenThereIsNotEnoughFunds stamp: 'IB 5/31/2023 19:30:43'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:30:43'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 19:30:43'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test11CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 19:30:43'!
+ERROR!
+!Deposit methodsFor: 'printing' stamp: 'IB 5/31/2023 19:30:56'!
+generateEntryForReport: aSummaryReport 
+	self shouldBeImplemented.! !
+!Deposit methodsFor: 'printing' stamp: 'IB 5/31/2023 19:31:28' prior: 50605765!
+generateEntryForReport: aSummaryReport
+
+	^aSummaryReport generateEntryForDeposit: self! !
+
+!testRun: #ReceptiveAccountTest #test11CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 19:31:32'!
+ERROR!
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:31:38'!
+generateEntryForDeposit: aDeposit 
+	self shouldBeImplemented.! !
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:32:09' prior: 50605780!
+generateEntryForDeposit: aDeposit
+
+	^'Depósito por ',aDeposit value asString! !
+
+!testRun: #ReceptiveAccountTest #test11CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 19:32:11'!
+ERROR!
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:32:22' prior: 50605702!
+generateEntriesFor: aTransactions on: aPortfolio
+
+	|entriesForEachTransaction|
+	
+	entriesForEachTransaction := (aTransactions collect: [:transaction | transaction generateEntryForReport: self]) asOrderedCollection.
+	
+	entriesForEachTransaction add: ('Balance = ', aPortfolio balance asString).
+	
+	^entriesForEachTransaction fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter asString, currentEntry]! !
+
+!testRun: #ReceptiveAccountTest #test11CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 19:32:23'!
+FAILURE!
+
+account generateReportOfType: SummaryReport new!
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:33:10' prior: 50605785!
+generateEntryForDeposit: aDeposit
+
+	^'Depósito por ',aDeposit value asString, '.'! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'IB 5/31/2023 19:33:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'IB 5/31/2023 19:33:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'IB 5/31/2023 19:33:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'IB 5/31/2023 19:33:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'IB 5/31/2023 19:33:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'IB 5/31/2023 19:33:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'IB 5/31/2023 19:33:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08CanTransferWhenHavingFunds stamp: 'IB 5/31/2023 19:33:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09CanTransferWhenThereIsNotEnoughFunds stamp: 'IB 5/31/2023 19:33:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:33:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 19:33:13'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 19:33:20) CuisUniversity-5706.image priorSource: 8759339!
+
+TestCase subclass: #SummaryReportTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #SummaryReportTest category: 'Portfolio-Solucion' stamp: 'IB 5/31/2023 19:34:24'!
+TestCase subclass: #SummaryReportTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!SummaryReportTest methodsFor: 'no messages' stamp: 'IB 5/31/2023 19:34:49'!
+test11CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	self assert: (account generateReportOfType: SummaryReport new) equals: 
+		'Depósito por 100.' ,Character newLineCharacter asString, 'Balance = 100'! !
+!SummaryReportTest methodsFor: 'as yet unclassified' stamp: 'IB 5/31/2023 19:35:04'!
+test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	self assert: (account generateReportOfType: SummaryReport new) equals: 
+		'Depósito por 100.' ,Character newLineCharacter asString, 'Balance = 100'! !
+
+!methodRemoval: SummaryReportTest #test11CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 19:35:04'!
+test11CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	self assert: (account generateReportOfType: SummaryReport new) equals: 
+		'Depósito por 100.' ,Character newLineCharacter asString, 'Balance = 100'!
+!SummaryReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 19:35:37'!
+test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	
+	self assert: (account generateReportOfType: SummaryReport new) equals: 'Balance = 0'
+	
+! !
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:35:39'!
+PASSED!
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:35:39'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 19:35:39'!
+PASSED!
+
+!methodRemoval: ReceptiveAccountTest #test11CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 19:35:47'!
+test11CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	self assert: (account generateReportOfType: SummaryReport new) equals: 
+		'Depósito por 100.' ,Character newLineCharacter asString, 'Balance = 100'
+	
+!
+
+!methodRemoval: ReceptiveAccountTest #test10CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:35:50'!
+test10CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	
+	self assert: (account generateReportOfType: SummaryReport new) equals: 'Balance = 0'
+	
+!
+!AccountTransaction methodsFor: 'balance' stamp: 'IB 5/31/2023 19:37:33'!
+generateEntryForReport: aSummaryReport
+
+	self subclassResponsibility! !
+!AccountTransaction methodsFor: 'printing' stamp: 'IB 5/31/2023 19:37:52' prior: 50605970!
+generateEntryForReport: aReport
+
+	self subclassResponsibility! !
+!Deposit methodsFor: 'printing' stamp: 'IB 5/31/2023 19:38:06' prior: 50605770 overrides: 50605976!
+generateEntryForReport: aReport
+
+	^aReport generateEntryForDeposit: self! !
+!SummaryReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 19:39:29'!
+test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	Withdraw register: 100 on: account.
+	
+	self assert: (account generateReportOfType: SummaryReport new) equals: 
+		'Extracción por 100.' ,Character newLineCharacter asString, 'Balance = -100'! !
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:40:31' prior: 50605795!
+generateEntriesFor: aTransactionsCollection on: aPortfolio
+
+	|entriesForEachTransaction|
+	
+	aTransactionsCollection ifEmpty: [^'Balance = ', aPortfolio balance asString] .
+	
+	entriesForEachTransaction := (aTransactionsCollection collect: [:transaction | transaction generateEntryForReport: self]) asOrderedCollection.
+	
+	entriesForEachTransaction add: ('Balance = ', aPortfolio balance asString).
+	
+	^entriesForEachTransaction fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter asString, currentEntry]! !
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:42:36' prior: 50606000!
+generateEntriesFor: aTransactionsCollection on: aPortfolio
+
+	|entriesForEachTransaction entryForBalance |
+	
+	entryForBalance := 'Balance = ', aPortfolio balance asString.
+	
+	aTransactionsCollection ifEmpty: [^entryForBalance] .
+	
+	entriesForEachTransaction := aTransactionsCollection first generateEntryForReport: self.
+	
+	^entriesForEachTransaction , Character newLineCharacter asString, entryForBalance! !
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 19:42:41'!
+ERROR!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 19:42:41'!
+ERROR!
+!Withdraw methodsFor: 'printing' stamp: 'IB 5/31/2023 19:42:50' overrides: 50605976!
+generateEntryForReport: aSummaryReport 
+	self shouldBeImplemented.! !
+!Withdraw methodsFor: 'printing' stamp: 'IB 5/31/2023 19:43:16' prior: 50606045 overrides: 50605976!
+generateEntryForReport: aReport
+
+	^aReport generateEntryForWithdraw: self! !
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 19:43:26'!
+ERROR!
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:43:30'!
+generateEntryForWithdraw: aWithdraw 
+	self shouldBeImplemented.! !
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:44:15' prior: 50606061!
+generateEntryForWithdraw: aWithdraw
+
+	^'Extracción por ', aWithdraw value asString, '.'! !
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 19:44:16'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 19:44:18'!
+PASSED!
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:44:18'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 19:44:18'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 19:44:18'!
+PASSED!
+!SummaryReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 19:46:52'!
+test03CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered
+
+	| account  anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	
+	Transfer send: 100 from: account to: anotherAccount.
+	
+	self assert: (account generateReportOfType: SummaryReport new) equals: 
+		'Salida por transferencia de 100.' ,Character newLineCharacter asString, 'Balance = -100'.
+		
+	self assert: (anotherAccount generateReportOfType: SummaryReport new) equals: 
+		'Entrada por transferencia de 100.' ,Character newLineCharacter asString, 'Balance = 100'.! !
+!SummaryReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 19:46:57'!
+test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered
+
+	| account  anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	
+	Transfer send: 100 from: account to: anotherAccount.
+	
+	self assert: (account generateReportOfType: SummaryReport new) equals: 
+		'Salida por transferencia de 100.' ,Character newLineCharacter asString, 'Balance = -100'.
+		
+	self assert: (anotherAccount generateReportOfType: SummaryReport new) equals: 
+		'Entrada por transferencia de 100.' ,Character newLineCharacter asString, 'Balance = 100'.! !
+
+!methodRemoval: SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 19:47:02'!
+test03CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered
+
+	| account  anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	
+	Transfer send: 100 from: account to: anotherAccount.
+	
+	self assert: (account generateReportOfType: SummaryReport new) equals: 
+		'Salida por transferencia de 100.' ,Character newLineCharacter asString, 'Balance = -100'.
+		
+	self assert: (anotherAccount generateReportOfType: SummaryReport new) equals: 
+		'Entrada por transferencia de 100.' ,Character newLineCharacter asString, 'Balance = 100'.!
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:47:06'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 19:47:06'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 19:47:06'!
+PASSED!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 19:47:06'!
+ERROR!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 19:47:06'!
+ERROR!
+!OriginTransfer methodsFor: 'printing' stamp: 'IB 5/31/2023 19:47:13' overrides: 50605976!
+generateEntryForReport: aSummaryReport 
+	self shouldBeImplemented.! !
+!OriginTransfer methodsFor: 'printing' stamp: 'IB 5/31/2023 19:47:34' prior: 50606182 overrides: 50605976!
+generateEntryForReport: aReport
+
+	^aReport generateEntryForOriginTransfer: self! !
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 19:47:36'!
+ERROR!
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:47:41'!
+generateEntryForOriginTransfer: anOriginTransfer 
+	self shouldBeImplemented.! !
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:48:35' prior: 50606198!
+generateEntryForOriginTransfer: anOriginTransfer 
+	
+	^'Salida por transferencia de ', anOriginTransfer value asString, '.'! !
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 19:48:36'!
+FAILURE!
+
+account generateReportOfType: SummaryReport new!
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:49:24' prior: 50606204!
+generateEntryForOriginTransfer: anOriginTransfer 
+	
+	self halt.
+	^'Salida por transferencia de ', anOriginTransfer value asString, '.'! !
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:49:27'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 19:49:27'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 19:49:27'!
+PASSED!
+
+anOriginTransfer!
+
+anOriginTransfer transfer!
+
+anOriginTransfer!
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:50:23' prior: 50606217!
+generateEntryForOriginTransfer: anOriginTransfer 
+	
+	self halt.
+	^'Salida por transferencia de ', anOriginTransfer transfer value asString, '.'! !
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:50:32' prior: 50606240!
+generateEntryForOriginTransfer: anOriginTransfer 
+	
+	^'Salida por transferencia de ', anOriginTransfer transfer value asString, '.'! !
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 19:50:33'!
+ERROR!
+!OriginTransfer methodsFor: 'accessing' stamp: 'IB 5/31/2023 19:50:41'!
+transfer
+	self shouldBeImplemented.
+	^transfer! !
+!OriginTransfer methodsFor: 'accessing' stamp: 'IB 5/31/2023 19:50:46' prior: 50606260!
+transfer
+
+	^transfer! !
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 19:50:47'!
+ERROR!
+!DestinationTransfer methodsFor: 'printing' stamp: 'IB 5/31/2023 19:50:53' overrides: 50605976!
+generateEntryForReport: aSummaryReport 
+	self shouldBeImplemented.! !
+!DestinationTransfer methodsFor: 'printing' stamp: 'IB 5/31/2023 19:51:31' prior: 50606274 overrides: 50605976!
+generateEntryForReport: aReport
+
+	^aReport generateEntryForDestinationTransfer: self! !
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 19:51:33'!
+ERROR!
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:51:37'!
+generateEntryForDestinationTransfer: aDestinationTransfer 
+	self shouldBeImplemented.! !
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:52:16' prior: 50606290!
+generateEntryForDestinationTransfer: aDestinationTransfer 
+
+	^'Entrada por transferencia de ', aDestinationTransfer value asString, '.'! !
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:52:22' prior: 50606296!
+generateEntryForDestinationTransfer: aDestinationTransfer 
+
+	^'Entrada por transferencia de ', aDestinationTransfer transfer value asString, '.'! !
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 19:52:23'!
+ERROR!
+!DestinationTransfer methodsFor: 'accessing' stamp: 'IB 5/31/2023 19:52:31'!
+transfer
+	self shouldBeImplemented.
+	^transfer! !
+!DestinationTransfer methodsFor: 'accessing' stamp: 'IB 5/31/2023 19:52:35' prior: 50606316!
+transfer
+
+	^transfer! !
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 19:52:36'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 19:52:47) CuisUniversity-5706.image priorSource: 8774885!
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:52:50'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 19:52:50'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 19:52:50'!
+PASSED!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 19:52:50'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 19:52:53) CuisUniversity-5706.image priorSource: 8789708!
+!SummaryReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 19:54:56'!
+test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 100 on: account.
+	
+	self assert: (account generateReportOfType: SummaryReport new) equals: 
+		'Depósito por 100.' ,Character newLineCharacter asString,
+		'Extracción por 100.' ,Character newLineCharacter asString, 
+		'Balance = 100'! !
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 19:55:01'!
+FAILURE!
+!SummaryReport methodsFor: 'printing' stamp: 'IB 5/31/2023 19:32:22' prior: 50606020!
+generateEntriesFor: aTransactions on: aPortfolio
+
+	|entriesForEachTransaction|
+	
+	entriesForEachTransaction := (aTransactions collect: [:transaction | transaction generateEntryForReport: self]) asOrderedCollection.
+	
+	entriesForEachTransaction add: ('Balance = ', aPortfolio balance asString).
+	
+	^entriesForEachTransaction fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter asString, currentEntry]! !
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:55:52'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 19:55:52'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 19:55:52'!
+PASSED!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 19:55:52'!
+PASSED!
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 19:55:52'!
+FAILURE!
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 19:55:52'!
+FAILURE!
+
+account generateReportOfType: SummaryReport new!
+!SummaryReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 19:56:17' prior: 50606353!
+test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 100 on: account.
+	
+	self assert: (account generateReportOfType: SummaryReport new) equals: 
+		'Depósito por 100.' ,Character newLineCharacter asString,
+		'Extracción por 100.' ,Character newLineCharacter asString, 
+		'Balance = 0'! !
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 19:56:18'!
+PASSED!
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 19:56:23'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 19:56:23'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 19:56:23'!
+PASSED!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 19:56:23'!
+PASSED!
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 19:56:23'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 19:56:26) CuisUniversity-5706.image priorSource: 8790376!
+!DestinationTransfer methodsFor: 'accessing' stamp: 'IB 5/31/2023 19:57:36' overrides: 50605155!
+value
+
+	^transfer value! !
+!OriginTransfer methodsFor: 'accessing' stamp: 'IB 5/31/2023 19:57:43' overrides: 50605155!
+value
+
+	^transfer value! !
+!SummaryReport methodsFor: 'evaluating - entries' stamp: 'IB 5/31/2023 19:57:49' prior: 50606304!
+generateEntryForDestinationTransfer: aDestinationTransfer 
+
+	^'Entrada por transferencia de ', aDestinationTransfer value asString, '.'! !
+!SummaryReport methodsFor: 'evaluating - entries' stamp: 'IB 5/31/2023 19:57:52' prior: 50606248!
+generateEntryForOriginTransfer: anOriginTransfer 
+	
+	^'Salida por transferencia de ', anOriginTransfer value asString, '.'! !
+
+!methodRemoval: OriginTransfer #transfer stamp: 'IB 5/31/2023 19:57:59'!
+transfer
+
+	^transfer!
+
+!methodRemoval: DestinationTransfer #transfer stamp: 'IB 5/31/2023 19:58:04'!
+transfer
+
+	^transfer!
+!SummaryReport methodsFor: 'evaluating - entries' stamp: 'IB 5/31/2023 19:59:29' prior: 50606066!
+generateEntryForWithdraw: aWithdraw
+
+	|transactionValue transactionDescription|
+	
+	transactionDescription := 'Extracción por '.
+	transactionValue := aWithdraw value.
+
+	^transactionDescription, transactionValue asString, '.'! !
+!SummaryReport methodsFor: 'evaluating - entries' stamp: 'IB 5/31/2023 19:59:57'!
+entryWithDescription: transactionDescription andValue: transactionValue
+
+	^ transactionDescription, transactionValue asString, '.'! !
+!SummaryReport methodsFor: 'evaluating - entries' stamp: 'IB 5/31/2023 19:59:57' prior: 50606497!
+generateEntryForWithdraw: aWithdraw
+
+	|transactionValue transactionDescription|
+	
+	transactionDescription := 'Extracción por '.
+	transactionValue := aWithdraw value.
+
+	^self entryWithDescription: transactionDescription andValue: transactionValue! !
+!SummaryReport methodsFor: 'evaluating - entries' stamp: 'IB 5/31/2023 20:00:15' prior: 50606515!
+generateEntryForWithdraw: aWithdraw
+
+	|transactionValue |
+	
+	transactionValue := aWithdraw value.
+
+	^self entryWithDescription: 'Extracción por ' andValue: transactionValue! !
+!SummaryReport methodsFor: 'evaluating - entries' stamp: 'IB 5/31/2023 20:00:19' prior: 50606526!
+generateEntryForWithdraw: aWithdraw
+
+	^self entryWithDescription: 'Extracción por ' andValue: aWithdraw value! !
+!SummaryReport methodsFor: 'evaluating - entries' stamp: 'IB 5/31/2023 20:00:38' prior: 50606483!
+generateEntryForOriginTransfer: anOriginTransfer 
+	
+	^self entryWithDescription: 'Salida por transferencia de ' andValue: anOriginTransfer value! !
+!SummaryReport methodsFor: 'evaluating - entries' stamp: 'IB 5/31/2023 20:00:58' prior: 50606475!
+generateEntryForDestinationTransfer: aDestinationTransfer 
+
+	^self entryWithDescription: 'Entrada por transferencia de ' andValue: aDestinationTransfer value! !
+!SummaryReport methodsFor: 'evaluating - entries' stamp: 'IB 5/31/2023 20:01:15' prior: 50605818!
+generateEntryForDeposit: aDeposit
+
+	^self entryWithDescription: 'Depósito por ' andValue: aDeposit value! !
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 20:01:23'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 20:01:23'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 20:01:23'!
+PASSED!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 20:01:23'!
+PASSED!
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 20:01:23'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 20:01:26) CuisUniversity-5706.image priorSource: 8794019!
+!SummaryReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 20:05:15'!
+test06CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount
+
+	| account portfolio |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	portfolio := Portfolio with: account.
+	
+	self assert: (portfolio generateReportOfType: SummaryReport new) equals: 
+		'Depósito por 100.' ,Character newLineCharacter asString, 'Balance = 100'
+	
+! !
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 20:05:17'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 20:05:17'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 20:05:17'!
+PASSED!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 20:05:17'!
+PASSED!
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 20:05:17'!
+PASSED!
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount stamp: 'IB 5/31/2023 20:05:17'!
+ERROR!
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount stamp: 'IB 5/31/2023 20:05:17'!
+ERROR!
+!Portfolio methodsFor: 'printing' stamp: 'IB 5/31/2023 20:05:27'!
+generateReportOfType: aRenameMe1 
+	self shouldBeImplemented.! !
+!Portfolio methodsFor: 'printing' stamp: 'IB 5/31/2023 20:06:02' prior: 50606638!
+generateReportOfType: aReport
+
+	^accounts first generateReportOfType: aReport! !
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount stamp: 'IB 5/31/2023 20:06:03'!
+PASSED!
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount stamp: 'IB 5/31/2023 20:06:06'!
+PASSED!
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 20:06:06'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 20:06:06'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 20:06:06'!
+PASSED!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 20:06:06'!
+PASSED!
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 20:06:06'!
+PASSED!
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount stamp: 'IB 5/31/2023 20:06:06'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 20:06:55) CuisUniversity-5706.image priorSource: 8797995!
+!SummaryReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 20:07:54'!
+test06CanPortfolioGenerateSummaryReportWhenAssociatedToNoReceptiveAccount
+	
+	self assert: (Portfolio new generateReportOfType: SummaryReport new) equals: 'Balance = 0'
+	
+! !
+!SummaryReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 20:08:04'!
+test07CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount
+
+	| account portfolio |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	portfolio := Portfolio with: account.
+	
+	self assert: (portfolio generateReportOfType: SummaryReport new) equals: 
+		'Depósito por 100.' ,Character newLineCharacter asString, 'Balance = 100'
+	
+! !
+
+!methodRemoval: SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount stamp: 'IB 5/31/2023 20:08:04'!
+test06CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount
+
+	| account portfolio |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	portfolio := Portfolio with: account.
+	
+	self assert: (portfolio generateReportOfType: SummaryReport new) equals: 
+		'Depósito por 100.' ,Character newLineCharacter asString, 'Balance = 100'
+	
+!
+
+!testRun: #SummaryReportTest #test07CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount stamp: 'IB 5/31/2023 20:08:10'!
+PASSED!
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 20:08:12'!
+ERROR!
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 20:08:12'!
+ERROR!
+!Portfolio methodsFor: 'printing' stamp: 'IB 5/31/2023 20:09:04' prior: 50606643!
+generateReportOfType: aReport
+
+	accounts ifEmpty: [^'Balance = 0'].
+	^accounts first generateReportOfType: aReport! !
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 20:09:06'!
+PASSED!
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 20:09:09'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 20:09:09'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 20:09:09'!
+PASSED!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 20:09:09'!
+PASSED!
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 20:09:09'!
+PASSED!
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 20:09:09'!
+PASSED!
+
+!testRun: #SummaryReportTest #test07CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount stamp: 'IB 5/31/2023 20:09:09'!
+PASSED!
+!SummaryReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 20:10:05'!
+test07CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount
+
+	| account anotherAccount portfolio |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	anotherAccount := ReceptiveAccount new.
+	Withdraw register: 100 on: account.
+	
+	portfolio := Portfolio with: account with: anotherAccount.
+	
+	self assert: (portfolio generateReportOfType: SummaryReport new) equals: 
+		'Depósito por 100.' ,Character newLineCharacter asString,
+		'Extracción por 100.' ,Character newLineCharacter asString, 
+		'Balance = 0'
+! !
+!SummaryReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 20:10:11'!
+test08CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount
+
+	| account anotherAccount portfolio |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	anotherAccount := ReceptiveAccount new.
+	Withdraw register: 100 on: account.
+	
+	portfolio := Portfolio with: account with: anotherAccount.
+	
+	self assert: (portfolio generateReportOfType: SummaryReport new) equals: 
+		'Depósito por 100.' ,Character newLineCharacter asString,
+		'Extracción por 100.' ,Character newLineCharacter asString, 
+		'Balance = 0'
+! !
+
+!methodRemoval: SummaryReportTest #test07CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount stamp: 'IB 5/31/2023 20:10:16'!
+test07CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount
+
+	| account anotherAccount portfolio |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	anotherAccount := ReceptiveAccount new.
+	Withdraw register: 100 on: account.
+	
+	portfolio := Portfolio with: account with: anotherAccount.
+	
+	self assert: (portfolio generateReportOfType: SummaryReport new) equals: 
+		'Depósito por 100.' ,Character newLineCharacter asString,
+		'Extracción por 100.' ,Character newLineCharacter asString, 
+		'Balance = 0'
+!
+
+!testRun: #SummaryReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount stamp: 'IB 5/31/2023 20:10:19'!
+PASSED!
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 20:10:19'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 20:10:19'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 20:10:19'!
+PASSED!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 20:10:19'!
+PASSED!
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 20:10:19'!
+PASSED!
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 20:10:19'!
+PASSED!
+
+!testRun: #SummaryReportTest #test07CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount stamp: 'IB 5/31/2023 20:10:19'!
+PASSED!
+
+!testRun: #SummaryReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount stamp: 'IB 5/31/2023 20:10:19'!
+PASSED!
+!SummaryReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 20:10:34' prior: 50606804!
+test08CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount
+
+	| account anotherAccount portfolio |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	anotherAccount := ReceptiveAccount new.
+	Withdraw register: 100 on: anotherAccount.
+	
+	portfolio := Portfolio with: account with: anotherAccount.
+	
+	self assert: (portfolio generateReportOfType: SummaryReport new) equals: 
+		'Depósito por 100.' ,Character newLineCharacter asString,
+		'Extracción por 100.' ,Character newLineCharacter asString, 
+		'Balance = 0'
+! !
+
+!testRun: #SummaryReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount stamp: 'IB 5/31/2023 20:10:36'!
+FAILURE!
+!Portfolio methodsFor: 'printing' stamp: 'IB 5/31/2023 20:19:16' prior: 50606741!
+generateReportOfType: aReport
+
+	^aReport generateEntriesForPortfolio: self! !
+
+!testRun: #SummaryReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount stamp: 'IB 5/31/2023 20:19:19'!
+ERROR!
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:19:23'!
+generateEntriesForPortfolio: aPortfolio 
+	self shouldBeImplemented.! !
+
+aPortfolio!
+!Portfolio methodsFor: 'accounts management' stamp: 'IB 5/31/2023 20:21:43'!
+accounts
+	
+	^accounts copy! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:24:47' prior: 50606925!
+generateEntriesForPortfolio: aPortfolio
+
+	|reportsForEachAccount|
+	
+	reportsForEachAccount := (aPortfolio accounts collect: [:receptiveAccount | |report| 
+		report := receptiveAccount generateReportOfType: self.
+		report allButLast 
+	]) flatten asOrderedCollection.
+	
+	reportsForEachAccount add: ('Balance = ', aPortfolio balance asString).
+	
+	^reportsForEachAccount fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter asString, currentEntry]! !
+
+!testRun: #SummaryReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount stamp: 'IB 5/31/2023 20:24:48'!
+FAILURE!
+
+portfolio generateReportOfType: SummaryReport new!
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:25:36' prior: 50606935!
+generateEntriesForPortfolio: aPortfolio
+
+	|reportsForEachAccount|
+	
+	reportsForEachAccount := (aPortfolio accounts collect: [:receptiveAccount | |report| 
+		self halt.
+		report := receptiveAccount generateReportOfType: self.
+		report allButLast 
+	]) flatten asOrderedCollection.
+	
+	reportsForEachAccount add: ('Balance = ', aPortfolio balance asString).
+	
+	^reportsForEachAccount fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter asString, currentEntry]! !
+
+report!
+
+report allButLast !
+
+String streamContents: [:stream | self asStringOn: stream delimiter: ', ' last: ' and ']!
+
+report!
+
+self substrings!
+
+report findString: 'Balance'!
+
+report at: 20!
+
+report allButLast: (report size - report findString: 'Balance').!
+
+report size - report findString: 'Balance'!
+
+report allButLast: (report size - (report findString: 'Balance'))!
+
+report allButLast: (report size - (report findString: 'Balance') + 1).!
+
+
+		report allButLast: (report size - (report findString: 'Balance') + 2).!
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:43:35' prior: 50606960!
+generateEntriesForPortfolio: aPortfolio
+
+	|reportsForEachAccount|
+	
+	reportsForEachAccount := (aPortfolio accounts collect: [:receptiveAccount | |report| 
+		report := (receptiveAccount generateReportOfType: self).
+		report allButLast: (report size - (report findString: 'Balance') + 2).
+	]) flatten asOrderedCollection.
+	
+	reportsForEachAccount add: ('Balance = ', aPortfolio balance asString).
+	
+	^reportsForEachAccount fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter asString, currentEntry]! !
+
+!testRun: #SummaryReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount stamp: 'IB 5/31/2023 20:43:36'!
+PASSED!
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 20:43:45'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 20:43:45'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 20:43:45'!
+PASSED!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 20:43:45'!
+PASSED!
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 20:43:45'!
+PASSED!
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 20:43:45'!
+PASSED!
+
+!testRun: #SummaryReportTest #test07CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount stamp: 'IB 5/31/2023 20:43:45'!
+PASSED!
+
+!testRun: #SummaryReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount stamp: 'IB 5/31/2023 20:43:45'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 20:43:48) CuisUniversity-5706.image priorSource: 8801104!
+
+----SNAPSHOT----(31 May 2023 20:45:51) CuisUniversity-5706.image priorSource: 8812969!
+
+----SNAPSHOT----(31 May 2023 20:46:07) CuisUniversity-5706.image priorSource: 8813057!
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:47:19'!
+addLastLineWithBalanceOf: reportsForEachAccount to: aPortfolio
+
+	^ reportsForEachAccount add: ('Balance = ', aPortfolio balance asString)! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:47:19' prior: 50606995!
+generateEntriesForPortfolio: aPortfolio
+
+	|reportsForEachAccount|
+	
+	reportsForEachAccount := (aPortfolio accounts collect: [:receptiveAccount | |report| 
+		report := (receptiveAccount generateReportOfType: self).
+		report allButLast: (report size - (report findString: 'Balance') + 2).
+	]) flatten asOrderedCollection.
+	
+	self addLastLineWithBalanceOf: reportsForEachAccount to: aPortfolio.
+	
+	^reportsForEachAccount fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter asString, currentEntry]! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:47:30' prior: 50607072!
+generateEntriesForPortfolio: aPortfolio
+
+	|reportsForEachAccount|
+	
+	reportsForEachAccount := (aPortfolio accounts collect: [:receptiveAccount | |report| 
+		report := (receptiveAccount generateReportOfType: self).
+		report allButLast: (report size - (report findString: 'Balance') + 2).
+	]) flatten asOrderedCollection.
+	
+	self addLastLineWithBalanceOf: aPortfolio to: reportsForEachAccount.
+	
+	^reportsForEachAccount fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter asString, currentEntry]! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:47:49' prior: 50607064!
+addLastLineWithBalanceOf: aPortfolio to: anUnfinishedReport
+
+	^ anUnfinishedReport add: ('Balance = ', aPortfolio balance asString)! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:48:20' prior: 50606374!
+generateEntriesFor: aTransactions on: aPortfolio
+
+	|entriesForEachTransaction|
+	
+	entriesForEachTransaction := (aTransactions collect: [:transaction | transaction generateEntryForReport: self]) asOrderedCollection.
+	
+	self addLastLineWithBalanceOf: aPortfolio to: entriesForEachTransaction.
+	
+	^entriesForEachTransaction fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter asString, currentEntry]! !
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 20:48:27'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 20:48:27'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 20:48:27'!
+PASSED!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 20:48:27'!
+PASSED!
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 20:48:27'!
+PASSED!
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 20:48:27'!
+PASSED!
+
+!testRun: #SummaryReportTest #test07CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount stamp: 'IB 5/31/2023 20:48:27'!
+PASSED!
+
+!testRun: #SummaryReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount stamp: 'IB 5/31/2023 20:48:27'!
+PASSED!
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 20:49:23'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 20:49:23'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 20:49:23'!
+PASSED!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 20:49:23'!
+PASSED!
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 20:49:23'!
+PASSED!
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 20:49:23'!
+PASSED!
+
+!testRun: #SummaryReportTest #test07CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount stamp: 'IB 5/31/2023 20:49:23'!
+PASSED!
+
+!testRun: #SummaryReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount stamp: 'IB 5/31/2023 20:49:23'!
+PASSED!
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:50:08'!
+reportEntriesForEachTransactionIn: aTransactions
+
+	^ aTransactions collect: [:transaction | transaction generateEntryForReport: self]! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:50:08' prior: 50607119!
+generateEntriesFor: aTransactions on: aPortfolio
+
+	|entriesForEachTransaction|
+	
+	entriesForEachTransaction := (self reportEntriesForEachTransactionIn: aTransactions) asOrderedCollection.
+	
+	self addLastLineWithBalanceOf: aPortfolio to: entriesForEachTransaction.
+	
+	^entriesForEachTransaction fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter asString, currentEntry]! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:50:28' prior: 50607209!
+reportEntriesForEachTransactionIn: aTransactions
+
+	^ (aTransactions collect: [:transaction | transaction generateEntryForReport: self]) asOrderedCollection! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:50:50' prior: 50607217!
+generateEntriesFor: aTransactions on: aPortfolio
+
+	|entriesForEachTransaction|
+	
+	entriesForEachTransaction := self reportEntriesForEachTransactionIn: aTransactions.
+	
+	self addLastLineWithBalanceOf: aPortfolio to: entriesForEachTransaction.
+	
+	^entriesForEachTransaction fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter asString, currentEntry]! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:52:35'!
+finalReportWithAllEntriesIn: entriesForEachTransaction
+
+	^ entriesForEachTransaction fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter asString, currentEntry]! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:52:35' prior: 50607241!
+generateEntriesFor: aTransactions on: aPortfolio
+
+	|entriesForEachTransaction|
+	
+	entriesForEachTransaction := self reportEntriesForEachTransactionIn: aTransactions.
+	
+	self addLastLineWithBalanceOf: aPortfolio to: entriesForEachTransaction.
+	
+	^self finalReportWithAllEntriesIn: entriesForEachTransaction! !
+
+----SNAPSHOT----(31 May 2023 20:55:03) CuisUniversity-5706.image priorSource: 8813145!
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:55:27'!
+removeLastLineOfReport: report
+
+	^ report allButLast: (report size - (report findString: 'Balance') + 2)! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:55:27' prior: 50607092!
+generateEntriesForPortfolio: aPortfolio
+
+	|reportsForEachAccount|
+	
+	reportsForEachAccount := (aPortfolio accounts collect: [:receptiveAccount | |report| 
+		report := (receptiveAccount generateReportOfType: self).
+		self removeLastLineOfReport: report.
+	]) flatten asOrderedCollection.
+	
+	self addLastLineWithBalanceOf: aPortfolio to: reportsForEachAccount.
+	
+	^reportsForEachAccount fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter asString, currentEntry]! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:55:38' prior: 50607287!
+generateEntriesForPortfolio: aPortfolio
+
+	|reportsForEachAccount|
+	
+	reportsForEachAccount := (aPortfolio accounts collect: [:receptiveAccount | |report| 
+		report := receptiveAccount generateReportOfType: self.
+		self removeLastLineOfReport: report.
+	]) flatten asOrderedCollection.
+	
+	self addLastLineWithBalanceOf: aPortfolio to: reportsForEachAccount.
+	
+	^reportsForEachAccount fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter asString, currentEntry]! !
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 20:55:42'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 20:55:42'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 20:55:42'!
+PASSED!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 20:55:42'!
+PASSED!
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 20:55:42'!
+PASSED!
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 20:55:42'!
+PASSED!
+
+!testRun: #SummaryReportTest #test07CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount stamp: 'IB 5/31/2023 20:55:42'!
+PASSED!
+
+!testRun: #SummaryReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount stamp: 'IB 5/31/2023 20:55:42'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 20:55:45) CuisUniversity-5706.image priorSource: 8820052!
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:56:18' prior: 50607306!
+generateEntriesForPortfolio: aPortfolio
+
+	|reportsForEachAccount|
+	
+	reportsForEachAccount := (aPortfolio accounts collect: [:receptiveAccount |
+		self removeLastLineOfReport: (receptiveAccount generateReportOfType: self).
+	]) flatten asOrderedCollection.
+	
+	self addLastLineWithBalanceOf: aPortfolio to: reportsForEachAccount.
+	
+	^reportsForEachAccount fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter asString, currentEntry]! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:57:11'!
+unifiedReportsOfAllReceptiveAccountsAssociatedTo: aPortfolio
+
+	^ (aPortfolio accounts collect: [:receptiveAccount |
+		self removeLastLineOfReport: (receptiveAccount generateReportOfType: self).
+	]) flatten asOrderedCollection! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:57:11' prior: 50607364!
+generateEntriesForPortfolio: aPortfolio
+
+	|reportsForEachAccount|
+	
+	reportsForEachAccount := self unifiedReportsOfAllReceptiveAccountsAssociatedTo: aPortfolio.
+	
+	self addLastLineWithBalanceOf: aPortfolio to: reportsForEachAccount.
+	
+	^reportsForEachAccount fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter asString, currentEntry]! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:57:53'!
+reportsOfAllReceptiveAccountsAssociatedTo: aPortfolio
+
+	^ (aPortfolio accounts collect: [:receptiveAccount |
+		self removeLastLineOfReport: (receptiveAccount generateReportOfType: self).
+	]) flatten asOrderedCollection! !
+!SummaryReport methodsFor: 'as yet unclassified' stamp: 'IB 5/31/2023 20:57:53' prior: 50607391!
+generateEntriesForPortfolio: aPortfolio
+
+	|reportsForEachAccount|
+	
+	reportsForEachAccount := self reportsOfAllReceptiveAccountsAssociatedTo: aPortfolio.
+	
+	self addLastLineWithBalanceOf: aPortfolio to: reportsForEachAccount.
+	
+	^reportsForEachAccount fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter asString, currentEntry]! !
+
+!methodRemoval: SummaryReport #unifiedReportsOfAllReceptiveAccountsAssociatedTo: stamp: 'IB 5/31/2023 20:57:53'!
+unifiedReportsOfAllReceptiveAccountsAssociatedTo: aPortfolio
+
+	^ (aPortfolio accounts collect: [:receptiveAccount |
+		self removeLastLineOfReport: (receptiveAccount generateReportOfType: self).
+	]) flatten asOrderedCollection!
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:58:05' prior: 50607405!
+reportsOfAllReceptiveAccountsAssociatedTo: aPortfolio
+
+	^ (aPortfolio accounts collect: [:receptiveAccount |
+		self removeLastLineOfReport: (receptiveAccount generateReportOfType: self).
+	])! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:58:17' prior: 50607440!
+reportsOfAllReceptiveAccountsAssociatedTo: aPortfolio
+
+	^ aPortfolio accounts collect: [:receptiveAccount | self removeLastLineOfReport: (receptiveAccount generateReportOfType: self)]! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:58:34' prior: 50607415!
+generateEntriesForPortfolio: aPortfolio
+
+	|reportsForEachAccount|
+	
+	reportsForEachAccount := (self reportsOfAllReceptiveAccountsAssociatedTo: aPortfolio) flatten asOrderedCollection.
+	
+	self addLastLineWithBalanceOf: aPortfolio to: reportsForEachAccount.
+	
+	^reportsForEachAccount fold: [:previousEntry :currentEntry | previousEntry , Character newLineCharacter asString, currentEntry]! !
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 20:58:41'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 20:58:41'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 20:58:41'!
+PASSED!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 20:58:41'!
+PASSED!
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 20:58:41'!
+PASSED!
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 20:58:41'!
+PASSED!
+
+!testRun: #SummaryReportTest #test07CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount stamp: 'IB 5/31/2023 20:58:41'!
+PASSED!
+
+!testRun: #SummaryReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount stamp: 'IB 5/31/2023 20:58:41'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 20:58:43) CuisUniversity-5706.image priorSource: 8822728!
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 20:59:58' prior: 50607458!
+generateEntriesForPortfolio: aPortfolio
+
+	|reportsForEachAccount|
+	
+	reportsForEachAccount := (self reportsOfAllReceptiveAccountsAssociatedTo: aPortfolio) flatten asOrderedCollection.
+	
+	self addLastLineWithBalanceOf: aPortfolio to: reportsForEachAccount.
+	
+	^self finalReportWithAllEntriesIn: reportsForEachAccount! !
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:00:00'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:00:00'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:00:00'!
+PASSED!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 21:00:00'!
+PASSED!
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 21:00:00'!
+PASSED!
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 21:00:00'!
+PASSED!
+
+!testRun: #SummaryReportTest #test07CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount stamp: 'IB 5/31/2023 21:00:00'!
+PASSED!
+
+!testRun: #SummaryReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount stamp: 'IB 5/31/2023 21:00:00'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 21:00:03) CuisUniversity-5706.image priorSource: 8827492!
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:01:55'!
+finalizeReportFor: aPortfolio withAllEntriesIn: reportEntries
+	
+	self addLastLineWithBalanceOf: aPortfolio to: reportEntries.
+	^self finalReportWithAllEntriesIn: reportEntries! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:02:10' prior: 50607265!
+generateEntriesFor: aTransactions on: aPortfolio
+
+	|entriesForEachTransaction|
+	
+	entriesForEachTransaction := self reportEntriesForEachTransactionIn: aTransactions.
+	^ self finalizeReportFor: aPortfolio withAllEntriesIn: entriesForEachTransaction! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:02:20' prior: 50607513!
+generateEntriesForPortfolio: aPortfolio
+
+	|reportsForEachAccount|
+	
+	reportsForEachAccount := (self reportsOfAllReceptiveAccountsAssociatedTo: aPortfolio) flatten asOrderedCollection.
+	
+	^ self finalizeReportFor: aPortfolio withAllEntriesIn: reportsForEachAccount! !
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:02:29'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:02:29'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:02:29'!
+PASSED!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 21:02:29'!
+PASSED!
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 21:02:29'!
+PASSED!
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 21:02:29'!
+PASSED!
+
+!testRun: #SummaryReportTest #test07CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount stamp: 'IB 5/31/2023 21:02:29'!
+PASSED!
+
+!testRun: #SummaryReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount stamp: 'IB 5/31/2023 21:02:29'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 21:02:32) CuisUniversity-5706.image priorSource: 8829181!
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:03:18' prior: 50607574!
+generateEntriesFor: aTransactions on: aPortfolio
+
+	|reportEntries|
+	
+	reportEntries := self reportEntriesForEachTransactionIn: aTransactions.
+	^ self finalizeReportFor: aPortfolio withAllEntriesIn: reportEntries! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:03:27' prior: 50607585!
+generateEntriesForPortfolio: aPortfolio
+
+	|reportEntries|
+	
+	reportEntries := (self reportsOfAllReceptiveAccountsAssociatedTo: aPortfolio) flatten asOrderedCollection.
+	
+	^ self finalizeReportFor: aPortfolio withAllEntriesIn: reportEntries! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:03:32' prior: 50607646!
+generateEntriesForPortfolio: aPortfolio
+
+	| reportEntries |
+	
+	reportEntries := (self reportsOfAllReceptiveAccountsAssociatedTo: aPortfolio) flatten asOrderedCollection.
+	
+	^ self finalizeReportFor: aPortfolio withAllEntriesIn: reportEntries! !
+!SummaryReport methodsFor: 'support' stamp: 'IB 5/31/2023 21:04:24'!
+reportEntriesOfAllReceptiveAccountsAssociatedTo: aPortfolio
+
+	^ aPortfolio accounts collect: [:receptiveAccount | self removeLastLineOfReport: (receptiveAccount generateReportOfType: self)]! !
+!SummaryReport methodsFor: 'as yet unclassified' stamp: 'IB 5/31/2023 21:04:24' prior: 50607657!
+generateEntriesForPortfolio: aPortfolio
+
+	| reportEntries |
+	
+	reportEntries := (self reportEntriesOfAllReceptiveAccountsAssociatedTo: aPortfolio) flatten asOrderedCollection.
+	
+	^ self finalizeReportFor: aPortfolio withAllEntriesIn: reportEntries! !
+
+!methodRemoval: SummaryReport #reportsOfAllReceptiveAccountsAssociatedTo: stamp: 'IB 5/31/2023 21:04:24'!
+reportsOfAllReceptiveAccountsAssociatedTo: aPortfolio
+
+	^ aPortfolio accounts collect: [:receptiveAccount | self removeLastLineOfReport: (receptiveAccount generateReportOfType: self)]!
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:04:46' prior: 50607677!
+generateEntriesForPortfolio: aPortfolio
+
+	| reportEntries |
+	
+	reportEntries := self reportEntriesOfAllReceptiveAccountsAssociatedTo: aPortfolio.
+	
+	^ self finalizeReportFor: aPortfolio withAllEntriesIn: reportEntries! !
+!SummaryReport methodsFor: 'support' stamp: 'IB 5/31/2023 21:04:57' prior: 50607667!
+reportEntriesOfAllReceptiveAccountsAssociatedTo: aPortfolio
+
+	^ (aPortfolio accounts collect: [:receptiveAccount | self removeLastLineOfReport: (receptiveAccount generateReportOfType: self)]) flatten asOrderedCollection! !
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:05:19'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:05:19'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:05:19'!
+PASSED!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 21:05:19'!
+PASSED!
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 21:05:19'!
+PASSED!
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 21:05:19'!
+PASSED!
+
+!testRun: #SummaryReportTest #test07CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount stamp: 'IB 5/31/2023 21:05:19'!
+PASSED!
+
+!testRun: #SummaryReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount stamp: 'IB 5/31/2023 21:05:19'!
+PASSED!
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:05:38' prior: 50607697!
+generateEntriesForPortfolio: aPortfolio
+
+	| reportEntries |
+	
+	reportEntries := self reportEntriesOfAllReceptiveAccountsAssociatedTo: aPortfolio.
+	^ self finalizeReportFor: aPortfolio withAllEntriesIn: reportEntries! !
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:06:27' prior: 50607636!
+generateEntriesFor: aTransactionsCollection on: aPortfolio
+
+	|reportEntries|
+	
+	reportEntries := self reportEntriesForEachTransactionIn: aTransactionsCollection.
+	^ self finalizeReportFor: aPortfolio withAllEntriesIn: reportEntries! !
+
+!testRun: #SummaryReportTest #test01CanReceptiveAccountGenerateSummaryReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:06:40'!
+PASSED!
+
+!testRun: #SummaryReportTest #test02CanReceptiveAccountGenerateSummaryReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:06:40'!
+PASSED!
+
+!testRun: #SummaryReportTest #test03CanReceptiveAccountGenerateSummaryReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:06:40'!
+PASSED!
+
+!testRun: #SummaryReportTest #test04CanReceptiveAccountGenerateSummaryReportWhenOneOriginTransferRegistered stamp: 'IB 5/31/2023 21:06:40'!
+PASSED!
+
+!testRun: #SummaryReportTest #test05CanReceptiveAccountGenerateSummaryReportWhenMoreThanOneTransactionRegistered stamp: 'IB 5/31/2023 21:06:40'!
+PASSED!
+
+!testRun: #SummaryReportTest #test06CanPortfolioGenerateSummaryReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 21:06:40'!
+PASSED!
+
+!testRun: #SummaryReportTest #test07CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccount stamp: 'IB 5/31/2023 21:06:40'!
+PASSED!
+
+!testRun: #SummaryReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToMoreThanOneReceptiveAccount stamp: 'IB 5/31/2023 21:06:40'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 21:06:42) CuisUniversity-5706.image priorSource: 8831433!
+
+TestCase subclass: #TransferNetReportTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNetReportTest category: 'Portfolio-Solucion' stamp: 'IB 5/31/2023 21:07:17'!
+TestCase subclass: #TransferNetReportTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNetReport category: 'Portfolio-Solucion' stamp: 'IB 5/31/2023 21:08:29'!
+Object subclass: #TransferNetReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferNetReportTest methodsFor: 'no messages' stamp: 'IB 5/31/2023 21:08:21'!
+test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	
+	self assert: (account generateReportOfType: TransferNetReport new) equals: 0
+	
+! !
+!TransferNetReportTest methodsFor: 'as yet unclassified' stamp: 'IB 5/31/2023 21:08:38' prior: 50607834!
+test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered
+
+	self assert: (ReceptiveAccount new generateReportOfType: TransferNetReport new) equals: 0
+	
+! !
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:08:52'!
+ERROR!
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:08:52'!
+ERROR!
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:09:14'!
+generateEntriesFor: aTransactions on: aReceptiveAccount 
+	self shouldBeImplemented.! !
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:09:23' prior: 50607861!
+generateEntriesFor: aTransactions on: aReceptiveAccount
+
+	^0! !
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:09:24'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:09:27'!
+PASSED!
+!TransferNetReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 21:10:40'!
+test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	self assert: (account generateReportOfType: TransferNetReport new) equals: 0! !
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:10:42'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:10:42'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:10:42'!
+PASSED!
+!TransferNetReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 21:11:14'!
+test02CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	Withdraw register: 100 on: account.
+	
+	self assert: (account generateReportOfType: TransferNetReport new) equals: 0! !
+!TransferNetReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 21:11:20'!
+test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	Withdraw register: 100 on: account.
+	
+	self assert: (account generateReportOfType: TransferNetReport new) equals: 0! !
+
+!methodRemoval: TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:11:20'!
+test02CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered
+
+	| account  |
+	
+	account := ReceptiveAccount new.
+	Withdraw register: 100 on: account.
+	
+	self assert: (account generateReportOfType: TransferNetReport new) equals: 0!
+
+!testRun: #TransferNetReportTest #test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:11:24'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:11:24'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:11:24'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:11:24'!
+PASSED!
+!TransferNetReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 21:12:22'!
+test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered
+
+	| account  anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	
+	Transfer send: 100 from: account to: anotherAccount.
+	
+	self assert: (account generateReportOfType: SummaryReport new) equals: -100.
+		
+	self assert: (anotherAccount generateReportOfType: SummaryReport new) equals: 100.! !
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:12:23'!
+FAILURE!
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:13:37' prior: 50607867!
+generateEntriesFor: aTransactionsCollection on: aReceptiveAccount
+
+	^ aTransactionsCollection first generateEntryForReport: self! !
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:13:44'!
+ERROR!
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:13:44'!
+ERROR!
+
+!testRun: #TransferNetReportTest #test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:13:44'!
+ERROR!
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:13:44'!
+FAILURE!
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:13:48'!
+ERROR!
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:14:10' prior: 50607973!
+generateEntriesFor: aTransactionsCollection on: aReceptiveAccount
+
+	aTransactionsCollection  ifEmpty: [^0].
+
+	^ aTransactionsCollection first generateEntryForReport: self! !
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:14:12'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:14:12'!
+ERROR!
+
+!testRun: #TransferNetReportTest #test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:14:12'!
+ERROR!
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:14:12'!
+FAILURE!
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:14:14'!
+ERROR!
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:14:20'!
+generateEntryForDeposit: aDeposit 
+	self shouldBeImplemented.! !
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:14:32' prior: 50608032!
+generateEntryForDeposit: aDeposit
+	
+	^0! !
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:14:34'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:14:37'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:14:37'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:14:37'!
+ERROR!
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:14:37'!
+FAILURE!
+
+!testRun: #TransferNetReportTest #test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:14:38'!
+ERROR!
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:14:43'!
+generateEntryForWithdraw: aWithdraw 
+	self shouldBeImplemented.! !
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:14:48' prior: 50608067!
+generateEntryForWithdraw: aWithdraw 
+	
+	^0! !
+
+!testRun: #TransferNetReportTest #test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:14:49'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:14:51'!
+FAILURE!
+!TransferNetReportTest methodsFor: 'assertions' stamp: 'IB 5/31/2023 21:14:53' overrides: 16961444!
+assert: aRenameMe1 description: aRenameMe2 
+	self shouldBeImplemented.! !
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:14:59'!
+ERROR!
+!TransferNetReportTest methodsFor: 'error handling' stamp: 'IB 5/31/2023 21:15:04' overrides: 16902107!
+error: aRenameMe1 
+	self shouldBeImplemented.! !
+
+!methodRemoval: TransferNetReportTest #assert:description: stamp: 'IB 5/31/2023 21:15:32'!
+assert: aRenameMe1 description: aRenameMe2 
+	self shouldBeImplemented.!
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:15:35'!
+FAILURE!
+!TransferNetReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 21:15:52' prior: 50607953!
+test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered
+
+	| account  anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	
+	Transfer send: 100 from: account to: anotherAccount.
+	
+	self assert: (account generateReportOfType: TransferNetReport new) equals: -100.
+		
+	self assert: (anotherAccount generateReportOfType: SummaryReport new) equals: 100.! !
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:15:53'!
+ERROR!
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:15:58'!
+generateEntryForOriginTransfer: anOriginTransfer 
+	self shouldBeImplemented.! !
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:16:27' prior: 50608130!
+generateEntryForOriginTransfer: anOriginTransfer
+
+	^anOriginTransfer value negated! !
+
+anOriginTransfer value negated!
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:16:34'!
+FAILURE!
+!TransferNetReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 21:16:46' prior: 50608110!
+test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered
+
+	| account  anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	
+	Transfer send: 100 from: account to: anotherAccount.
+	
+	self assert: (account generateReportOfType: TransferNetReport new) equals: -100.
+		
+	self assert: (anotherAccount generateReportOfType: TransferNetReport new) equals: 100.! !
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:16:48'!
+ERROR!
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:16:53'!
+generateEntryForDestinationTransfer: aDestinationTransfer 
+	self shouldBeImplemented.! !
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:17:02' prior: 50608167!
+generateEntryForDestinationTransfer: aDestinationTransfer
+
+	^aDestinationTransfer value! !
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:17:03'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:17:09'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:17:09'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:17:09'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:17:09'!
+PASSED!
+
+Object subclass: #AccountReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountReport category: 'Portfolio-Solucion' stamp: 'IB 5/31/2023 21:17:28'!
+Object subclass: #AccountReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountReport subclass: #SummaryReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #SummaryReport category: 'Portfolio-Solucion' stamp: 'IB 5/31/2023 21:17:42'!
+AccountReport subclass: #SummaryReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountReport subclass: #TransferNetReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNetReport category: 'Portfolio-Solucion' stamp: 'IB 5/31/2023 21:17:52'!
+AccountReport subclass: #TransferNetReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!SummaryReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:18:10' prior: 50607764!
+generateEntriesFor: aTransactionsCollection on: aReceptiveAccount
+
+	|reportEntries|
+	
+	reportEntries := self reportEntriesForEachTransactionIn: aTransactionsCollection.
+	^ self finalizeReportFor: aReceptiveAccount withAllEntriesIn: reportEntries! !
+!AccountReport methodsFor: 'no messages' stamp: 'IB 5/31/2023 21:18:23'!
+generateEntriesFor: aTransactionsCollection on: aReceptiveAccount
+
+	self subclassResponsibility ! !
+!AccountReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:18:47'!
+generateEntriesForPortfolio: aPortfolio
+
+	self subclassResponsibility ! !
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:19:20' prior: 50608002 overrides: 50608248!
+generateEntriesFor: aTransactionsCollection on: aReceptiveAccount
+
+	aTransactionsCollection ifEmpty: [^0].
+
+	^ aTransactionsCollection first generateEntryForReport: self! !
+!AccountReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:19:52'!
+generateEntryForDeposit: aDeposit
+
+	self subclassResponsibility ! !
+!AccountReport methodsFor: 'evaluating - entries' stamp: 'IB 5/31/2023 21:20:20'!
+generateEntryForWithdraw: aWithdraw
+
+	self subclassResponsibility ! !
+!AccountReport methodsFor: 'evaluating - entries' stamp: 'IB 5/31/2023 21:20:33'!
+generateEntryForDestinationTransfer: aDestinationTransfer
+
+	self subclassResponsibility ! !
+!AccountReport methodsFor: 'evaluating - entries' stamp: 'IB 5/31/2023 21:20:45'!
+generateEntryForOriginTransfer: anOriginTransfer
+
+	self subclassResponsibility ! !
+!TransferNetReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 21:21:47'!
+test05CanReceptiveAccountGenerateReportWhenMoreThanOneTransferRegistered
+
+	| account  anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	
+	Transfer send: 100 from: account to: anotherAccount.
+	Transfer send: 50 from: account to: anotherAccount.
+	
+	self assert: (account generateReportOfType: TransferNetReport new) equals: -150.
+		
+	self assert: (anotherAccount generateReportOfType: TransferNetReport new) equals: 150.! !
+
+!testRun: #TransferNetReportTest #test05CanReceptiveAccountGenerateReportWhenMoreThanOneTransferRegistered stamp: 'IB 5/31/2023 21:21:51'!
+FAILURE!
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:23:26' prior: 50608260 overrides: 50608248!
+generateEntriesFor: aTransactionsCollection on: aReceptiveAccount
+
+	^ aTransactionsCollection 
+		inject: 0
+		into: [ :currentValueReport :transaction |  currentValueReport + transaction generateEntryForReport: self ]! !
+
+!testRun: #TransferNetReportTest #test05CanReceptiveAccountGenerateReportWhenMoreThanOneTransferRegistered stamp: 'IB 5/31/2023 21:23:27'!
+ERROR!
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:23:42' prior: 50608312 overrides: 50608248!
+generateEntriesFor: aTransactionsCollection on: aReceptiveAccount
+
+	^ aTransactionsCollection 
+		inject: 0
+		into: [ :currentValueReport :transaction |  currentValueReport + (transaction generateEntryForReport: self) ]! !
+
+!testRun: #TransferNetReportTest #test05CanReceptiveAccountGenerateReportWhenMoreThanOneTransferRegistered stamp: 'IB 5/31/2023 21:23:43'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:23:43'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:23:43'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:23:43'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:23:43'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test05CanReceptiveAccountGenerateReportWhenMoreThanOneTransferRegistered stamp: 'IB 5/31/2023 21:23:43'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 21:23:47) CuisUniversity-5706.image priorSource: 8837129!
+!TransferNetReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 21:24:30'!
+test06CanReceptiveAccountGenerateReportWhenOneTransferAndAnotherTransactionRegistered
+
+	| account  anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	Transfer send: 100 from: account to: anotherAccount.
+	
+	self assert: (account generateReportOfType: TransferNetReport new) equals: -150.
+		
+	self assert: (anotherAccount generateReportOfType: TransferNetReport new) equals: 150! !
+
+!methodRemoval: TransferNetReportTest #error: stamp: 'IB 5/31/2023 21:24:36'!
+error: aRenameMe1 
+	self shouldBeImplemented.!
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:24:43'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:24:43'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:24:43'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:24:43'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test05CanReceptiveAccountGenerateReportWhenMoreThanOneTransferRegistered stamp: 'IB 5/31/2023 21:24:43'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test06CanReceptiveAccountGenerateReportWhenOneTransferAndAnotherTransactionRegistered stamp: 'IB 5/31/2023 21:24:43'!
+FAILURE!
+
+!testRun: #TransferNetReportTest #test06CanReceptiveAccountGenerateReportWhenOneTransferAndAnotherTransactionRegistered stamp: 'IB 5/31/2023 21:24:43'!
+FAILURE!
+!TransferNetReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 21:24:56' prior: 50608366!
+test06CanReceptiveAccountGenerateReportWhenOneTransferAndAnotherTransactionRegistered
+
+	| account  anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	
+	Deposit register: 50 on: account.
+	Transfer send: 100 from: account to: anotherAccount.
+	
+	self assert: (account generateReportOfType: TransferNetReport new) equals: -100.
+		
+	self assert: (anotherAccount generateReportOfType: TransferNetReport new) equals: 100! !
+
+!testRun: #TransferNetReportTest #test06CanReceptiveAccountGenerateReportWhenOneTransferAndAnotherTransactionRegistered stamp: 'IB 5/31/2023 21:24:57'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:25:00'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:25:00'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:25:00'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:25:00'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test05CanReceptiveAccountGenerateReportWhenMoreThanOneTransferRegistered stamp: 'IB 5/31/2023 21:25:00'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test06CanReceptiveAccountGenerateReportWhenOneTransferAndAnotherTransactionRegistered stamp: 'IB 5/31/2023 21:25:00'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 21:25:03) CuisUniversity-5706.image priorSource: 8854807!
+
+----SNAPSHOT----(31 May 2023 21:25:56) CuisUniversity-5706.image priorSource: 8858195!
+!TransferNetReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 21:26:51'!
+test07CanPortfolioGenerateReportWhenAssociatedToNoReceptiveAccount
+	
+	self assert: (Portfolio new generateReportOfType: TransferNetReport new) equals: 0! !
+
+!testRun: #TransferNetReportTest #test07CanPortfolioGenerateReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 21:26:53'!
+ERROR!
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:27:06' overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio 
+	self shouldBeImplemented.! !
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:27:16' prior: 50608488 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	^0! !
+
+!testRun: #TransferNetReportTest #test07CanPortfolioGenerateReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 21:27:18'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:27:18'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:27:18'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:27:18'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:27:18'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test05CanReceptiveAccountGenerateReportWhenMoreThanOneTransferRegistered stamp: 'IB 5/31/2023 21:27:18'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test06CanReceptiveAccountGenerateReportWhenOneTransferAndAnotherTransactionRegistered stamp: 'IB 5/31/2023 21:27:18'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test07CanPortfolioGenerateReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 21:27:18'!
+PASSED!
+!TransferNetReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 21:32:43'!
+test07CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccountWithOneTransfer
+
+	| account portfolio anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Transfer send: 100 from: account to: anotherAccount.
+	
+	portfolio := Portfolio with: account.
+	
+	self assert: (portfolio generateReportOfType: SummaryReport new) equals: -100
+	! !
+!TransferNetReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 21:32:50'!
+test08CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccountWithOneTransfer
+
+	| account portfolio anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Transfer send: 100 from: account to: anotherAccount.
+	
+	portfolio := Portfolio with: account.
+	
+	self assert: (portfolio generateReportOfType: SummaryReport new) equals: -100
+	! !
+
+!methodRemoval: TransferNetReportTest #test07CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccountWithOneTransfer stamp: 'IB 5/31/2023 21:32:50'!
+test07CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccountWithOneTransfer
+
+	| account portfolio anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Transfer send: 100 from: account to: anotherAccount.
+	
+	portfolio := Portfolio with: account.
+	
+	self assert: (portfolio generateReportOfType: SummaryReport new) equals: -100
+	!
+
+!testRun: #TransferNetReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccountWithOneTransfer stamp: 'IB 5/31/2023 21:32:52'!
+FAILURE!
+!TransferNetReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 21:33:01' prior: 50608549!
+test08CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccountWithOneTransfer
+
+	| account portfolio anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Transfer send: 100 from: account to: anotherAccount.
+	
+	portfolio := Portfolio with: account.
+	
+	self assert: (portfolio generateReportOfType: TransferNetReport new) equals: -100
+	! !
+
+!testRun: #TransferNetReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccountWithOneTransfer stamp: 'IB 5/31/2023 21:33:03'!
+FAILURE!
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:35:05' prior: 50608494 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	^ aPortfolio accounts 
+		inject: 0 
+		into: [:previousAccountReportValue :receptiveAccount | 
+			previousAccountReportValue + receptiveAccount generateReportOfType: self]! !
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:35:09'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:35:09'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:35:09'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:35:09'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test05CanReceptiveAccountGenerateReportWhenMoreThanOneTransferRegistered stamp: 'IB 5/31/2023 21:35:09'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test06CanReceptiveAccountGenerateReportWhenOneTransferAndAnotherTransactionRegistered stamp: 'IB 5/31/2023 21:35:09'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test07CanPortfolioGenerateReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 21:35:09'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccountWithOneTransfer stamp: 'IB 5/31/2023 21:35:09'!
+ERROR!
+
+!testRun: #TransferNetReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccountWithOneTransfer stamp: 'IB 5/31/2023 21:35:09'!
+ERROR!
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:35:24' prior: 50608609 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	^ aPortfolio accounts 
+		inject: 0 
+		into: [:previousAccountReportValue :receptiveAccount | 
+			previousAccountReportValue + (receptiveAccount generateReportOfType: self)]! !
+
+!testRun: #TransferNetReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccountWithOneTransfer stamp: 'IB 5/31/2023 21:35:25'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:35:28'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:35:28'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:35:28'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:35:28'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test05CanReceptiveAccountGenerateReportWhenMoreThanOneTransferRegistered stamp: 'IB 5/31/2023 21:35:28'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test06CanReceptiveAccountGenerateReportWhenOneTransferAndAnotherTransactionRegistered stamp: 'IB 5/31/2023 21:35:28'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test07CanPortfolioGenerateReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 21:35:28'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccountWithOneTransfer stamp: 'IB 5/31/2023 21:35:28'!
+PASSED!
+!TransferNetReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 21:35:37'!
+test08CanPortfolioGenerateReportWhenAssociatedToOnlyOneReceptiveAccountWithOneTransfer
+
+	| account portfolio anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Transfer send: 100 from: account to: anotherAccount.
+	
+	portfolio := Portfolio with: account.
+	
+	self assert: (portfolio generateReportOfType: TransferNetReport new) equals: -100
+	! !
+
+!methodRemoval: TransferNetReportTest #test08CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccountWithOneTransfer stamp: 'IB 5/31/2023 21:35:37'!
+test08CanPortfolioGenerateSummaryReportWhenAssociatedToOnlyOneReceptiveAccountWithOneTransfer
+
+	| account portfolio anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Transfer send: 100 from: account to: anotherAccount.
+	
+	portfolio := Portfolio with: account.
+	
+	self assert: (portfolio generateReportOfType: TransferNetReport new) equals: -100
+	!
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:36:39' prior: 50608662 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	aPortfolio accounts ifEmpty: [0].
+	^ aPortfolio accounts first generateReportOfType: self! !
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:36:44'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:36:44'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:36:44'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:36:44'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test05CanReceptiveAccountGenerateReportWhenMoreThanOneTransferRegistered stamp: 'IB 5/31/2023 21:36:44'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test06CanReceptiveAccountGenerateReportWhenOneTransferAndAnotherTransactionRegistered stamp: 'IB 5/31/2023 21:36:44'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test07CanPortfolioGenerateReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 21:36:44'!
+ERROR!
+
+!testRun: #TransferNetReportTest #test08CanPortfolioGenerateReportWhenAssociatedToOnlyOneReceptiveAccountWithOneTransfer stamp: 'IB 5/31/2023 21:36:44'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test07CanPortfolioGenerateReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 21:36:44'!
+ERROR!
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:36:53' prior: 50608748 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	aPortfolio accounts ifEmpty: [^0].
+	^ aPortfolio accounts first generateReportOfType: self! !
+
+!testRun: #TransferNetReportTest #test07CanPortfolioGenerateReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 21:36:54'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:36:58'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:36:58'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:36:58'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:36:58'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test05CanReceptiveAccountGenerateReportWhenMoreThanOneTransferRegistered stamp: 'IB 5/31/2023 21:36:58'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test06CanReceptiveAccountGenerateReportWhenOneTransferAndAnotherTransactionRegistered stamp: 'IB 5/31/2023 21:36:58'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test07CanPortfolioGenerateReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 21:36:58'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test08CanPortfolioGenerateReportWhenAssociatedToOnlyOneReceptiveAccountWithOneTransfer stamp: 'IB 5/31/2023 21:36:58'!
+PASSED!
+!TransferNetReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 21:37:28'!
+test08CanPortfolioGenerateReportWhenAssociatedToMoreThanOneReceptiveAccountTransfers
+
+	| account portfolio anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Transfer send: 100 from: account to: anotherAccount.
+	
+	portfolio := Portfolio with: account with: anotherAccount.
+	
+	self assert: (portfolio generateReportOfType: TransferNetReport new) equals: 0
+	! !
+
+!testRun: #TransferNetReportTest #test08CanPortfolioGenerateReportWhenAssociatedToMoreThanOneReceptiveAccountTransfers stamp: 'IB 5/31/2023 21:37:29'!
+FAILURE!
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:35:05' prior: 50608797 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	^ aPortfolio accounts 
+		inject: 0 
+		into: [:previousAccountReportValue :receptiveAccount | 
+			previousAccountReportValue + receptiveAccount generateReportOfType: self]! !
+!TransferNetReport methodsFor: 'evaluating' stamp: 'IB 5/31/2023 21:38:02' prior: 50608867 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	^ aPortfolio accounts 
+		inject: 0 
+		into: [:previousAccountReportValue :receptiveAccount | 
+			previousAccountReportValue + (receptiveAccount generateReportOfType: self)]! !
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:38:06'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:38:06'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:38:06'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:38:06'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test05CanReceptiveAccountGenerateReportWhenMoreThanOneTransferRegistered stamp: 'IB 5/31/2023 21:38:06'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test06CanReceptiveAccountGenerateReportWhenOneTransferAndAnotherTransactionRegistered stamp: 'IB 5/31/2023 21:38:06'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test07CanPortfolioGenerateReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 21:38:06'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test08CanPortfolioGenerateReportWhenAssociatedToMoreThanOneReceptiveAccountTransfers stamp: 'IB 5/31/2023 21:38:06'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test08CanPortfolioGenerateReportWhenAssociatedToOnlyOneReceptiveAccountWithOneTransfer stamp: 'IB 5/31/2023 21:38:06'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 21:38:08) CuisUniversity-5706.image priorSource: 8858283!
+!TransferNetReportTest methodsFor: 'tests' stamp: 'IB 5/31/2023 21:38:23'!
+test09CanPortfolioGenerateReportWhenAssociatedToMoreThanOneReceptiveAccountTransfers
+
+	| account portfolio anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Transfer send: 100 from: account to: anotherAccount.
+	
+	portfolio := Portfolio with: account with: anotherAccount.
+	
+	self assert: (portfolio generateReportOfType: TransferNetReport new) equals: 0
+	! !
+
+!methodRemoval: TransferNetReportTest #test08CanPortfolioGenerateReportWhenAssociatedToMoreThanOneReceptiveAccountTransfers stamp: 'IB 5/31/2023 21:38:23'!
+test08CanPortfolioGenerateReportWhenAssociatedToMoreThanOneReceptiveAccountTransfers
+
+	| account portfolio anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Transfer send: 100 from: account to: anotherAccount.
+	
+	portfolio := Portfolio with: account with: anotherAccount.
+	
+	self assert: (portfolio generateReportOfType: TransferNetReport new) equals: 0
+	!
+
+!testRun: #TransferNetReportTest #test01CanReceptiveAccountGenerateReportWhenNoTransactionsRegistered stamp: 'IB 5/31/2023 21:38:26'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test02CanReceptiveAccountGenerateReportWhenOneDepositRegistered stamp: 'IB 5/31/2023 21:38:26'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test03CanReceptiveAccountGenerateReportWhenOneWithdrawRegistered stamp: 'IB 5/31/2023 21:38:26'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test04CanReceptiveAccountGenerateReportWhenOneTransferRegistered stamp: 'IB 5/31/2023 21:38:27'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test05CanReceptiveAccountGenerateReportWhenMoreThanOneTransferRegistered stamp: 'IB 5/31/2023 21:38:27'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test06CanReceptiveAccountGenerateReportWhenOneTransferAndAnotherTransactionRegistered stamp: 'IB 5/31/2023 21:38:27'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test07CanPortfolioGenerateReportWhenAssociatedToNoReceptiveAccount stamp: 'IB 5/31/2023 21:38:27'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test08CanPortfolioGenerateReportWhenAssociatedToOnlyOneReceptiveAccountWithOneTransfer stamp: 'IB 5/31/2023 21:38:27'!
+PASSED!
+
+!testRun: #TransferNetReportTest #test09CanPortfolioGenerateReportWhenAssociatedToMoreThanOneReceptiveAccountTransfers stamp: 'IB 5/31/2023 21:38:27'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 21:38:37) CuisUniversity-5706.image priorSource: 8872912!
+
+----QUIT----(31 May 2023 21:38:48) CuisUniversity-5706.image priorSource: 8875383!
+
+----STARTUP---- (1 June 2023 15:29:52) as /home/iboaretto/Desktop/uba/inge1/linux64/CuisUniversity-5706.image!
+
+
+TestCase subclass: #AssociatedAccountsReportTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AssociatedAccountsReportTest category: 'Portfolio-Solucion' stamp: 'IB 6/1/2023 15:32:20'!
+TestCase subclass: #AssociatedAccountsReportTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AssociatedAccountsReport category: 'Portfolio-Solucion' stamp: 'IB 6/1/2023 15:34:56'!
+AccountReport subclass: #AssociatedAccountsReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!AssociatedAccountsReportTest methodsFor: 'no messages' stamp: 'IB 6/1/2023 15:34:39'!
+test01CanPortfolioGenerateReportWhenNoReceptiveAccountsAssociated
+
+	self 
+		assert: ((Portfolio named: 'Portfolio Principal') generateReportOfType: AssociatedAccountsReport new) 
+		equals: 'Portfolio Principal'
+	
+! !
+!AssociatedAccountsReportTest methodsFor: 'as yet unclassified' stamp: 'IB 6/1/2023 15:35:08' prior: 50609037!
+test01CanPortfolioGenerateReportWhenNoReceptiveAccountsAssociated
+
+	self 
+		assert: ((Portfolio named: 'Portfolio Principal') generateReportOfType: AssociatedAccountsReport new) 
+		equals: 'Portfolio Principal'
+! !
+
+!testRun: #AssociatedAccountsReportTest #test01CanPortfolioGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 15:35:08'!
+ERROR!
+!Portfolio class methodsFor: 'instance creation' stamp: 'IB 6/1/2023 15:35:16'!
+named: aString 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeNamed: aString ! !
+!Portfolio class methodsFor: 'instance creation' stamp: 'IB 6/1/2023 15:35:29' prior: 50609062!
+named: aPortfolioName
+
+	^self new initializeNamed: aPortfolioName ! !
+
+!testRun: #AssociatedAccountsReportTest #test01CanPortfolioGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 15:35:30'!
+ERROR!
+
+!classDefinition: #Portfolio category: 'Portfolio-Solucion' stamp: 'IB 6/1/2023 15:35:37'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents portfolioName'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Portfolio methodsFor: 'initialization' stamp: 'IB 6/1/2023 15:35:37'!
+initializeNamed: aPortfolioName 
+	self shouldBeImplemented.
+	portfolioName := aPortfolioName.! !
+
+!classDefinition: #Portfolio category: 'Portfolio-Solucion' stamp: 'IB 6/1/2023 15:36:13'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents portfolioName name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Portfolio methodsFor: 'initialization' stamp: 'IB 6/1/2023 15:36:11' prior: 50609087!
+initializeNamed: aPortfolioName 
+
+	self initialize.
+	name := aPortfolioName! !
+
+!testRun: #AssociatedAccountsReportTest #test01CanPortfolioGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 15:36:14'!
+ERROR!
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 15:36:26' overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio 
+	self shouldBeImplemented.! !
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 15:36:39' prior: 50609112 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	^aPortfolio name! !
+
+!testRun: #AssociatedAccountsReportTest #test01CanPortfolioGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 15:36:40'!
+FAILURE!
+
+!methodRemoval: Portfolio #initializeNamed: stamp: 'IB 6/1/2023 15:38:04'!
+initializeNamed: aPortfolioName 
+
+	self initialize.
+	name := aPortfolioName!
+
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents '
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Solucion' stamp: 'IB 6/1/2023 15:38:10'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Account category: 'Portfolio-Solucion' stamp: 'IB 6/1/2023 15:38:19'!
+Object subclass: #Account
+	instanceVariableNames: 'name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Account methodsFor: 'balance' stamp: 'IB 6/1/2023 15:38:17'!
+initializeNamed: aPortfolioName 
+
+	self initialize.
+	name := aPortfolioName! !
+!Account class methodsFor: 'no messages' stamp: 'IB 6/1/2023 15:38:52'!
+named: aName
+
+	^self new initializeNamed: aName ! !
+
+!methodRemoval: Portfolio class #named: stamp: 'IB 6/1/2023 15:39:07'!
+named: aPortfolioName
+
+	^self new initializeNamed: aPortfolioName !
+!Account methodsFor: 'balance' stamp: 'IB 6/1/2023 15:39:23' overrides: 16903442!
+name
+
+	^name! !
+
+!testRun: #AssociatedAccountsReportTest #test01CanPortfolioGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 15:39:47'!
+PASSED!
+
+----SNAPSHOT----(1 June 2023 15:39:50) CuisUniversity-5706.image priorSource: 8875471!
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:40:11'!
+test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated
+
+	self 
+		assert: ((Portfolio named: 'Portfolio Principal') generateReportOfType: AssociatedAccountsReport new) 
+		equals: 'Portfolio Principal'
+! !
+
+!methodRemoval: AssociatedAccountsReportTest #test01CanPortfolioGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 15:40:11'!
+test01CanPortfolioGenerateReportWhenNoReceptiveAccountsAssociated
+
+	self 
+		assert: ((Portfolio named: 'Portfolio Principal') generateReportOfType: AssociatedAccountsReport new) 
+		equals: 'Portfolio Principal'
+!
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:42:20'!
+test02ReceptiveAccountCantGenerateReport
+
+	self 
+		should: [(ReceptiveAccount named: 'Cuenta familiar') generateReportOfType: AssociatedAccountsReport new]
+		raise: Error
+		withMessageText: 'This message is not appropriate for this object'
+! !
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 15:42:26'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test02ReceptiveAccountCantGenerateReport stamp: 'IB 6/1/2023 15:42:26'!
+FAILURE!
+
+!testRun: #AssociatedAccountsReportTest #test02ReceptiveAccountCantGenerateReport stamp: 'IB 6/1/2023 15:42:26'!
+FAILURE!
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 15:43:17' overrides: 50608248!
+generateEntriesFor: aTransactionsCollection on: aReceptiveAccount
+
+	self shouldNotImplement! !
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 15:43:20'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test02ReceptiveAccountCantGenerateReport stamp: 'IB 6/1/2023 15:43:20'!
+PASSED!
+
+----SNAPSHOT----(1 June 2023 15:43:23) CuisUniversity-5706.image priorSource: 8880706!
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:45:41'!
+test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := Portfolio named: 'Portfolio Principal' with: (ReceptiveAccount named: 'Cuenta familiar').
+	
+	self 
+		assert: ( portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 'Portfolio Principal', Character newLineCharacter, Character tab, 'Cuenta familiar'
+! !
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 15:45:44'!
+ERROR!
+!Portfolio class methodsFor: 'instance creation' stamp: 'IB 6/1/2023 15:45:49'!
+named: aString with: aReceptiveAccount 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeNamed: aString with: aReceptiveAccount ! !
+!Portfolio class methodsFor: 'instance creation' stamp: 'IB 6/1/2023 15:46:34' prior: 50609257!
+named: aString with: aReceptiveAccount
+
+	^(self named: aString) 
+		with: aReceptiveAccount; 
+		yourself! !
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 15:46:36'!
+ERROR!
+!Portfolio class methodsFor: 'instance creation' stamp: 'IB 6/1/2023 15:46:59' prior: 50609267!
+named: aString with: aReceptiveAccount
+
+	^(self named: aString) 
+		add: aReceptiveAccount; 
+		yourself! !
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 15:47:00'!
+ERROR!
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:47:12' prior: 50609238!
+test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := Portfolio named: 'Portfolio Principal' with: (ReceptiveAccount named: 'Cuenta familiar').
+	
+	self 
+		assert: ( portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 'Portfolio Principal', Character newLineCharacter asString, Character tab asString, 'Cuenta familiar'
+! !
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 15:47:13'!
+FAILURE!
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 15:47:17'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test02ReceptiveAccountCantGenerateReport stamp: 'IB 6/1/2023 15:47:17'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 15:47:17'!
+FAILURE!
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 15:47:17'!
+FAILURE!
+
+actual!
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 15:49:23' prior: 50609118 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	self halt.
+	^aPortfolio name! !
+
+aPortfolio!
+
+aPortfolio rootParents!
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 15:52:32' prior: 50609328 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	|accounts|
+	accounts := aPortfolio accounts.
+	
+	accounts ifEmpty: [aPortfolio name].
+	
+	^aPortfolio name, Character newLineCharacter asString, Character tab asString, accounts first name! !
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 15:52:32'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 15:52:32'!
+ERROR!
+
+!testRun: #AssociatedAccountsReportTest #test02ReceptiveAccountCantGenerateReport stamp: 'IB 6/1/2023 15:52:32'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 15:52:32'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 15:52:32'!
+ERROR!
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 15:52:40' prior: 50609336 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	|accounts|
+	accounts := aPortfolio accounts.
+	
+	accounts ifEmpty: [^aPortfolio name].
+	
+	^aPortfolio name, Character newLineCharacter asString, Character tab asString, accounts first name! !
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 15:52:42'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 15:52:45'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test02ReceptiveAccountCantGenerateReport stamp: 'IB 6/1/2023 15:52:45'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 15:52:45'!
+PASSED!
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:54:52'!
+test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := Portfolio named: 'Portfolio Principal' with: (ReceptiveAccount named: 'Cuenta familiar') with: (ReceptiveAccount named: 'Cuenta personal').
+	
+	self 
+		assert: ( portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 
+			'Portfolio Principal', Character newLineCharacter asString, Character tab asString, 
+				'Cuenta familiar', Character newLineCharacter asString, 
+				'Cuenta personal'
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:55:07'!
+personalReceptiveAccount
+
+	^ ReceptiveAccount named: 'Cuenta personal'! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:55:08' prior: 50609398!
+test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := Portfolio named: 'Portfolio Principal' with: (ReceptiveAccount named: 'Cuenta familiar') with: (self personalReceptiveAccount).
+	
+	self 
+		assert: ( portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 
+			'Portfolio Principal', Character newLineCharacter asString, Character tab asString, 
+				'Cuenta familiar', Character newLineCharacter asString, 
+				'Cuenta personal'
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:55:13' prior: 50609423!
+test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := Portfolio named: 'Portfolio Principal' with: (ReceptiveAccount named: 'Cuenta familiar') with: self personalReceptiveAccount.
+	
+	self 
+		assert: ( portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 
+			'Portfolio Principal', Character newLineCharacter asString, Character tab asString, 
+				'Cuenta familiar', Character newLineCharacter asString, 
+				'Cuenta personal'
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:55:36'!
+familyReceptiveAccount
+
+	^ ReceptiveAccount named: 'Cuenta familiar'! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:55:36' prior: 50609197!
+test02ReceptiveAccountCantGenerateReport
+
+	self 
+		should: [(self familyReceptiveAccount) generateReportOfType: AssociatedAccountsReport new]
+		raise: Error
+		withMessageText: 'This message is not appropriate for this object'
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:55:36' prior: 50609289!
+test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := Portfolio named: 'Portfolio Principal' with: (self familyReceptiveAccount).
+	
+	self 
+		assert: ( portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 'Portfolio Principal', Character newLineCharacter asString, Character tab asString, 'Cuenta familiar'
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:55:36' prior: 50609442!
+test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := Portfolio named: 'Portfolio Principal' with: (self familyReceptiveAccount) with: self personalReceptiveAccount.
+	
+	self 
+		assert: ( portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 
+			'Portfolio Principal', Character newLineCharacter asString, Character tab asString, 
+				'Cuenta familiar', Character newLineCharacter asString, 
+				'Cuenta personal'
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:56:14' prior: 50609493!
+test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := 
+		Portfolio 
+			named: 'Portfolio Principal' 
+			with: self familyReceptiveAccount 
+			with: self personalReceptiveAccount.
+	
+	self 
+		assert: ( portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 
+			'Portfolio Principal', Character newLineCharacter asString, Character tab asString, 
+				'Cuenta familiar', Character newLineCharacter asString, 
+				'Cuenta personal'
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:56:30'!
+principalPortfolioName
+
+	^ 'Portfolio Principal'! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:56:30' prior: 50609176!
+test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated
+
+	self 
+		assert: ((Portfolio named: self principalPortfolioName) generateReportOfType: AssociatedAccountsReport new) 
+		equals: 'Portfolio Principal'
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:56:30' prior: 50609536!
+test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated
+
+	self 
+		assert: ((Portfolio named: self principalPortfolioName) generateReportOfType: AssociatedAccountsReport new) 
+		equals: self principalPortfolioName
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:56:30' prior: 50609478!
+test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := Portfolio named: self principalPortfolioName with: (self familyReceptiveAccount).
+	
+	self 
+		assert: ( portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 'Portfolio Principal', Character newLineCharacter asString, Character tab asString, 'Cuenta familiar'
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:56:30' prior: 50609557!
+test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := Portfolio named: self principalPortfolioName with: (self familyReceptiveAccount).
+	
+	self 
+		assert: ( portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: self principalPortfolioName, Character newLineCharacter asString, Character tab asString, 'Cuenta familiar'
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:56:30' prior: 50609512!
+test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := 
+		Portfolio 
+			named: self principalPortfolioName 
+			with: self familyReceptiveAccount 
+			with: self personalReceptiveAccount.
+	
+	self 
+		assert: ( portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 
+			'Portfolio Principal', Character newLineCharacter asString, Character tab asString, 
+				'Cuenta familiar', Character newLineCharacter asString, 
+				'Cuenta personal'
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:56:30' prior: 50609587!
+test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := 
+		Portfolio 
+			named: self principalPortfolioName 
+			with: self familyReceptiveAccount 
+			with: self personalReceptiveAccount.
+	
+	self 
+		assert: ( portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 
+			self principalPortfolioName, Character newLineCharacter asString, Character tab asString, 
+				'Cuenta familiar', Character newLineCharacter asString, 
+				'Cuenta personal'
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:56:55'!
+familyReceptiveAccountName
+
+	^ 'Cuenta familiar'! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:56:55' prior: 50609461!
+familyReceptiveAccount
+
+	^ ReceptiveAccount named: self familyReceptiveAccountName! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:56:55' prior: 50609572!
+test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := Portfolio named: self principalPortfolioName with: (self familyReceptiveAccount).
+	
+	self 
+		assert: ( portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: self principalPortfolioName, Character newLineCharacter asString, Character tab asString, self familyReceptiveAccountName
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:56:55' prior: 50609606!
+test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := 
+		Portfolio 
+			named: self principalPortfolioName 
+			with: self familyReceptiveAccount 
+			with: self personalReceptiveAccount.
+	
+	self 
+		assert: ( portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 
+			self principalPortfolioName, Character newLineCharacter asString, Character tab asString, 
+				self familyReceptiveAccountName, Character newLineCharacter asString, 
+				'Cuenta personal'
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:57:08'!
+personalReceptiveAccountName
+
+	^ 'Cuenta personal'! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:57:08' prior: 50609417!
+personalReceptiveAccount
+
+	^ ReceptiveAccount named: self personalReceptiveAccountName! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:57:08' prior: 50609652!
+test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := 
+		Portfolio 
+			named: self principalPortfolioName 
+			with: self familyReceptiveAccount 
+			with: self personalReceptiveAccount.
+	
+	self 
+		assert: ( portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 
+			self principalPortfolioName, Character newLineCharacter asString, Character tab asString, 
+				self familyReceptiveAccountName, Character newLineCharacter asString, 
+				self personalReceptiveAccountName
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:57:35' prior: 50609467!
+test02ReceptiveAccountCantGenerateReport
+
+	self 
+		should: [self familyReceptiveAccount generateReportOfType: AssociatedAccountsReport new]
+		raise: Error
+		withMessageText: 'This message is not appropriate for this object'
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 15:57:51' prior: 50609636!
+test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := Portfolio named: self principalPortfolioName with: self familyReceptiveAccount.
+	
+	self 
+		assert: ( portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: self principalPortfolioName, Character newLineCharacter asString, Character tab asString, self familyReceptiveAccountName
+! !
+
+!testRun: #AssociatedAccountsReportTest #test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 15:57:58'!
+ERROR!
+!Portfolio class methodsFor: 'instance creation' stamp: 'IB 6/1/2023 15:58:05'!
+named: aString with: aReceptiveAccount with: aReceptiveAccount3 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeNamed: aString with: aReceptiveAccount with: aReceptiveAccount3 ! !
+!Portfolio class methodsFor: 'instance creation' stamp: 'IB 6/1/2023 15:58:51' prior: 50609733!
+named: aString with: aReceptiveAccount with: anotherReceptiveAccount
+
+	^(self named: aString) 
+		add: aReceptiveAccount; 
+		add: anotherReceptiveAccount; 
+		yourself! !
+
+!testRun: #AssociatedAccountsReportTest #test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 15:58:52'!
+FAILURE!
+
+actual!
+
+----SNAPSHOT----(1 June 2023 15:59:08) CuisUniversity-5706.image priorSource: 8882699!
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:05:36' prior: 50609370 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	|accounts|
+	accounts := aPortfolio accounts.
+	
+	accounts ifEmpty: [^aPortfolio name].
+	
+	^String streamContents: [:string | 
+		string nextPut: aPortfolio name, Character newLineCharacter asString.
+		accounts do: [:account | Character tab asString, string nextPut: account name]
+	]! !
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:05:42' prior: 50609761 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	|accounts|
+	accounts := aPortfolio accounts.
+	
+	^String streamContents: [:string | 
+		string nextPut: aPortfolio name, Character newLineCharacter asString.
+		accounts do: [:account | Character tab asString, string nextPut: account name]
+	]! !
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 16:05:47'!
+ERROR!
+
+!testRun: #AssociatedAccountsReportTest #test02ReceptiveAccountCantGenerateReport stamp: 'IB 6/1/2023 16:05:47'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:05:47'!
+ERROR!
+
+!testRun: #AssociatedAccountsReportTest #test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:05:47'!
+ERROR!
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 16:05:49'!
+ERROR!
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:06:30' prior: 50609775 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	|accounts|
+	accounts := aPortfolio accounts.
+	
+	^String streamContents: [:string | 
+		string nextPutAll: aPortfolio name, Character newLineCharacter asString.
+		accounts do: [:account | string nextPutAll: Character tab asString, account name]
+	]! !
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 16:06:30'!
+FAILURE!
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 16:06:41'!
+FAILURE!
+
+!testRun: #AssociatedAccountsReportTest #test02ReceptiveAccountCantGenerateReport stamp: 'IB 6/1/2023 16:06:41'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:06:41'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:06:41'!
+FAILURE!
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 16:06:42'!
+FAILURE!
+
+(Portfolio named: self principalPortfolioName) generateReportOfType: AssociatedAccountsReport new!
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:08:05' prior: 50609810 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	|accounts|
+	accounts := aPortfolio accounts.
+	
+	^String streamContents: [:string | 
+		string nextPutAll: aPortfolio name.
+		accounts do: [:account | string nextPutAll: Character newLineCharacter asString, Character tab asString, account name]
+	]! !
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 16:08:08'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test02ReceptiveAccountCantGenerateReport stamp: 'IB 6/1/2023 16:08:08'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:08:08'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:08:08'!
+FAILURE!
+
+!testRun: #AssociatedAccountsReportTest #test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:08:08'!
+FAILURE!
+
+portfolio generateReportOfType: AssociatedAccountsReport new!
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 16:08:31' prior: 50609682!
+test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := 
+		Portfolio 
+			named: self principalPortfolioName 
+			with: self familyReceptiveAccount 
+			with: self personalReceptiveAccount.
+	
+	self 
+		assert: (portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 
+			self principalPortfolioName, Character newLineCharacter asString, Character tab asString, 
+				self familyReceptiveAccountName, Character newLineCharacter asString, 
+				self personalReceptiveAccountName
+! !
+
+!testRun: #AssociatedAccountsReportTest #test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:08:33'!
+FAILURE!
+
+expected!
+
+actual!
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 16:09:24' prior: 50609891!
+test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := 
+		Portfolio 
+			named: self principalPortfolioName 
+			with: self familyReceptiveAccount 
+			with: self personalReceptiveAccount.
+	
+	self 
+		assert: (portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 
+			self principalPortfolioName, Character newLineCharacter asString,  
+				Character tab asString, self familyReceptiveAccountName, Character newLineCharacter asString, 
+				Character tab asString, self personalReceptiveAccountName
+! !
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 16:09:27'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test02ReceptiveAccountCantGenerateReport stamp: 'IB 6/1/2023 16:09:27'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:09:27'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:09:27'!
+PASSED!
+
+----SNAPSHOT----(1 June 2023 16:09:29) CuisUniversity-5706.image priorSource: 8899405!
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:09:48' prior: 50609854 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	^String streamContents: [:string | 
+		string nextPutAll: aPortfolio name.
+		aPortfolio accounts do: [:account | string nextPutAll: Character newLineCharacter asString, Character tab asString, account name]
+	]! !
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:10:38'!
+addNameOf: aPortfolio to: string
+
+	^ string nextPutAll: aPortfolio name! !
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:10:38' prior: 50609959 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	^String streamContents: [:string | 
+		self addNameOf: aPortfolio to: string.
+		aPortfolio accounts do: [:account | string nextPutAll: Character newLineCharacter asString, Character tab asString, account name]
+	]! !
+!AssociatedAccountsReport methodsFor: 'support' stamp: 'IB 6/1/2023 16:11:00' prior: 50609970!
+addNameOf: aPortfolio to: aString
+
+	^ aString nextPutAll: aPortfolio name! !
+!AssociatedAccountsReport methodsFor: 'support' stamp: 'IB 6/1/2023 16:11:07' prior: 50609988!
+addNameOf: aPortfolio to: aStream
+
+	^ aStream nextPutAll: aPortfolio name! !
+!AssociatedAccountsReport methodsFor: 'support' stamp: 'IB 6/1/2023 16:11:20' prior: 50609994!
+addNameOf: anAccount to: aStream
+
+	^ aStream nextPutAll: anAccount name! !
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:11:51' prior: 50609977 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	^String streamContents: [:string | 
+		self addNameOf: aPortfolio to: string.
+		aPortfolio accounts do: [:account | string nextPutAll: Character newLineCharacter asString, Character tab asString.
+			self addNameOf: account to: string]
+	]! !
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:12:01' prior: 50610007 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	^String streamContents: [:string | 
+		self addNameOf: aPortfolio to: string.
+		aPortfolio accounts do: [:account | 
+			string nextPutAll: Character newLineCharacter asString, Character tab asString.
+			self addNameOf: account to: string]]! !
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 16:12:05'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test02ReceptiveAccountCantGenerateReport stamp: 'IB 6/1/2023 16:12:05'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:12:05'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:12:05'!
+PASSED!
+
+----SNAPSHOT----(1 June 2023 16:12:08) CuisUniversity-5706.image priorSource: 8905740!
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:12:33'!
+addNewEntryLevelTo: string
+
+	^ string nextPutAll: Character newLineCharacter asString, Character tab asString! !
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:12:33' prior: 50610020 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	^String streamContents: [:string | 
+		self addNameOf: aPortfolio to: string.
+		aPortfolio accounts do: [:account | 
+			self addNewEntryLevelTo: string.
+			self addNameOf: account to: string]]! !
+!AssociatedAccountsReport methodsFor: 'support' stamp: 'IB 6/1/2023 16:12:50' prior: 50610053!
+addNewEntryLevelTo: aStream
+
+	^ aStream nextPutAll: Character newLineCharacter asString, Character tab asString! !
+!AssociatedAccountsReport methodsFor: 'support' stamp: 'IB 6/1/2023 16:13:19' prior: 50610072!
+addNewEntryLevelTo: aStream
+
+	^ aStream 
+		nextPut: Character newLineCharacter; 
+		nextPut: Character tab! !
+!AssociatedAccountsReport methodsFor: 'support' stamp: 'IB 6/1/2023 16:13:27' prior: 50610079!
+addNewEntryLevelTo: aStream
+
+	aStream 
+		nextPut: Character newLineCharacter; 
+		nextPut: Character tab! !
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 16:13:31'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test02ReceptiveAccountCantGenerateReport stamp: 'IB 6/1/2023 16:13:31'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:13:31'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:13:31'!
+PASSED!
+
+----SNAPSHOT----(1 June 2023 16:13:33) CuisUniversity-5706.image priorSource: 8908758!
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 16:16:31'!
+test05PortfolioCanGenerateReportWhenOnePortfolioWithReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := 
+		Portfolio 
+			named: self principalPortfolioName 
+			with: (Portfolio named: 'Portfolio secundario' with: self familyReceptiveAccount).
+	
+	self 
+		assert: (portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 
+			self principalPortfolioName, Character newLineCharacter asString,  
+				Character tab asString, 'Portfolio secundario', Character newLineCharacter asString, 
+				Character tab asString, Character tab asString, self familyReceptiveAccountName
+! !
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 16:16:33'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test02ReceptiveAccountCantGenerateReport stamp: 'IB 6/1/2023 16:16:33'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:16:33'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:16:33'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test05PortfolioCanGenerateReportWhenOnePortfolioWithReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:16:33'!
+FAILURE!
+
+!testRun: #AssociatedAccountsReportTest #test05PortfolioCanGenerateReportWhenOnePortfolioWithReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:16:33'!
+FAILURE!
+
+actual!
+
+expected!
+
+----SNAPSHOT----(1 June 2023 16:16:56) CuisUniversity-5706.image priorSource: 8910693!
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:22:46' prior: 50610061 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	|response|
+	response := String new.
+	
+	^response streamContents: [:string | 
+		self addNameOf: aPortfolio to: string.
+		aPortfolio accounts do: [:account | 
+			(account isKindOf: Portfolio) 
+				ifTrue: [self generateEntriesForPortfolio: account ofLevel: 1 on: response]
+				ifFalse: [self generateEntriesForReceptiveAccount: account ofLevel: 1 on: response]]]! !
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:23:43'!
+generateEntriesForReceptiveAccount: aReceptiveAccount ofLevel: aTreeLevel on: aResponseStream
+
+	self addNewEntryLevelTo: aResponseStream.
+	self addNameOf: aReceptiveAccount to: aResponseStream! !
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:24:03' prior: 50610183!
+generateEntriesForReceptiveAccount: aReceptiveAccount ofLevel: aTreeLevel on: aResponseStream
+
+	self addNewEntryOfLevel: aTreeLevel to: aResponseStream.
+	self addNameOf: aReceptiveAccount to: aResponseStream! !
+!AssociatedAccountsReport methodsFor: 'support' stamp: 'IB 6/1/2023 16:25:17'!
+addNewEntryOfLevel: aTreeLevel to: aStream
+
+	aStream nextPut: Character newLineCharacter.
+	aTreeLevel timesRepeat: [aStream nextPut: Character tab]! !
+
+!methodRemoval: AssociatedAccountsReport #addNewEntryLevelTo: stamp: 'IB 6/1/2023 16:25:28'!
+addNewEntryLevelTo: aStream
+
+	aStream 
+		nextPut: Character newLineCharacter; 
+		nextPut: Character tab!
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:26:19'!
+generateEntryForReceptiveAccount: aReceptiveAccount ofLevel: aTreeLevel on: aResponseStream
+
+	self addNewEntryOfLevel: aTreeLevel to: aResponseStream.
+	self addNameOf: aReceptiveAccount to: aResponseStream! !
+!AssociatedAccountsReport methodsFor: 'as yet unclassified' stamp: 'IB 6/1/2023 16:26:19' prior: 50610167 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	|response|
+	response := String new.
+	
+	^response streamContents: [:string | 
+		self addNameOf: aPortfolio to: string.
+		aPortfolio accounts do: [:account | 
+			(account isKindOf: Portfolio) 
+				ifTrue: [self generateEntriesForPortfolio: account ofLevel: 1 on: response]
+				ifFalse: [self generateEntryForReceptiveAccount: account ofLevel: 1 on: response]]]! !
+
+!methodRemoval: AssociatedAccountsReport #generateEntriesForReceptiveAccount:ofLevel:on: stamp: 'IB 6/1/2023 16:26:19'!
+generateEntriesForReceptiveAccount: aReceptiveAccount ofLevel: aTreeLevel on: aResponseStream
+
+	self addNewEntryOfLevel: aTreeLevel to: aResponseStream.
+	self addNameOf: aReceptiveAccount to: aResponseStream!
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:27:44' prior: 50610228 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+
+	|response|
+	response := String new.
+	
+	^response streamContents: [:string | 
+		self addNameOf: aPortfolio to: string.
+		aPortfolio accounts do: [:account | |currentTreeLevel|
+			currentTreeLevel := 1.
+			(account isKindOf: Portfolio) 
+				ifTrue: [self generateEntriesForPortfolio: account ofLevel: currentTreeLevel on: response]
+				ifFalse: [self generateEntryForReceptiveAccount: account ofLevel: currentTreeLevel on: response]]]! !
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:31:01'!
+generateEntriesForPortfolio: aPortfolio ofLevel: currentTreeLevel on: aResponseStream
+
+	self addNewEntryOfLevel: currentTreeLevel to: aResponseStream.
+	self addNameOf: aPortfolio to: aResponseStream.
+	aPortfolio accounts do: [:account |
+			(account isKindOf: Portfolio) 
+				ifTrue: [self generateEntriesForPortfolio: account ofLevel: (currentTreeLevel + 1) on: aResponseStream]
+				ifFalse: [self generateEntryForReceptiveAccount: account ofLevel: (currentTreeLevel + 1) on: aResponseStream]]! !
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:33:23' prior: 50610255 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+	
+	^String new streamContents: [:aStream | self generateEntriesForPortfolio: aPortfolio ofLevel: 0 on: aStream]! !
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:33:55' prior: 50610273!
+generateEntriesForPortfolio: aPortfolio ofLevel: currentTreeLevel on: aResponseStream
+
+	self addNameOf: aPortfolio to: aResponseStream.
+	aPortfolio accounts do: [:account |
+			(account isKindOf: Portfolio) 
+				ifTrue: [self generateEntriesForPortfolio: account ofLevel: (currentTreeLevel + 1) on: aResponseStream]
+				ifFalse: [self generateEntryForReceptiveAccount: account ofLevel: (currentTreeLevel + 1) on: aResponseStream]]! !
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:35:07' prior: 50610217!
+generateEntryForReceptiveAccount: aReceptiveAccount ofLevel: aTreeLevel on: aResponseStream
+
+	self addNameOf: aReceptiveAccount to: aResponseStream! !
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:35:31' prior: 50610301!
+generateEntriesForPortfolio: aPortfolio ofLevel: currentTreeLevel on: aResponseStream
+
+	self addNameOf: aPortfolio to: aResponseStream.
+	aPortfolio accounts do: [:account |
+		self addNewEntryOfLevel: (currentTreeLevel + 1) to: aResponseStream.
+		(account isKindOf: Portfolio) 
+			ifTrue: [self generateEntriesForPortfolio: account ofLevel: (currentTreeLevel + 1) on: aResponseStream]
+			ifFalse: [self addNameOf: account to: aResponseStream]]! !
+
+!methodRemoval: AssociatedAccountsReport #generateEntryForReceptiveAccount:ofLevel:on: stamp: 'IB 6/1/2023 16:35:46'!
+generateEntryForReceptiveAccount: aReceptiveAccount ofLevel: aTreeLevel on: aResponseStream
+
+	self addNameOf: aReceptiveAccount to: aResponseStream!
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:35:52' prior: 50610326!
+generateEntriesForPortfolio: aPortfolio ofLevel: currentTreeLevel on: aResponseStream
+
+	self addNameOf: aPortfolio to: aResponseStream.
+	
+	aPortfolio accounts do: [:account |
+		self addNewEntryOfLevel: (currentTreeLevel + 1) to: aResponseStream.
+		(account isKindOf: Portfolio) 
+			ifTrue: [self generateEntriesForPortfolio: account ofLevel: (currentTreeLevel + 1) on: aResponseStream]
+			ifFalse: [self addNameOf: account to: aResponseStream]]! !
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 16:37:58'!
+ERROR!
+
+!testRun: #AssociatedAccountsReportTest #test02ReceptiveAccountCantGenerateReport stamp: 'IB 6/1/2023 16:37:58'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:37:58'!
+ERROR!
+
+!testRun: #AssociatedAccountsReportTest #test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:37:58'!
+ERROR!
+
+!testRun: #AssociatedAccountsReportTest #test05PortfolioCanGenerateReportWhenOnePortfolioWithReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:37:58'!
+ERROR!
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 16:38:00'!
+ERROR!
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 16:38:00'!
+ERROR!
+!AssociatedAccountsReport methodsFor: 'evaluating' stamp: 'IB 6/1/2023 16:38:09' prior: 50610293 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+	
+	^String streamContents: [:aStream | self generateEntriesForPortfolio: aPortfolio ofLevel: 0 on: aStream]! !
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 16:38:10'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 16:38:15'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test02ReceptiveAccountCantGenerateReport stamp: 'IB 6/1/2023 16:38:15'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:38:15'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:38:15'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test05PortfolioCanGenerateReportWhenOnePortfolioWithReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:38:15'!
+PASSED!
+
+----SNAPSHOT----(1 June 2023 16:38:24) CuisUniversity-5706.image priorSource: 8912380!
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 16:38:46'!
+secondaryPortfolioName
+
+	^ 'Portfolio secundario'! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 16:38:46' prior: 50610113!
+test05PortfolioCanGenerateReportWhenOnePortfolioWithReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := 
+		Portfolio 
+			named: self principalPortfolioName 
+			with: (Portfolio named: self secondaryPortfolioName with: self familyReceptiveAccount).
+	
+	self 
+		assert: (portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 
+			self principalPortfolioName, Character newLineCharacter asString,  
+				Character tab asString, 'Portfolio secundario', Character newLineCharacter asString, 
+				Character tab asString, Character tab asString, self familyReceptiveAccountName
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 16:38:46' prior: 50610445!
+test05PortfolioCanGenerateReportWhenOnePortfolioWithReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := 
+		Portfolio 
+			named: self principalPortfolioName 
+			with: (Portfolio named: self secondaryPortfolioName with: self familyReceptiveAccount).
+	
+	self 
+		assert: (portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 
+			self principalPortfolioName, Character newLineCharacter asString,  
+				Character tab asString, self secondaryPortfolioName, Character newLineCharacter asString, 
+				Character tab asString, Character tab asString, self familyReceptiveAccountName
+! !
+!AssociatedAccountsReportTest methodsFor: 'tests' stamp: 'IB 6/1/2023 16:41:53'!
+test06PortfolioCanGenerateReportWithPortfolioAndReceptiveAccountAssociated
+
+	|portfolio|
+	portfolio := 
+		Portfolio 
+			named: self principalPortfolioName 
+			with: self personalReceptiveAccount with: (Portfolio named: self secondaryPortfolioName with: self familyReceptiveAccount).
+	
+	self 
+		assert: (portfolio generateReportOfType: AssociatedAccountsReport new)
+		equals: 
+			self principalPortfolioName, Character newLineCharacter asString,  
+				Character tab asString, self personalReceptiveAccountName, Character newLineCharacter asString, 
+				Character tab asString, self secondaryPortfolioName, Character newLineCharacter asString, 
+					Character tab asString, Character tab asString, self familyReceptiveAccountName
+! !
+
+!testRun: #AssociatedAccountsReportTest #test06PortfolioCanGenerateReportWithPortfolioAndReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:41:55'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 16:41:55'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test02ReceptiveAccountCantGenerateReport stamp: 'IB 6/1/2023 16:41:55'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:41:55'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:41:55'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test05PortfolioCanGenerateReportWhenOnePortfolioWithReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:41:55'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test06PortfolioCanGenerateReportWithPortfolioAndReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:41:55'!
+PASSED!
+
+----SNAPSHOT----(1 June 2023 16:41:59) CuisUniversity-5706.image priorSource: 8921156!
+!AssociatedAccountsReport methodsFor: 'support' stamp: 'IB 6/1/2023 16:44:14' prior: 50610352!
+generateEntriesForPortfolio: aPortfolio ofLevel: currentTreeLevel on: aResponseStream
+
+	self addNameOf: aPortfolio to: aResponseStream.
+	(aPortfolio isKindOf: ReceptiveAccount) ifTrue: [^self]. 
+	
+	aPortfolio accounts do: [:account |
+		self addNewEntryOfLevel: (currentTreeLevel + 1) to: aResponseStream.
+		self generateEntriesForPortfolio: account ofLevel: (currentTreeLevel + 1) on: aResponseStream]! !
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 16:44:20'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test02ReceptiveAccountCantGenerateReport stamp: 'IB 6/1/2023 16:44:20'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:44:20'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:44:20'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test05PortfolioCanGenerateReportWhenOnePortfolioWithReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:44:20'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test06PortfolioCanGenerateReportWithPortfolioAndReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:44:20'!
+PASSED!
+!AssociatedAccountsReport methodsFor: 'support' stamp: 'IB 6/1/2023 16:44:51'!
+generateNecesaryEntriesFor: aPortfolio ofLevel: currentTreeLevel on: aResponseStream
+
+	self addNameOf: aPortfolio to: aResponseStream.
+	(aPortfolio isKindOf: ReceptiveAccount) ifTrue: [^self]. 
+	
+	aPortfolio accounts do: [:account |
+		self addNewEntryOfLevel: (currentTreeLevel + 1) to: aResponseStream.
+		self generateEntriesForPortfolio: account ofLevel: (currentTreeLevel + 1) on: aResponseStream]! !
+!AssociatedAccountsReport methodsFor: 'as yet unclassified' stamp: 'IB 6/1/2023 16:44:51' prior: 50610551!
+generateEntriesForPortfolio: aPortfolio ofLevel: currentTreeLevel on: aResponseStream
+
+	self addNameOf: aPortfolio to: aResponseStream.
+	(aPortfolio isKindOf: ReceptiveAccount) ifTrue: [^self]. 
+	
+	aPortfolio accounts do: [:account |
+		self addNewEntryOfLevel: (currentTreeLevel + 1) to: aResponseStream.
+		self generateNecesaryEntriesFor: account ofLevel: (currentTreeLevel + 1) on: aResponseStream]! !
+!AssociatedAccountsReport methodsFor: 'as yet unclassified' stamp: 'IB 6/1/2023 16:44:51' prior: 50610402 overrides: 50608254!
+generateEntriesForPortfolio: aPortfolio
+	
+	^String streamContents: [:aStream | self generateNecesaryEntriesFor: aPortfolio ofLevel: 0 on: aStream]! !
+!AssociatedAccountsReport methodsFor: 'as yet unclassified' stamp: 'IB 6/1/2023 16:44:51' prior: 50610594!
+generateNecesaryEntriesFor: aPortfolio ofLevel: currentTreeLevel on: aResponseStream
+
+	self addNameOf: aPortfolio to: aResponseStream.
+	(aPortfolio isKindOf: ReceptiveAccount) ifTrue: [^self]. 
+	
+	aPortfolio accounts do: [:account |
+		self addNewEntryOfLevel: (currentTreeLevel + 1) to: aResponseStream.
+		self generateNecesaryEntriesFor: account ofLevel: (currentTreeLevel + 1) on: aResponseStream]! !
+
+!methodRemoval: AssociatedAccountsReport #generateEntriesForPortfolio:ofLevel:on: stamp: 'IB 6/1/2023 16:44:52'!
+generateEntriesForPortfolio: aPortfolio ofLevel: currentTreeLevel on: aResponseStream
+
+	self addNameOf: aPortfolio to: aResponseStream.
+	(aPortfolio isKindOf: ReceptiveAccount) ifTrue: [^self]. 
+	
+	aPortfolio accounts do: [:account |
+		self addNewEntryOfLevel: (currentTreeLevel + 1) to: aResponseStream.
+		self generateNecesaryEntriesFor: account ofLevel: (currentTreeLevel + 1) on: aResponseStream]!
+!AssociatedAccountsReport methodsFor: 'support' stamp: 'IB 6/1/2023 16:45:00' prior: 50610636!
+generateNecesaryEntriesFor: anAccount ofLevel: currentTreeLevel on: aResponseStream
+
+	self addNameOf: anAccount to: aResponseStream.
+	(anAccount isKindOf: ReceptiveAccount) ifTrue: [^self]. 
+	
+	anAccount accounts do: [:account |
+		self addNewEntryOfLevel: (currentTreeLevel + 1) to: aResponseStream.
+		self generateNecesaryEntriesFor: account ofLevel: (currentTreeLevel + 1) on: aResponseStream]! !
+
+!testRun: #AssociatedAccountsReportTest #test01PortfolioCanGenerateReportWhenNoReceptiveAccountsAssociated stamp: 'IB 6/1/2023 16:45:04'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test02ReceptiveAccountCantGenerateReport stamp: 'IB 6/1/2023 16:45:04'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test03PortfolioCanGenerateReportWhenOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:45:04'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test04PortfolioCanGenerateReportWhenMoreThanOneReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:45:04'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test05PortfolioCanGenerateReportWhenOnePortfolioWithReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:45:04'!
+PASSED!
+
+!testRun: #AssociatedAccountsReportTest #test06PortfolioCanGenerateReportWithPortfolioAndReceptiveAccountAssociated stamp: 'IB 6/1/2023 16:45:04'!
+PASSED!
+
+----SNAPSHOT----(1 June 2023 16:45:07) CuisUniversity-5706.image priorSource: 8924686!
+
+----SNAPSHOT----(1 June 2023 16:46:15) CuisUniversity-5706.image priorSource: 8929925!
+
+----SNAPSHOT----(1 June 2023 16:46:51) CuisUniversity-5706.image priorSource: 8930013!
+
+----QUIT----(1 June 2023 16:46:56) CuisUniversity-5706.image priorSource: 8930101!
